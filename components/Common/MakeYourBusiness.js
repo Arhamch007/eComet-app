@@ -91,7 +91,7 @@ const MakeYourBusiness = () => {
                 >
                   <div className="single-counter">
                     <h2>
-                      <span className="target">80</span>
+                      <span className="target">80%</span>
                     </h2>
                     <p>Award Win</p>
                   </div>

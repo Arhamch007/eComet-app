@@ -226,7 +226,7 @@ const Footer = () => {
         </div>
       </footer> */}
       <footer id="footer">
-        <div class="container">
+        <div class="container cont">
           <h3>eComet</h3>
           <p>
             Creative professionals who blend design and development skills to
@@ -267,17 +267,15 @@ const Footer = () => {
             </a>
           </div>
           <div class="copyright">
-            <p>Copyright &copy; {currentYear} Jumpx. All Rights Reserved</p>
+            <p>Copyright &copy; {currentYear} eComet. All Rights Reserved</p>
           </div>
-          <div class="credits">
           <div className="designed">
-                <p>
-                  Designed By <i className="bx bx-heart"></i>{" "}
-                  <a href="https://envytheme.com/" target="_blank">
-                    eComet
-                  </a>
-                </p>
-              </div>
+            <p>
+              Designed By <i className="bx bx-heart"></i>{" "}
+              <a href="#" target="_blank">
+                eComet
+              </a>
+            </p>
           </div>
         </div>
       </footer>
