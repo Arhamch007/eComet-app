@@ -5,7 +5,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
   return (
     <>
-      <footer className="footer-top-area pt-100 pb-70">
+      {/* <footer className="footer-top-area pt-100 pb-70">
         <div className="container">
           <div className="row">
             <div className="col-lg-3 col-md-6">
@@ -187,10 +187,10 @@ const Footer = () => {
           <img src="/images/shape/footer-shape-one.png" alt="Image" />
           <img src="/images/shape/footer-shape-two.png" alt="Image" />
         </div>
-      </footer>
+      </footer> */}
 
       {/* Footer Bottom Area   */}
-      <footer className="footer-bottom-area">
+      {/* <footer className="footer-bottom-area">
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-4">
@@ -222,6 +222,62 @@ const Footer = () => {
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+      </footer> */}
+      <footer id="footer">
+        <div class="container">
+          <h3>eComet</h3>
+          <p>
+            Creative professionals who blend design and development skills to
+            craft visually captivating websites with intuitive interfaces for
+            exceptional user experiences.
+          </p>
+          <div class="social-links">
+            <a
+              href="https://twitter.com/abouzar_ijaz89"
+              target="_blank"
+              class="twitter"
+            >
+              <i class="bx bxl-twitter"></i>
+            </a>
+            <a
+              href="https://www.facebook.com/profile.php?id=100011857892382"
+              target="_blank"
+              class="facebook"
+            >
+              <i class="bx bxl-facebook"></i>
+            </a>
+            <a
+              href="https://github.com/abouzarijaz89"
+              target="_blank"
+              class="github"
+            >
+              <i class="bx bxl-github"></i>
+            </a>
+            <a href="#" class="google-plus">
+              <i class="bx bxl-skype"></i>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/abouzar-ijaz-12935b1ab/"
+              target="_blank"
+              class="linkedin"
+            >
+              <i class="bx bxl-linkedin"></i>
+            </a>
+          </div>
+          <div class="copyright">
+            <p>Copyright &copy; {currentYear} Jumpx. All Rights Reserved</p>
+          </div>
+          <div class="credits">
+          <div className="designed">
+                <p>
+                  Designed By <i className="bx bx-heart"></i>{" "}
+                  <a href="https://envytheme.com/" target="_blank">
+                    eComet
+                  </a>
+                </p>
+              </div>
           </div>
         </div>
       </footer>
