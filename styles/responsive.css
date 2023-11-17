@@ -1680,4 +1680,134 @@
   .mean-container .mean-nav {
     margin-top: 66px;
   }
+}
+@media only screen and (max-width: 991px) {
+  .single-team {
+    background-color: black;
+  }
+  .team-content h3 {
+    color: white !important;
+  }
+  .team-content span {
+    color: white !important;
+  }
+  .mobile-nav .logo {
+    top: 12px;
+  }
+  .mean-container .mean-bar {
+    background-color: #04063c;
+    box-shadow: 0 0 15px #ffffff;
+    padding: 0;
+    height: 65px;
+  }
+  .mobile-nav.mean-container .mean-nav ul li a:hover {
+    color: #00a7f5;
+  }
+  .mobile-nav.mean-container .mean-nav ul li a.active {
+    color: #00a7f5;
+  }
+  .mean-container a.meanmenu-reveal {
+    padding: 22px 15px 0 0;
+  }
+  .mean-container .mean-nav {
+    margin-top: 66px;
+  }
+}
+@media only screen and (max-width: 991px) and (max-width: 991px) and (min-width: 578px) {
+  .single-counter {
+    background-color: rgba(255, 166, 0, 0.829);
+    text-align: center;
+    padding: 50px;
+    border-radius: 4px;
+    margin-bottom: 30px;
+    transition: all 0.6s ease;
+    box-shadow: 0 0 20px 1px #000000;
+  }
+  .single-counter h2 {
+    margin-bottom: 0;
+  }
+  .single-counter h2 span {
+    font-size: 50px;
+    color: #000000;
+    font-family: "Dosis", sans-serif;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .single-counter h2 .target {
+    line-height: 1;
+    position: relative;
+    top: 7px;
+  }
+  .single-counter p {
+    font-family: "Dosis", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 10px 0 0;
+  }
+  .single-counter:hover {
+    animation: rubberBand 1s linear;
+  }
+  .counter-nth:nth-child(2) .single-counter {
+    background-color: #000000;
+    box-shadow: 0 0 20px 1px rgba(255, 166, 0, 0.829);
+  }
+  .counter-nth:nth-child(2) .single-counter h2 span {
+    color: #ffffff;
+  }
+  .counter-nth:nth-child(2) .single-counter p {
+    color: white;
+  }
+  .counter-nth:nth-child(3) .single-counter {
+    background-color: #000000;
+    margin-bottom: 0;
+    box-shadow: 0 0 20px 1px rgba(255, 166, 0, 0.829);
+  }
+  .counter-nth:nth-child(3) .single-counter h2 span {
+    color: #ffffff;
+  }
+  .counter-nth:nth-child(3) .single-counter p {
+    color: white;
+  }
+  .counter-nth:nth-child(4) .single-counter {
+    margin-bottom: 0;
+    background-color: rgba(255, 166, 0, 0.829);
+    box-shadow: 0 0 20px 1px #000000;
+  }
+  .counter-nth:nth-child(4) .single-counter h2 span {
+    color: #000000;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .single-counter {
+    background-color: rgba(255, 166, 0, 0.829);
+    box-shadow: 0 0 20px 1px #000000;
+  }
+  .counter-nth:nth-child(2) .single-counter {
+    background-color: rgba(255, 166, 0, 0.829);
+    box-shadow: 0 0 20px 1px #000000;
+  }
+  .counter-nth:nth-child(2) .single-counter h2 span {
+    color: #000000;
+  }
+  .counter-nth:nth-child(2) .single-counter p {
+    color: #000000;
+  }
+  .counter-nth:nth-child(3) .single-counter {
+    background-color: rgba(255, 166, 0, 0.829);
+    box-shadow: 0 0 20px 1px #000000;
+  }
+  .counter-nth:nth-child(3) .single-counter h2 span {
+    color: #000000;
+  }
+  .counter-nth:nth-child(3) .single-counter p {
+    color: #000000;
+  }
+  .counter-nth .counter-nth:nth-child(4) .single-counter {
+    margin-top: 30px;
+    background-color: rgba(255, 166, 0, 0.829);
+    box-shadow: 0 0 20px 1px #000000;
+  }
+  .counter-nth .counter-nth:nth-child(4) .single-counter h2 span {
+    color: #000000;
+  }
 }/*# sourceMappingURL=responsive.css.map */

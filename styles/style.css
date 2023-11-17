@@ -1358,7 +1358,7 @@ Main Banner Area Style
   margin: auto;
 }
 .main-banner-area.main-banner-area-one .banner-img img:nth-child(2) {
-  top: -170px;
+  top: -180px;
   left: 0;
 }
 .main-banner-area.main-banner-area-one .banner-img img:nth-child(3) {
@@ -1367,8 +1367,7 @@ Main Banner Area Style
 }
 .main-banner-area.main-banner-area-one .banner-img img:nth-child(4) {
   top: 3px;
-  right: 0px;
-  left: 250px;
+  left: 270px;
 }
 .main-banner-area.main-banner-area-one .over-shape img {
   position: absolute;

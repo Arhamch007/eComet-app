@@ -1,3 +1,15 @@
+$body-font-family: "Open Sans", sans-serif;
+$heading-font-family: "Dosis", sans-serif;
+
+$main-color: rgba(255, 166, 0, 0.829);
+$body-color: #4d4d4d;
+$heading-color: #212121;
+$white-color: #ffffff;
+$black-color: #000000;
+$box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
+$transition: all 0.6s ease;
+$border-radius: 4px;
+
 @media only screen and (max-width: 767px) {
     .navbar-area {
         .navbar-brand {
@@ -2172,3 +2184,200 @@
         margin-top: 66px;
     }
 }
+
+@media only screen and (max-width: 991px) {
+
+    .single-team{
+        background-color: black
+    }
+    .team-content h3{
+        color: white !important;
+    }
+    .team-content span{
+        color: white !important;
+    }
+    
+    .mobile-nav {
+        .logo {
+            top: 12px;
+        }
+    }
+    .mean-container .mean-bar {
+        background-color: #04063c;
+        box-shadow: 0 0 15px #ffffff;
+        padding: 0;
+        height: 65px;
+    }
+    .mobile-nav {
+        &.mean-container {
+            .mean-nav {
+                ul {
+                    li {
+                        a {
+                            &:hover {
+                                color: #00a7f5;
+                            }
+                            &.active {
+                                color: #00a7f5;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .mean-container a.meanmenu-reveal {
+        padding: 22px 15px 0 0;
+    }
+    .mean-container .mean-nav {
+        margin-top: 66px;
+    }
+
+
+
+
+
+
+    @media only screen and (max-width: 991px) and (min-width:578px){
+        .single-counter {
+            background-color: $main-color;
+            text-align: center;
+            padding: 50px;
+            border-radius: $border-radius;
+            margin-bottom: 30px;
+            transition: $transition;
+            box-shadow: 0 0 20px 1px $black-color;
+            h2 {
+              margin-bottom: 0;
+              span {
+                font-size: 50px;
+                color: $black-color;
+                font-family: $heading-font-family;
+                font-weight: 700;
+                line-height: 1;
+              }
+              .target {
+                line-height: 1;
+                position: relative;
+                top: 7px;
+              }
+            }
+            p {
+              font-family: $heading-font-family;
+              font-size: 18px;
+              font-weight: 500;
+              margin: 10px 0 0;
+            }
+            &:hover {
+              animation: rubberBand 1s linear;
+            }
+          }
+          .counter-nth {
+            &:nth-child(2) {
+              .single-counter {
+                // margin-top: 30px;
+                background-color: $black-color;
+                box-shadow: 0 0 20px 1px $main-color;
+                h2 {
+                  span {
+                    color: $white-color;
+                  }
+                }
+                p{
+                  color: white;
+                }
+              }
+            }
+            &:nth-child(3) {
+              .single-counter {
+                background-color: $black-color ;
+                // margin-top: -30px;
+                margin-bottom: 0;
+                box-shadow: 0 0 20px 1px $main-color;
+                h2 {
+                  span {
+                    color:  $white-color;
+                  }
+                }
+                p{
+                  color: white;
+                }
+              }
+            }
+            &:nth-child(4) {
+              .single-counter {
+                margin-bottom: 0;
+    
+                // margin-top: 30px;
+                background-color:  $main-color;
+                box-shadow: 0 0 20px 1px $black-color;
+          
+                h2 {
+                  span {
+                    color: $black-color ;
+                  }
+                }
+              }
+            }
+          }
+        }
+    }
+
+    @media only screen and (max-width: 576px){
+          
+            .single-counter {
+                background-color: $main-color;
+                box-shadow: 0 0 20px 1px $black-color;
+              }
+              .counter-nth {
+                &:nth-child(2) {
+                  .single-counter {
+                    // margin-top: 30px;
+                    background-color: $main-color;
+                    box-shadow: 0 0 20px 1px $black-color;
+                    h2 {
+
+                      span {
+                        color: $black-color;
+                      }
+                    }
+                    p{
+                      color: $black-color;
+                    }
+                  }
+                }
+                &:nth-child(3) {
+                  .single-counter {
+                    background-color: $main-color ;
+                    box-shadow: 0 0 20px 1px $black-color;
+                    h2 {
+                      span {
+                        color:  $black-color;
+                      }
+                    }
+                    p{
+                      color: $black-color;
+                    }
+                  }
+                }
+            
+          .counter-nth {    
+            &:nth-child(4) {
+              .single-counter {
+                margin-top: 30px;
+                background-color:  $main-color;
+                box-shadow: 0 0 20px 1px $black-color;
+          
+                h2 {
+
+                  span {
+                    color: $black-color ;
+                  }
+                }
+              }
+            }
+          }
+        }
+    }
+    
+    

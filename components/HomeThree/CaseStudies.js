@@ -37,28 +37,27 @@ const CaseStudies = () => {
             modules={[Pagination, Autoplay]}
             className="case-top-wrap"
           >
-            {/* 13 */}
+            {/* 15 */}
             <SwiperSlide>
               <div className="case-wrap">
                 <div className="single-case">
                   <img
-                    src="/images/cases/case13.png"
+                    src="/images/cases/case15.png"
                     alt="Image"
                     className="w-100"
                   />
 
-                  <Link href="/projects/Drone" className="link-icon">
-                    <h2>Leichtwerk AG</h2>
+                  <Link href="/projects/Drganja" className="link-icon">
+                    <h2>Dr.Ganja</h2>
                     <p>
-                      Unleashing innovation with React and Ruby on Rails for a
-                      unique web development journey
+                    Enabling global orders, SKU uploads, review management, certificate integration, and prompt tracking ID delivery for Dr. Ganja.
                     </p>
                     <i className="bx bx-plus"></i>
                   </Link>
                 </div>
 
                 <h3>
-                  <Link href="/case-studies-details">Leichtwerk AG</Link>
+                  <Link href="/projects/Drganja">Dr.Ganja</Link>
                 </h3>
               </div>
             </SwiperSlide>
@@ -85,7 +84,32 @@ const CaseStudies = () => {
                 </div>
 
                 <h3>
-                  <Link href="/case-studies-details">Halyard</Link>
+                  <Link href="/projects/Halyard">Halyard</Link>
+                </h3>
+              </div>
+            </SwiperSlide>
+
+            {/* 16 */}
+            <SwiperSlide>
+              <div className="case-wrap">
+                <div className="single-case">
+                  <img
+                    src="/images/cases/case16.png"
+                    alt="Image"
+                    className="w-100"
+                  />
+
+                  <Link href="/projects/Havoc" className="link-icon">
+                    <h2>Havoc Parts</h2>
+                    <p>
+                    Seamless product uploads on Shopify, bespoke custom product pages, in-depth research tasks, and effective eBay listings for Havoc Parts
+                    </p>
+                    <i className="bx bx-plus"></i>
+                  </Link>
+                </div>
+
+                <h3>
+                  <Link href="/projects/Havoc">Havoc Parts</Link>
                 </h3>
               </div>
             </SwiperSlide>
@@ -113,7 +137,32 @@ const CaseStudies = () => {
                 </div>
 
                 <h3>
-                  <Link href="/case-studies-details">Lively</Link>
+                  <Link href="/projects/Lively">Lively</Link>
+                </h3>
+              </div>
+            </SwiperSlide>
+
+            {/* 17 */}
+            <SwiperSlide>
+              <div className="case-wrap">
+                <div className="single-case">
+                  <img
+                    src="/images/cases/case17.png"
+                    alt="Image"
+                    className="w-100"
+                  />
+
+                  <Link href="/projects/Fellon" className="link-icon">
+                    <h2>Fellon</h2>
+                    <p>
+                    Expertly managing your Shopify store - from seamless product uploads to responsive client query handling via email
+                    </p>
+                    <i className="bx bx-plus"></i>
+                  </Link>
+                </div>
+
+                <h3>
+                  <Link href="/projects/Fellon">Fellon</Link>
                 </h3>
               </div>
             </SwiperSlide>
@@ -140,7 +189,32 @@ const CaseStudies = () => {
                 </div>
 
                 <h3>
-                  <Link href="/case-studies-details">Proficio</Link>
+                  <Link href="/projects/PROFICIO">Proficio</Link>
+                </h3>
+              </div>
+            </SwiperSlide>
+
+            {/* 18 */}
+            <SwiperSlide>
+              <div className="case-wrap">
+                <div className="single-case">
+                  <img
+                    src="/images/cases/case18.png"
+                    alt="Image"
+                    className="w-100"
+                  />
+
+                  <Link href="/projects/Beautysmile" className="link-icon">
+                    <h2>Beauty Smile</h2>
+                    <p>
+                    eComet elevates Beauty Smile by seamlessly uploading products to their Shopify store and efficiently handling client queries through responsive email services.
+                    </p>
+                    <i className="bx bx-plus"></i>
+                  </Link>
+                </div>
+
+                <h3>
+                  <Link href="/projects/Beautysmile">Beauty Smile</Link>
                 </h3>
               </div>
             </SwiperSlide>
@@ -167,7 +241,32 @@ const CaseStudies = () => {
                 </div>
 
                 <h3>
-                  <Link href="/case-studies-details">Zentap</Link>
+                  <Link href="/projects/Zentap">Zentap</Link>
+                </h3>
+              </div>
+            </SwiperSlide>
+
+            {/* 19 */}
+            <SwiperSlide>
+              <div className="case-wrap">
+                <div className="single-case">
+                  <img
+                    src="/images/cases/case19.png"
+                    alt="Image"
+                    className="w-100"
+                  />
+
+                  <Link href="/projects/Merly" className="link-icon">
+                    <h2>Merley</h2>
+                    <p>
+                    eComet streamlines business for Merley by expertly uploading products to their Shopify store and efficiently responding to client queries via email.
+                    </p>
+                    <i className="bx bx-plus"></i>
+                  </Link>
+                </div>
+
+                <h3>
+                  <Link href="/projects/Merly">Merley</Link>
                 </h3>
               </div>
             </SwiperSlide>
@@ -194,7 +293,32 @@ const CaseStudies = () => {
                 </div>
 
                 <h3>
-                  <Link href="/case-studies-details">Workstool</Link>
+                  <Link href="/projects/Workstool">Workstool</Link>
+                </h3>
+              </div>
+            </SwiperSlide>
+
+            {/* 20 */}
+            <SwiperSlide>
+              <div className="case-wrap">
+                <div className="single-case">
+                  <img
+                    src="/images/cases/case20.png"
+                    alt="Image"
+                    className="w-100"
+                  />
+
+                  <Link href="/projects/Snapsmile" className="link-icon">
+                    <h2>Snap Smile</h2>
+                    <p>
+                    eComet seamlessly manages Snap Smile's online presence by uploading products on their Shopify store and promptly responding to client queries via email
+                    </p>
+                    <i className="bx bx-plus"></i>
+                  </Link>
+                </div>
+
+                <h3>
+                  <Link href="/projects/Snapsmile">Snap Smile</Link>
                 </h3>
               </div>
             </SwiperSlide>
@@ -221,7 +345,33 @@ const CaseStudies = () => {
                 </div>
 
                 <h3>
-                  <Link href="/case-studies-details">Green Top Farms</Link>
+                  <Link href="/projects/Greentopfarms">Green Top Farms</Link>
+                </h3>
+              </div>
+            </SwiperSlide>
+
+            {/* 13 */}
+            <SwiperSlide>
+              <div className="case-wrap">
+                <div className="single-case">
+                  <img
+                    src="/images/cases/case13.png"
+                    alt="Image"
+                    className="w-100"
+                  />
+
+                  <Link href="/projects/Drone" className="link-icon">
+                    <h2>Leichtwerk AG</h2>
+                    <p>
+                      Unleashing innovation with React and Ruby on Rails for a
+                      unique web development journey
+                    </p>
+                    <i className="bx bx-plus"></i>
+                  </Link>
+                </div>
+
+                <h3>
+                  <Link href="/projects/Drone">Leichtwerk AG</Link>
                 </h3>
               </div>
             </SwiperSlide>
@@ -247,7 +397,7 @@ const CaseStudies = () => {
                 </div>
 
                 <h3>
-                  <Link href="/case-studies-details">Ideawake</Link>
+                  <Link href="/projects/Ideawake">Ideawake</Link>
                 </h3>
               </div>
             </SwiperSlide>
@@ -274,7 +424,7 @@ const CaseStudies = () => {
                 </div>
 
                 <h3>
-                  <Link href="/case-studies-details">pHin</Link>
+                  <Link href="/projects/pHin">pHin</Link>
                 </h3>
               </div>
             </SwiperSlide>
@@ -292,14 +442,16 @@ const CaseStudies = () => {
                   <Link href="/projects/Ezyagent" className="link-icon">
                     <h2>Ezyagent</h2>
                     <p>
-                    Firing up ingenuity through the dynamic duo of VueJS and Ruby on Rails, embarking on an unparalleled expedition in web development
+                      Firing up ingenuity through the dynamic duo of VueJS and
+                      Ruby on Rails, embarking on an unparalleled expedition in
+                      web development
                     </p>
                     <i className="bx bx-plus"></i>
                   </Link>
                 </div>
 
                 <h3>
-                  <Link href="/case-studies-details">Ezyagent</Link>
+                  <Link href="/projects/Ezyagent">Ezyagent</Link>
                 </h3>
               </div>
             </SwiperSlide>
@@ -317,14 +469,16 @@ const CaseStudies = () => {
                   <Link href="/projects/MegaStores" className="link-icon">
                     <h2>Mega Stores</h2>
                     <p>
-                    Fueling creativity through Shopify, Liquid, and custom Ruby on Rails applications for an unparalleled web development adventure
+                      Fueling creativity through Shopify, Liquid, and custom
+                      Ruby on Rails applications for an unparalleled web
+                      development adventure
                     </p>
                     <i className="bx bx-plus"></i>
                   </Link>
                 </div>
 
                 <h3>
-                  <Link href="/case-studies-details">Mega Stores</Link>
+                  <Link href="/projects/MegaStores">Mega Stores</Link>
                 </h3>
               </div>
             </SwiperSlide>
@@ -342,14 +496,16 @@ const CaseStudies = () => {
                   <Link href="/projects/Puppy" className="link-icon">
                     <h2>Puppy Wash</h2>
                     <p>
-                    Venture into the digital frontier with Shopify, Liquid, React, and Ruby on Rails—a nexus of innovation in web development
+                      Venture into the digital frontier with Shopify, Liquid,
+                      React, and Ruby on Rails—a nexus of innovation in web
+                      development
                     </p>
                     <i className="bx bx-plus"></i>
                   </Link>
                 </div>
 
                 <h3>
-                  <Link href="/case-studies-details">Puppy Wash</Link>
+                  <Link href="/projects/Puppy">Puppy Wash</Link>
                 </h3>
               </div>
             </SwiperSlide>
@@ -367,14 +523,16 @@ const CaseStudies = () => {
                   <Link href="/projects/Timbits" className="link-icon">
                     <h2>Timbits Sports</h2>
                     <p>
-                    Elevate your digital ambitions with the potent fusion of Ruby on Rails and JavaScript, charting a distinctive course in the landscape of web development innovation
+                      Elevate your digital ambitions with the potent fusion of
+                      Ruby on Rails and JavaScript, charting a distinctive
+                      course in the landscape of web development innovation
                     </p>
                     <i className="bx bx-plus"></i>
                   </Link>
                 </div>
 
                 <h3>
-                  <Link href="/case-studies-details">Timbits Sports</Link>
+                  <Link href="/projects/Timbits">Timbits Sports</Link>
                 </h3>
               </div>
             </SwiperSlide>
@@ -392,14 +550,16 @@ const CaseStudies = () => {
                   <Link href="/projects/Fantasy" className="link-icon">
                     <h2>Fantasy Middleware</h2>
                     <p>
-                    Embarking on a distinctive web development journey by harnessing the power of React and Ruby on Rails, fueling innovation and creativity
+                      Embarking on a distinctive web development journey by
+                      harnessing the power of React and Ruby on Rails, fueling
+                      innovation and creativity
                     </p>
                     <i className="bx bx-plus"></i>
                   </Link>
                 </div>
 
                 <h3>
-                  <Link href="/case-studies-details">Fantasy Middleware</Link>
+                  <Link href="/projects/Fantasy">Fantasy Middleware</Link>
                 </h3>
               </div>
             </SwiperSlide>
