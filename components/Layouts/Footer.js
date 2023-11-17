@@ -227,7 +227,7 @@ const Footer = () => {
       </footer> */}
       <footer id="footer">
         <div class="container cont">
-          <h3>eComet</h3>
+        <img src="/images/eComet121.svg" className="pic"></img> 
           <p>
             Creative professionals who blend design and development skills to
             craft visually captivating websites with intuitive interfaces for
@@ -235,36 +235,34 @@ const Footer = () => {
           </p>
           <div class="social-links">
             <a
-              href="https://twitter.com/abouzar_ijaz89"
-              target="_blank"
-              class="twitter"
-            >
-              <i class="bx bxl-twitter"></i>
-            </a>
-            <a
-              href="https://www.facebook.com/profile.php?id=100011857892382"
+              href="https://www.facebook.com/profile.php?id=100090162676178"
               target="_blank"
               class="facebook"
             >
               <i class="bx bxl-facebook"></i>
             </a>
             <a
-              href="https://github.com/abouzarijaz89"
-              target="_blank"
-              class="github"
-            >
-              <i class="bx bxl-github"></i>
-            </a>
-            <a href="#" class="google-plus">
-              <i class="bx bxl-skype"></i>
-            </a>
-            <a
-              href="https://www.linkedin.com/in/abouzar-ijaz-12935b1ab/"
+              href="https://www.linkedin.com/company/ecomet-technologies/"
               target="_blank"
               class="linkedin"
             >
               <i class="bx bxl-linkedin"></i>
             </a>
+            <a
+              href="https://www.upwork.com/agencies/1114861152675102720/"
+              target="_blank"
+              class="upwork"
+            >
+              <i class="bx bxl-upwork"></i>
+            </a>
+            <a
+              href="mailto:ecomet.technologies@gmail.com"
+              target="_blank"
+              class="upwork"
+            >
+              <i class="bx bxl-gmail"></i>
+            </a>
+            
           </div>
           <div class="copyright">
             <p>Copyright &copy; {currentYear} eComet. All Rights Reserved</p>

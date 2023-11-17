@@ -2,9 +2,12 @@ import React from 'react';
 import Link from 'next/link';
 
 const CTA = () => {
+  const customStyles = {
+    marginBottom: "100px"
+  };
   return (
 		<>
-			<div className="cta-area ptb-100">
+			<div  className="cta-area ptb-100">
         <div className="container">
           <div className="cta-content">
             <span>So What is Next?</span>

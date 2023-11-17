@@ -14,10 +14,10 @@ export default function About1() {
       <Navbar />
 
       <PageBanner
-        pageTitle="About Style One"
+        pageTitle="About Us"
         homePageUrl="/"
         homePageText="Home"
-        activePageText="About Style One"
+        activePageText="About"
       />
 
       <About />
@@ -25,12 +25,13 @@ export default function About1() {
       <MakeYourBusiness />
 
       <Testimonials />
-
-      <TeamTwo />
-
-      <div className="pb-50">
-        <Partner />
+      <div className="pb-50 pt-100">
+      <TeamTwo  />
       </div>
+
+      {/* <div className="pb-50">
+        <Partner />
+      </div> */}
 
       <Footer />
     </>

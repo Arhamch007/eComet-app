@@ -11,10 +11,10 @@ export default function Services4() {
       <Navbar />
 
       <PageBanner
-        pageTitle="Services Style Four"
+        pageTitle="Our Services"
         homePageUrl="/"
         homePageText="Home"
-        activePageText="Services Style Four"
+        activePageText="Services"
       />
       <ServicesStyleFour />
 

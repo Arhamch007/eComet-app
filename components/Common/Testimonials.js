@@ -3,37 +3,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper";
 
 const testimonialsData = [
-  {
-    image: "/images/clients/client1.jpg",
-    name: "Alen Meair",
-    designation: "Web Developer",
-    feedbackText:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit,do eiusmod tempor incididunt ut labore et dolore.",
-
-    rating: [
-      {
-        iconName: "bx bxs-star",
-      },
-      {
-        iconName: "bx bxs-star",
-      },
-      {
-        iconName: "bx bxs-star",
-      },
-      {
-        iconName: "bx bxs-star",
-      },
-      {
-        iconName: "bx bxs-star",
-      },
-    ],
-  },
+ 
   {
     image: "/images/clients/client2.jpg",
-    name: "Axon Detos",
-    designation: "CEO of ET",
+    name: "Oscar Adams",
+    designation: "InnovateTech Ventures",
     feedbackText:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit,do eiusmod tempor incididunt ut labore et dolore.",
+      "Quick, efficient communication and execution! Went from idea to completion in just hours. Impressive work! Clean, clear code. Seller was nice, direct, and easy to work with. Thank you!",
 
     rating: [
       {
@@ -53,12 +29,64 @@ const testimonialsData = [
       },
     ],
   },
+  {
+    image: "/images/clients/client1.jpg",
+    name: "Logan Smith",
+    designation: "TechCorp Solutions",
+    feedbackText:
+      "They are highly professional and seasoned, evident in their top-quality deliverables. Committed, creative, and a pleasure to work with, their expertise shines through in every project.",
+
+    rating: [
+      {
+        iconName: "bx bxs-star",
+      },
+      {
+        iconName: "bx bxs-star",
+      },
+      {
+        iconName: "bx bxs-star",
+      },
+      {
+        iconName: "bx bxs-star",
+      },
+      {
+        iconName: "bx bxs-star",
+      },
+    ],
+  },
+  
   {
     image: "/images/clients/client3.jpg",
-    name: "John Dona",
-    designation: "UI/UX Designer",
+    name: "Lexi Ehrman",
+    designation: "Head of Technology",
     feedbackText:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit,do eiusmod tempor incididunt ut labore et dolore.",
+      "eComet stands out as a top-tier software house. They're not just problem solvers; they're incredibly creative ones. Reliable, smart, and fun to work with, they're truly the full package.",
+
+    rating: [
+      {
+        iconName: "bx bxs-star",
+      },
+      {
+        iconName: "bx bxs-star",
+      },
+      {
+        iconName: "bx bxs-star",
+      },
+      {
+        iconName: "bx bxs-star",
+      },
+      {
+        iconName: "bx bxs-star",
+      },
+    ],
+  },
+  
+  {
+    image: "/images/clients/client4.jpg",
+    name: "David Ko",
+    designation: "CEO - Drganja.com",
+    feedbackText:
+      "eComet's seamless interface and centralized task management are transformative for our e-commerce operations—efficiency redefined for unparalleled productivity.",
 
     rating: [
       {
@@ -79,11 +107,11 @@ const testimonialsData = [
     ],
   },
   {
-    image: "/images/clients/client4.jpg",
-    name: "Jon Smith",
-    designation: "ReactJS Developer",
+    image: "/images/clients/1.jpg",
+    name: "Alexander Nouveau",
+    designation: "CEO - nouveaustartups.com",
     feedbackText:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit,do eiusmod tempor incididunt ut labore et dolore.",
+      "eComet's business development services are exceptional—tailored strategies, insightful analysis, and seamless communication. An invaluable partner in our growth journey.",
 
     rating: [
       {
@@ -108,7 +136,7 @@ const testimonialsData = [
 const Testimonials = () => {
   return (
     <>
-      <section className="client-area ptb-100">
+      <section className="client-area pt-50 pb-100">
         <div className="container">
           <div className="section-title">
             <span>Testimonials</span>

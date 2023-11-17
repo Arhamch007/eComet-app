@@ -15,8 +15,7 @@ const WhyChooseUs = () => {
               >
                 <span>Why Choose Us</span>
                 <h2>
-                  Our Platform Takes Away The Hard Process Of Creating Your
-                  Website
+                Excellence for Your Unique Solutions.
                 </h2>
               </div>
             </div>
@@ -33,10 +32,9 @@ const WhyChooseUs = () => {
                 <span>
                   01 <i className="flaticon-technical-support"></i>
                 </span>
-                <h3>Safe Security</h3>
+                <h3>Crafted Mastery</h3>
                 <p>
-                  Lorem ipsum dolor sit labore amet, consectetur adipiscing
-                  elit, sed do eiusmod tempor.
+                Delivering Excellence Through Uniquely Tailored Solutions for You.
                 </p>
               </div>
 
@@ -49,10 +47,9 @@ const WhyChooseUs = () => {
                 <span>
                   02 <i className="flaticon-shield"></i>
                 </span>
-                <h3>Technical Support</h3>
+                <h3>Proven Expertise</h3>
                 <p>
-                  Lorem ipsum dolor sit labore amet, consectetur adipiscing
-                  elit, sed do eiusmod tempor.
+                Demonstrated mastery, your projects in capable, seasoned hands.
                 </p>
               </div>
 
@@ -65,10 +62,9 @@ const WhyChooseUs = () => {
                 <span>
                   03 <i className="flaticon-support"></i>
                 </span>
-                <h3>Live Support</h3>
+                <h3>Innovative Solutions</h3>
                 <p>
-                  Lorem ipsum dolor sit labore amet, consectetur adipiscing
-                  elit, sed do eiusmod tempor.
+                Pioneering Tomorrow's Answers with Today's Creative Ingenuity.
                 </p>
               </div>
             </div>

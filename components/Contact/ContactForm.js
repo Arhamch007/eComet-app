@@ -1,67 +1,59 @@
 import React, { useState } from "react";
-import axios from "axios";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
-const MySwal = withReactContent(Swal);
-import baseUrl from "../../utils/baseUrl";
-
-const alertContent = () => {
-  MySwal.fire({
-    title: "Congratulations!",
-    text: "Your message was successfully send and will back to you soon",
-    icon: "success",
-    timer: 2000,
-    timerProgressBar: true,
-    showConfirmButton: false,
-  });
-};
-
-// Form initial state
-const INITIAL_STATE = {
-  name: "",
-  email: "",
-  number: "",
-  subject: "",
-  text: "",
-};
-
+import { useForm, ValidationError } from "@formspree/react";
 const ContactForm = () => {
-  const [contact, setContact] = useState(INITIAL_STATE);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setContact((prevState) => ({ ...prevState, [name]: value }));
-    // console.log(contact)
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const url = `${baseUrl}/api/contact`;
-      const { name, email, number, subject, text } = contact;
-      const payload = { name, email, number, subject, text };
-      const response = await axios.post(url, payload);
-      console.log(response);
-      setContact(INITIAL_STATE);
-      alertContent();
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
+  const [state, handleSubmit] = useForm("mbjvedvw");
+  if (state.succeeded) {
+    return (
+      <div className="main-contact-area pb-100">
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-lg-6 col-md-12">
+              <h3
+                style={{
+                  textAlign: "center",
+                  animation: "fade-in 4s",
+                  fontSize: "44px",
+                  color: "#333",
+                  fontFamily: "Arial, sans-serif",
+                  fontWeight: "bold",
+                  textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
+                }}
+              >
+                Congratulations!!
+              </h3>
+              <h4
+                style={{
+                  paddingBottom: "50px",
+                  paddingTop: "15px",
+                  textAlign: "center",
+                  fontSize: "18px",
+                  color: "orange",
+                  lineHeight: "1.5",
+                }}
+              >
+                Your message was successfully sent and will be back to you soon.
+              </h4>
+            </div>
+            <div className="col-lg-6 col-md-12">
+              <div className="contact-img">
+                <img src="/images/contact-img.png" alt="Image" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="main-contact-area pb-100">
       <div className="container">
         <div className="section-title">
           <span>Contact Us</span>
-          <h2>Drop us a message for any query</h2>
+          <h2>Inquisitive Minds, Swift Replies – Message Now!</h2>
           <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque
-            quibusdam deleniti porro praesentium. Aliquam minus quisquam velit
-            in at nam.
+          Dive into our services, questions in tow? Message us; our experts await to unravel answers, guiding your journey with swift insight!
           </p>
         </div>
-
         <div className="row align-items-center">
           <div className="col-lg-6 col-md-12">
             <div className="contact-wrap contact-pages mb-0">
@@ -71,66 +63,87 @@ const ContactForm = () => {
                     <div className="col-lg-6 col-sm-6">
                       <div className="form-group">
                         <input
+                          id="Name"
                           type="text"
                           name="name"
                           placeholder="Name"
                           className="form-control"
-                          value={contact.name}
-                          onChange={handleChange}
                           required
+                        />
+                        <ValidationError
+                          prefix="Name"
+                          field="name"
+                          errors={state.errors}
                         />
                       </div>
                     </div>
+                    {/*  */}
                     <div className="col-lg-6 col-sm-6">
                       <div className="form-group">
                         <input
-                          type="text"
+                          id="email"
+                          type="email"
                           name="email"
                           placeholder="Email"
                           className="form-control"
-                          value={contact.email}
-                          onChange={handleChange}
                           required
+                        />
+                        <ValidationError
+                          prefix="Email"
+                          field="email"
+                          errors={state.errors}
                         />
                       </div>
                     </div>
                     <div className="col-lg-6 col-sm-6">
                       <div className="form-group">
                         <input
-                          type="text"
+                          id="number"
+                          type="tel"
                           name="number"
                           placeholder="Phone number"
                           className="form-control"
-                          value={contact.number}
-                          onChange={handleChange}
                           required
+                        />
+                        <ValidationError
+                          prefix="Number"
+                          field="number"
+                          errors={state.errors}
                         />
                       </div>
                     </div>
                     <div className="col-lg-6 col-sm-6">
                       <div className="form-group">
                         <input
+                          id="text"
                           type="text"
                           name="subject"
                           placeholder="Subject"
                           className="form-control"
-                          value={contact.subject}
-                          onChange={handleChange}
                           required
+                        />
+                        <ValidationError
+                          prefix="Subject"
+                          field="subject"
+                          errors={state.errors}
                         />
                       </div>
                     </div>
                     <div className="col-lg-12 col-md-12">
                       <div className="form-group">
                         <textarea
-                          name="text"
+                          id="message"
+                          name="message"
                           cols="30"
                           rows="6"
                           placeholder="Write your message..."
                           className="form-control"
-                          value={contact.text}
-                          onChange={handleChange}
                           required
+                        />
+                        <ValidationError
+                          prefix="Message"
+                          field="message"
+                          errors={state.errors}
                         />
                       </div>
                     </div>
@@ -144,7 +157,6 @@ const ContactForm = () => {
               </div>
             </div>
           </div>
-
           <div className="col-lg-6 col-md-12">
             <div className="contact-img">
               <img src="/images/contact-img.png" alt="Image" />
@@ -155,5 +167,4 @@ const ContactForm = () => {
     </div>
   );
 };
-
 export default ContactForm;

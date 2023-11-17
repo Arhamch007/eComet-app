@@ -9,34 +9,30 @@ const MakeYourBusiness = () => {
           <div className="row align-items-center">
             <div className="col-lg-6">
               <div className="business-content">
-                <h2>Make Your Business More Competitive And Enduring</h2>
+                <h2>Igniting Business Growth with Visionary Strategies</h2>
               </div>
 
               <div className="single-business">
                 <i className="flaticon-chip"></i>
-                <h3>AI Will Automate Cybersecurity Improve</h3>
+                <h3>Safeguarding Your Business in the Digital Age</h3>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore. Quis ipsum
-                  suspendisse ultrices gravida suspendisse.
+                Fortify your enterprise against digital threats with state-of-the-art cybersecurity measures, ensuring the resilience and security of your business in the dynamic landscape of the digital age.
                 </p>
               </div>
 
               <div className="single-business">
                 <i className="flaticon-blockchain"></i>
-                <h3>A Community With A Unique Mission</h3>
+                <h3>Sustainable Practices for Long-Term Growth</h3>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore. Quis ipsum
-                  suspendisse ultrices gravida suspendisse.
+                Elevate your business by integrating eco-friendly practices, fostering a commitment to sustainability that not only enhances your brand reputation but also ensures enduring growth for a greener future.
                 </p>
               </div>
 
-              <div className="business-btn">
+              {/* <div className="business-btn">
                 <Link href="/about-2" className="default-btn">
                   Know Details
                 </Link>
-              </div>
+              </div> */}
             </div>
 
             <div className="col-lg-6">
@@ -49,7 +45,7 @@ const MakeYourBusiness = () => {
                 >
                   <div className="single-counter">
                     <h2>
-                      <span className="target">95%</span>
+                      <span className="target">50+</span>
                     </h2>
                     <p>Project Completed</p>
                   </div>
@@ -63,9 +59,9 @@ const MakeYourBusiness = () => {
                 >
                   <div className="single-counter">
                     <h2>
-                      <span className="target">90%</span>
+                      <span className="target">70k+</span>
                     </h2>
-                    <p>Design</p>
+                    <p>Hours</p>
                   </div>
                 </div>
 
@@ -77,7 +73,7 @@ const MakeYourBusiness = () => {
                 >
                   <div className="single-counter">
                     <h2>
-                      <span className="target">85%</span>
+                      <span className="target">60+</span>
                     </h2>
                     <p>Happy Clients</p>
                   </div>
@@ -91,9 +87,9 @@ const MakeYourBusiness = () => {
                 >
                   <div className="single-counter">
                     <h2>
-                      <span className="target">80%</span>
+                      <span className="target">30+</span>
                     </h2>
-                    <p>Award Win</p>
+                    <p>Rescue Mission</p>
                   </div>
                 </div>
               </div>

@@ -14,7 +14,7 @@ const MainBanner = () => {
                   data-aos-duration="1200"
                   data-aos-delay="100"
                 >
-                  Specialized Artificial Intelligence Startup
+                  Crafted Dev & Virtual Mastery
                 </h1>
 
                 <p
@@ -22,9 +22,7 @@ const MainBanner = () => {
                   data-aos-duration="1200"
                   data-aos-delay="200"
                 >
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Quis ipsum suspendisse ultrices gravida risus commodo
+                  Embark on a journey of innovation and efficiency with our crafted development and virtual mastery. Elevate your business potential as we seamlessly navigate the realms of technology and administration, propelling you to new heights of success.
                 </p>
 
                 <div 

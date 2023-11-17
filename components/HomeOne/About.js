@@ -27,13 +27,10 @@ const About = () => {
               >
                 <span>About Us</span>
                 <h2>
-                  We Complete Every Project With Extra Care As Customer Need
+                Pioneering Excellence, Fueling Innovation, Redefining Tomorrow
                 </h2>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Quis ipsum suspendisse ultrices gravida. Risus commodo viverra
-                  maecenas accumsan lacus vel.
+                We are more than pioneers, architects of excellence, catalysts for innovation, and visionaries redefining tomorrow's possibilities. With unwavering commitment, we craft solutions that transcend expectations, fueling a future where your success knows no bounds.
                 </p>
 
                 <div className="row">
@@ -41,15 +38,15 @@ const About = () => {
                     <ul>
                       <li>
                         <i className="flaticon-checked"></i>
-                        Advanced caching
+                        Responsive Design
                       </li>
                       <li>
                         <i className="flaticon-checked"></i>
-                        Unlimited applications
+                        Scalable Backend
                       </li>
                       <li>
                         <i className="flaticon-checked"></i>
-                        PHP 7 ready transfer
+                        Security Integration
                       </li>
                     </ul>
                   </div>
@@ -58,15 +55,15 @@ const About = () => {
                     <ul>
                       <li>
                         <i className="flaticon-checked"></i>
-                        PHP ready serves
+                        Efficient Task Management
                       </li>
                       <li>
                         <i className="flaticon-checked"></i>
-                        24/7 Free extra support
+                        Smart Information Retrieval
                       </li>
                       <li>
                         <i className="flaticon-checked"></i>
-                        Optimized stack
+                        Time-saving Automation
                       </li>
                     </ul>
                   </div>

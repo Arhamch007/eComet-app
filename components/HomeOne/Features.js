@@ -1,28 +1,34 @@
 import React from "react";
 import Link from "next/link";
+import { PiCodeDuotone } from "react-icons/pi";
+import { HiOutlineUserGroup } from "react-icons/hi";
+import { BsGraphUpArrow } from "react-icons/bs";
+
+
+
 
 const featuresData = [
   {
-    iconName: "bx bx-shopping-bag",
-    title: "Data Science",
+    iconName: <PiCodeDuotone/>,
+    title: "Web Development",
     shortText:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia, maxime ipsum praesentium culpa expedita.",
+      "eComet pioneers web excellence, coding innovation, seamless experiences, connecting businesses to the digital forefront with precision & flair.",
     viewDetails: "/service-details",
     aosDelay: "100",
   },
   {
-    iconName: "flaticon-engineer",
-    title: "Data Engineer",
+    iconName: <HiOutlineUserGroup/>,
+    title: "Virtual Assistant",
     shortText:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia, maxime ipsum praesentium culpa expedita.",
+      "Streamlining tasks, enhancing productivity, and ensuring seamless operations through tailored virtual solutions for optimized efficiency.",
     viewDetails: "/service-details",
     aosDelay: "200",
   },
   {
-    iconName: "flaticon-success",
-    title: "Facing AI Challenges",
+    iconName: <BsGraphUpArrow/>,
+    title: "Business Development",
     shortText:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia, maxime ipsum praesentium culpa expedita.",
+      "Fuel growth, spark innovation, cultivate success crafting strategic solutions and forging impactful partnerships in business development.",
     viewDetails: "/service-details",
     aosDelay: "300",
   },
@@ -44,13 +50,13 @@ const Features = () => {
                   key={i}
                 >
                   <div className="single-features">
-                    <i className={value.iconName}></i>
+                    <i>{value.iconName}</i>
                     <h3>{value.title}</h3>
                     <p>{value.shortText}</p>
 
-                    <Link href={value.viewDetails} className="read-more-icon">
+                    {/* <Link href={value.viewDetails} className="read-more-icon">
                       <span className="flaticon-right-arrow"></span>
-                    </Link>
+                    </Link> */}
                   </div>
                 </div>
               ))}

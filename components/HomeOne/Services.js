@@ -1,52 +1,67 @@
 import React from "react";
-import Link from "next/link";
+import { FaLaptopCode } from "react-icons/fa";
+import { SiAlwaysdata } from "react-icons/si";
+import { BsDatabaseFillGear } from "react-icons/bs";
+import { FaUsersGear } from "react-icons/fa6";
+import { SiMinds } from "react-icons/si";
+import { LuBrainCircuit } from "react-icons/lu";
+import { PiHandshakeFill } from "react-icons/pi";
+
+
+
+
+
+
+
+
+
 
 const servicesData = [
   {
-    iconName: "flaticon-chip",
-    title: "Robotics & Drones",
+    iconName: <FaLaptopCode/>,
+    title: "Crafted Frontend Design",
     shortText:
-      "Lorem consectetur ipsum dolor sit amet, adipiscing elit, do eiusmod tempor incididunt sed.",
+      "Experience cutting-edge frontend design with React, Vue, and Next.js. We ensure your digital presence is stunning and responsive, pushing the boundaries of web excellence.",
     viewDetails: "/service-details",
     aosDelay: "100",
   },
   {
-    iconName: "flaticon-vr",
-    title: "Virtually Reality",
+    iconName: <BsDatabaseFillGear/>,
+    title: "Robust Backend Scaling",
     shortText:
-      "Lorem consectetur ipsum dolor sit amet, adipiscing elit, do eiusmod tempor incididunt sed.",
+      "Modern web apps scale with Node.js, Ruby on Rails, Django, Docker, serverless computing (AWS Lambda, Azure Functions), and Kubernetes, ensuring agile, scalable infrastructures.",
     viewDetails: "/service-details",
     aosDelay: "200",
   },
   {
-    iconName: "flaticon-blockchain",
-    title: "Blockchain Project",
+    iconName: <SiAlwaysdata/>,
+    title: "Optimized Performance",
     shortText:
-      "Lorem consectetur ipsum dolor sit amet, adipiscing elit, do eiusmod tempor incididunt sed.",
+      "Optimizing performance requires efficient coding, streamlined databases, algorithmic enhancements and regular monitoring for a seamless user experience.",
     viewDetails: "/service-details",
     aosDelay: "300",
   },
   {
-    iconName: "flaticon-target",
-    title: "Image Processing",
+    iconName: <LuBrainCircuit />    ,
+    title: "Mindful Productivity Coach",
     shortText:
-      "Lorem consectetur ipsum dolor sit amet, adipiscing elit, do eiusmod tempor incididunt sed.",
+      "Effortlessly enhance productivity with our Mindful Productivity VA. Streamline tasks, focus on essentials, and experience personalized efficiency support.",
     viewDetails: "/service-details",
     aosDelay: "400",
   },
   {
-    iconName: "flaticon-choice",
-    title: "Order Management",
+    iconName:  <FaUsersGear /> ,
+    title: "Digital Support",
     shortText:
-      "Lorem consectetur ipsum dolor sit amet, adipiscing elit, do eiusmod tempor incididunt sed.",
+      "Delegate tasks, streamline schedules—our Virtual Assistants ensure productivity, freeing you to effortlessly focus on your top priorities with confidence.",
     viewDetails: "/service-details",
     aosDelay: "500",
   },
   {
-    iconName: "flaticon-deep-learning",
-    title: "Machine Learning",
+    iconName: <PiHandshakeFill/>,
+    title: "Conscious Consumer Guide",
     shortText:
-      "Lorem consectetur ipsum dolor sit amet, adipiscing elit, do eiusmod tempor incididunt sed.",
+      "In the realm of conscious consumerism, embracing virtual assistant services empowers mindful choices, optimizing efficiency while minimizing environmental impact.",
     viewDetails: "/service-details",
     aosDelay: "600",
   },
@@ -58,11 +73,9 @@ const Services = () => {
       <div className="container">
         <div className="section-title">
           <span>Services</span>
-          <h2>Our Professional Services For You</h2>
+          <h2>Elevate with Exceptional Services</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure
-            architecto quaerat eaque sapiente accusantium ad ut explicabo
-            consequuntur fuga quidem? Sint.
+          Discover unparalleled excellence as we redefine service standards. Elevate your experience with our exceptional services, tailored to meet your unique needs and exceed your expectations.
           </p>
         </div>
 
@@ -77,9 +90,11 @@ const Services = () => {
                 data-aos-delay={value.aosDelay}
               >
                 <div className="single-offer">
-                  <i className={value.iconName}></i>
+                  <i>{value.iconName}</i>
                   <h3>
-                    <Link href={value.viewDetails}>{value.title}</Link>
+                  {value.title}
+                    {/* <Link href={value.viewDetails}></Link> */}
+                    
                   </h3>
                   <p>{value.shortText}</p>
                 </div>

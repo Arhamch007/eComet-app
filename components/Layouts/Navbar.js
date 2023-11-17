@@ -40,7 +40,7 @@ const Navbar = () => {
         <nav className="navbar navbar-expand-md navbar-light">
           <div className="container">
             <Link href="/" className="navbar-brand">
-              <img src="/images/white-logo.png" alt="logo" />
+              <img src="/images/eComet.svg" alt="img"></img>
             </Link>
 
             {/* Toggle navigation */}
@@ -67,10 +67,8 @@ const Navbar = () => {
                     className={`nav-link ${currentPath == "/" && "active"}`}
                   >
                     Home
-                     {/* <i className="bx bx-chevron-down"></i> */}
+                    {/* <i className="bx bx-chevron-down"></i> */}
                   </Link>
-
-
                 </li>
 
                 <li className="nav-item">
@@ -80,21 +78,21 @@ const Navbar = () => {
                       currentPath == "/about-1/" && "active"
                     }`}
                   >
-                    About 
+                    About
                   </Link>
                 </li>
 
                 <li className="nav-item">
                   <Link
-                    href="/services/"
+                    href="/services-4/"
                     className={`nav-link ${
-                      currentPath == "/services/" && "active"
+                      currentPath == "/services-4/" && "active"
                     }`}
                   >
-                    Services <i className="bx bx-chevron-down"></i>
+                    Services
                   </Link>
 
-                  <ul className="dropdown-menu">
+                  {/* <ul className="dropdown-menu">
                     <li className="nav-item">
                       <Link
                         href="/services/"
@@ -149,7 +147,7 @@ const Navbar = () => {
                         Service Details
                       </Link>
                     </li>
-                  </ul>
+                  </ul> */}
                 </li>
 
                 <li className="nav-item">
@@ -159,7 +157,7 @@ const Navbar = () => {
                       currentPath == "/contact/" && "active"
                     }`}
                   >
-                    Contact 
+                    Contact
                   </Link>
                 </li>
               </ul>
