@@ -136,11 +136,11 @@ const WhatWeOffer = () => {
                             </div>
                           </div>
 
-                          <div className="text-center">
+                          {/* <div className="text-center">
                             <Link href="/services" className="default-btn">
                               Discover More
                             </Link>
-                          </div>
+                          </div> */}
                         </div>
                       </div>
                     </div>
@@ -201,11 +201,11 @@ const WhatWeOffer = () => {
                             </div>
                           </div>
 
-                          <div className="text-center">
+                          {/* <div className="text-center">
                             <Link href="/services" className="default-btn">
                               Discover More
                             </Link>
-                          </div>
+                          </div> */}
                         </div>
                       </div>
 
@@ -279,11 +279,11 @@ const WhatWeOffer = () => {
                             </div>
                           </div>
 
-                          <div className="text-center">
+                          {/* <div className="text-center">
                             <Link href="/services" className="default-btn">
                               Discover More
                             </Link>
-                          </div>
+                          </div> */}
                         </div>
                       </div>
                     </div>
@@ -343,11 +343,11 @@ const WhatWeOffer = () => {
                             </div>
                           </div>
 
-                          <div className="text-center">
+                          {/* <div className="text-center">
                             <Link href="/services" className="default-btn">
                               Discover More
                             </Link>
-                          </div>
+                          </div> */}
                         </div>
                       </div>
 

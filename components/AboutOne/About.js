@@ -62,9 +62,9 @@ const About = () => {
                   </div>
                 </div>
 
-                <Link href="/about-1" className="default-btn">
+                {/* <Link href="/about-1" className="default-btn">
                   Learn More
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>
