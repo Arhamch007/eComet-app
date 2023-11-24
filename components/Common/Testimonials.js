@@ -3,13 +3,63 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper";
 
 const testimonialsData = [
- 
+  {
+    image: "/images/clients/client3.jpg",
+    name: "Lexi Ehrman",
+    designation: "Head of Technology",
+    feedbackText:
+      "eComet stands out as a top-tier software house. They're not just problem solvers; they're incredibly creative ones. Reliable, smart, and fun to work with, they're truly the full package.",
+
+    rating: [
+      {
+        iconName: "bx bxs-star",
+      },
+      {
+        iconName: "bx bxs-star",
+      },
+      {
+        iconName: "bx bxs-star",
+      },
+      {
+        iconName: "bx bxs-star",
+      },
+      {
+        iconName: "bx bxs-star",
+      },
+    ],
+  },
+
   {
     image: "/images/clients/client2.jpg",
     name: "Oscar Adams",
     designation: "InnovateTech Ventures",
     feedbackText:
       "Quick, efficient communication and execution! Went from idea to completion in just hours. Impressive work! Clean, clear code. Seller was nice, direct, and easy to work with. Thank you!",
+
+    rating: [
+      {
+        iconName: "bx bxs-star",
+      },
+      {
+        iconName: "bx bxs-star",
+      },
+      {
+        iconName: "bx bxs-star",
+      },
+      {
+        iconName: "bx bxs-star",
+      },
+      {
+        iconName: "bx bxs-star",
+      },
+    ],
+  },
+  {
+    image: "/images/clients/client4.jpg",
+    name: "David Ko",
+    designation: "CEO - Drganja.com",
+    feedbackText:
+      "eComet's seamless interface and centralized task management are transformative for our e-commerce operations—efficiency redefined for unparalleled productivity.",
 
     rating: [
       {
@@ -54,58 +104,7 @@ const testimonialsData = [
       },
     ],
   },
-  
-  {
-    image: "/images/clients/client3.jpg",
-    name: "Lexi Ehrman",
-    designation: "Head of Technology",
-    feedbackText:
-      "eComet stands out as a top-tier software house. They're not just problem solvers; they're incredibly creative ones. Reliable, smart, and fun to work with, they're truly the full package.",
 
-    rating: [
-      {
-        iconName: "bx bxs-star",
-      },
-      {
-        iconName: "bx bxs-star",
-      },
-      {
-        iconName: "bx bxs-star",
-      },
-      {
-        iconName: "bx bxs-star",
-      },
-      {
-        iconName: "bx bxs-star",
-      },
-    ],
-  },
-  
-  {
-    image: "/images/clients/client4.jpg",
-    name: "David Ko",
-    designation: "CEO - Drganja.com",
-    feedbackText:
-      "eComet's seamless interface and centralized task management are transformative for our e-commerce operations—efficiency redefined for unparalleled productivity.",
-
-    rating: [
-      {
-        iconName: "bx bxs-star",
-      },
-      {
-        iconName: "bx bxs-star",
-      },
-      {
-        iconName: "bx bxs-star",
-      },
-      {
-        iconName: "bx bxs-star",
-      },
-      {
-        iconName: "bx bxs-star",
-      },
-    ],
-  },
   {
     image: "/images/clients/1.jpg",
     name: "Alexander Nouveau",
