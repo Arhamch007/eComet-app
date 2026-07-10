@@ -38,15 +38,15 @@ const About = () => {
                     <ul>
                       <li>
                         <i className="flaticon-checked"></i>
-                        Responsive Design
+                        Responsive Digital Experiences
                       </li>
                       <li>
                         <i className="flaticon-checked"></i>
-                        Scalable Backend
+                        Scalable Web Solutions
                       </li>
                       <li>
                         <i className="flaticon-checked"></i>
-                        Security Integration
+                        Secure Technology Integration
                       </li>
                     </ul>
                   </div>
@@ -55,15 +55,15 @@ const About = () => {
                     <ul>
                       <li>
                         <i className="flaticon-checked"></i>
-                        Efficient Task Management
+                        Intelligent Workflow Automation
                       </li>
                       <li>
                         <i className="flaticon-checked"></i>
-                        Smart Information Retrieval
+                        Strategic Email Marketing
                       </li>
                       <li>
                         <i className="flaticon-checked"></i>
-                        Time-saving Automation
+                        Data-Driven Growth Optimization
                       </li>
                     </ul>
                   </div>

@@ -816,12 +816,24 @@ Nice Select Area Style
 jumpx Nav Area Style
 ======================================================*/
 
+.navbar-brand img {
+  width: 50%;
+  height: auto;
+}
+
 @media (min-width: 768px) {
+
+  .navbar-brand img {
+  width: 70%;
+  height: auto;
+}
+
   .navbar-expand-md .navbar-collapse {
     display: flex !important;
     // flex-basis: 0%;
     flex-grow: 0;
   }
+
 }
 
 .navbar-area nav .navbar-nav .nav-item a {
@@ -1466,11 +1478,11 @@ jumpx Nav Area Style
 .navbar-toggler {
   border: none;
   background: #eee !important;
-  padding: 10px;
+  padding: 7px;
   border-radius: 0;
 
   .icon-bar {
-    width: 28px;
+    width: 16px;
     transition: all 0.3s;
     background: $main-color;
     height: 2px;
@@ -1484,7 +1496,7 @@ jumpx Nav Area Style
   }
   .middle-bar {
     opacity: 0;
-    margin: 6px 0;
+    margin: 4px 0;
   }
   .bottom-bar {
     transform: rotate(-45deg);

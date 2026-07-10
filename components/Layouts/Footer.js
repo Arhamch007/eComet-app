@@ -229,10 +229,7 @@ const Footer = () => {
         <div class="container cont">
         <img src="/images/eComet121.svg" className="pic"></img> 
           <p>
-            Creative professionals who blend design and development skills to
-            craft visually captivating websites with intuitive interfaces for
-            exceptional user experiences.
-          </p>
+Experts combining web development, automation, and email marketing to create seamless digital solutions that drive growth and efficiency.          </p>
           <div class="social-links">
             <a
               href="https://www.facebook.com/profile.php?id=100090162676178"
@@ -248,15 +245,15 @@ const Footer = () => {
             >
               <i class="bx bxl-linkedin"></i>
             </a>
-            <a
+            {/* <a
               href="https://www.upwork.com/agencies/1114861152675102720/"
               target="_blank"
               class="upwork"
             >
               <i class="bx bxl-upwork"></i>
-            </a>
+            </a> */}
             <a
-              href="mailto:ecomet.technologies@gmail.com"
+              href="mailto:hr@teamecomet.com"
               target="_blank"
               class="upwork"
             >

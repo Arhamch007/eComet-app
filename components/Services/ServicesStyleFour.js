@@ -7,9 +7,9 @@ const ServicesStyleFour = () => {
       <section className="industries-serve-area pt-100 pb-0">
         <div className="container">
           <div className="section-title">
-            <h2>Unleashing Seamless VA and Web Development Solutions</h2>
+            <h2>Unleashing Seamless Web, Automation & Marketing Solutions</h2>
             <p>
-            Elevate productivity with our seamless fusion of Virtual Assistance and Web Development. Our tailored solutions redefine efficiency, blending intelligent Virtual Assistants with cutting-edge web development for unparalleled excellence in just one service.
+            Elevate productivity with our seamless fusion of Web Development, Automation, and Email Marketing. Our tailored solutions redefine efficiency, combining innovative technology, intelligent workflows, and strategic communication to drive growth and deliver exceptional digital experiences.
             </p>
           </div>
 
@@ -35,16 +35,16 @@ const ServicesStyleFour = () => {
                 <div className="col-lg-12 col-md-6">
                   <div className="single-industries">
                     <i className="flaticon-health"></i>
-                    <h3>Data Management and Storage</h3>
-                    <span>Data Mastery</span>
+                    <h3>Intelligent Workflows</h3>
+                    <span>Automation Solutions</span>
                   </div>
                 </div>
 
                 <div className="col-lg-12 col-md-6">
                   <div className="single-industries">
                     <i className="flaticon-automation"></i>
-                    <h3>Server and Infrastructure</h3>
-                    <span>Empowering Infrastructure</span>
+                    <h3>Strategic Email Marketing</h3>
+                    <span>Maximizing Engagement</span>
                   </div>
                 </div>
               </div>

@@ -19,17 +19,17 @@ import { PiHandshakeFill } from "react-icons/pi";
 const servicesData = [
   {
     iconName: <FaLaptopCode/>,
-    title: "Crafted Frontend Design",
+    title: "Crafted Web Development",
     shortText:
-      "Experience cutting-edge frontend design with React, Vue, and Next.js. We ensure your digital presence is stunning and responsive, pushing the boundaries of web excellence.",
+      "Experience seamless web development with modern technologies and scalable solutions. We create high-performing digital experiences, elevating you digitally.",
     viewDetails: "/service-details",
     aosDelay: "100",
   },
   {
     iconName: <BsDatabaseFillGear/>,
-    title: "Robust Backend Scaling",
+    title: "Smart Automation Solutions",
     shortText:
-      "Modern web apps scale with Node.js, Ruby on Rails, Django, Docker, serverless computing (AWS Lambda, Azure Functions), and Kubernetes, ensuring agile, scalable infrastructures.",
+      "Streamline workflows with powerful automation tools, integrations, and intelligent systems that enhance efficiency, reduce manual tasks, and optimize business operations.",
     viewDetails: "/service-details",
     aosDelay: "200",
   },

@@ -11,7 +11,7 @@ const ContactInfo = () => {
                 <i className="bx bx-envelope"></i>
                 <h3>Email Us:</h3>
                 <p>
-                  <a href="mailto:hello@jumpx.com">ecomet.technologies@gmail.com</a>
+                  <a href="mailto:hr@teamecomet.com">hr@teamecomet.com</a>
                 </p>
                 {/* <p>
                   <a href="mailto:info@jumpx.com">info@jumpx.com</a>
@@ -24,7 +24,7 @@ const ContactInfo = () => {
                 <i className="bx bx-phone-call"></i>
                 <h3>Call Us:</h3>
                 <p>
-                Ph. + <a href="tel:12318005678990">(92)-319-618175-0</a>
+                Ph. + <a href="tel:03026820034">(92)-302-692003-4</a>
                 </p>
                 {/* <p>
                   Tel. + <a href="tel:12415235679874">(124) 1523-567-9874</a>

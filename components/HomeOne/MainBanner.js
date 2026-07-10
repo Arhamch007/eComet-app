@@ -14,7 +14,7 @@ const MainBanner = () => {
                   data-aos-duration="1200"
                   data-aos-delay="100"
                 >
-                  Crafted Dev & Virtual Mastery
+                  Crafted Automation & Growth Solutions
                 </h1>
 
                 <p
@@ -22,7 +22,7 @@ const MainBanner = () => {
                   data-aos-duration="1200"
                   data-aos-delay="200"
                 >
-                  Embark on a journey of innovation and efficiency with our crafted development and virtual mastery. Elevate your business potential as we seamlessly navigate the realms of technology and administration, propelling you to new heights of success.
+                  Embark on a journey of innovation and efficiency with our crafted automation, email marketing, and development services. Elevate your business potential as we seamlessly orchestrate technology, communication, and digital innovation, propelling your brand toward exceptional growth and success.
                 </p>
 
                 <div 

@@ -18,17 +18,17 @@ const featuresData = [
   },
   {
     iconName: <HiOutlineUserGroup/>,
-    title: "Virtual Assistant",
+    title: "Automation Solutions",
     shortText:
-      "Streamlining tasks, enhancing productivity, and ensuring seamless operations through tailored virtual solutions for optimized efficiency.",
+      "Streamlining workflows, enhancing productivity, and ensuring seamless operations through tailored automation solutions for optimized efficiency.",
     viewDetails: "/service-details",
     aosDelay: "200",
   },
   {
     iconName: <BsGraphUpArrow/>,
-    title: "Business Development",
+    title: "Email Marketing",
     shortText:
-      "Fuel growth, spark innovation, cultivate success crafting strategic solutions and forging impactful partnerships in business development.",
+      "Strengthening connections, enhancing engagement, and driving conversions through tailored email marketing strategies for sustainable growth.",
     viewDetails: "/service-details",
     aosDelay: "300",
   },

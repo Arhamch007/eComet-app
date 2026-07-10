@@ -40,7 +40,7 @@ const Navbar = () => {
         <nav className="navbar navbar-expand-md navbar-light">
           <div className="container">
             <Link href="/" className="navbar-brand">
-              <img src="/images/eComet.svg" alt="img"></img>
+              <img src="/images/eComet1.png" alt="img"></img>
             </Link>
 
             {/* Toggle navigation */}

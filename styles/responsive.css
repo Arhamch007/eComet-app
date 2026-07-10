@@ -786,15 +786,15 @@
   .news-details-area .comments-area {
     padding: 20px;
   }
-  .news-details-area .comments-area .comment-author {
-    font-size: 15px;
-    margin-bottom: 0.3em;
-  }
   .news-details-area .comments-area .comment-author .avatar {
     left: 0;
     position: relative;
     display: block;
     margin-bottom: 10px;
+  }
+  .news-details-area .comments-area .comment-author {
+    font-size: 15px;
+    margin-bottom: 0.3em;
   }
   .news-details-area .comments-area .comment-body {
     padding-left: 0;

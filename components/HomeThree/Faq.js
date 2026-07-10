@@ -70,16 +70,13 @@ const Faq = () => {
                   <AccordionItem uuid="a">
                     <AccordionItemHeading>
                       <AccordionItemButton>
-                        What tasks can a virtual assistant handle for me?
+                        What tasks can automation handle for me?
                       </AccordionItemButton>
                     </AccordionItemHeading>
 
                     <AccordionItemPanel>
                       <p>
-                        Virtual assistants can manage administrative tasks,
-                        handle emails, schedule appointments, conduct research,
-                        and provide general support, freeing up your time for
-                        more strategic activities.
+                        Automation can streamline workflows, manage repetitive tasks, optimize processes, and integrate your tools, saving time and improving overall business efficiency.
                       </p>
                     </AccordionItemPanel>
                   </AccordionItem>
@@ -87,16 +84,12 @@ const Faq = () => {
                   <AccordionItem uuid="c">
                     <AccordionItemHeading>
                       <AccordionItemButton>
-                        Can I customize the services of a virtual assistant
-                        based on my specific business needs?
+                        Can I customize automation solutions based on my specific business needs?
                       </AccordionItemButton>
                     </AccordionItemHeading>
                     <AccordionItemPanel>
                       <p>
-                        Absolutely. Our virtual assistant services are highly
-                        customizable. You can tailor the tasks and
-                        responsibilities based on your unique requirements,
-                        ensuring a personalized and efficient support system.
+                        Absolutely. Our automation solutions are highly customizable. You can tailor workflows, integrations, and processes based on your unique requirements, ensuring a personalized and efficient system.
                       </p>
                     </AccordionItemPanel>
                   </AccordionItem>
@@ -106,17 +99,12 @@ const Faq = () => {
                   <AccordionItem uuid="e">
                     <AccordionItemHeading>
                       <AccordionItemButton>
-                        How do you ensure the security of sensitive data when
-                        using virtual assistant services?
+                        How do you optimize email marketing for better results?
                       </AccordionItemButton>
                     </AccordionItemHeading>
                     <AccordionItemPanel>
                       <p>
-                        We prioritize data security through encrypted
-                        communication channels, secure data storage, and strict
-                        confidentiality measures. Our virtual assistants are
-                        trained to handle sensitive information with the utmost
-                        care and adhere to industry-standard security protocols.
+                        We leverage data-driven strategies, audience insights, personalized content, and automated workflows to create effective email solutions that strengthen customer relationships, improve engagement, and drive consistent business growth.
                       </p>
                     </AccordionItemPanel>
                   </AccordionItem>
