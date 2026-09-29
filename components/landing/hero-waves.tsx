@@ -1,4 +1,4 @@
-/* Soft light-ribbon background: a few wide, heavily blurred curves in the
+/* Soft light-ribbon background: two wide, heavily blurred curves in the
    logo's cyan -> blue -> violet -> magenta, each with a faint grey shadow
    band and a white highlight so it reads as light passing through glass.
    Pure inline SVG (no image request); a slow drift is CSS-only and switched
@@ -14,15 +14,6 @@ type Ribbon = {
 };
 
 const ribbons: Ribbon[] = [
-  // top-centre sweeping down to the lower left (the main S curve)
-  {
-    d: "M860 -60 C 780 160, 640 300, 470 430 S 150 700, -80 960",
-    gradient: "comet-a",
-    width: 90,
-    blur: 34,
-    opacity: 0.55,
-    shadowOpacity: 0.2,
-  },
   // long band from the left edge rising across to the upper right
   {
     d: "M-120 560 C 260 470, 560 450, 860 380 S 1300 170, 1560 60",
@@ -41,15 +32,6 @@ const ribbons: Ribbon[] = [
     opacity: 0.32,
     shadowOpacity: 0.12,
   },
-  // right side sweep from the top edge down towards the bottom centre
-  {
-    d: "M1520 120 C 1320 260, 1180 420, 1080 600 S 900 880, 820 1000",
-    gradient: "comet-d",
-    width: 80,
-    blur: 40,
-    opacity: 0.38,
-    shadowOpacity: 0.16,
-  },
 ];
 
 export function HeroWaves() {
@@ -62,12 +44,6 @@ export function HeroWaves() {
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
-          <linearGradient id="comet-a" x1="0" y1="1" x2="1" y2="0">
-            <stop offset="0" stopColor="#e93cf5" />
-            <stop offset="0.35" stopColor="#8b3dff" />
-            <stop offset="0.65" stopColor="#2f5bff" />
-            <stop offset="1" stopColor="#00d5ff" />
-          </linearGradient>
           <linearGradient id="comet-b" x1="0" y1="0" x2="1" y2="0">
             <stop offset="0" stopColor="#00d5ff" />
             <stop offset="0.4" stopColor="#3aa0ff" />
@@ -78,11 +54,6 @@ export function HeroWaves() {
             <stop offset="0" stopColor="#8b3dff" />
             <stop offset="0.5" stopColor="#2f5bff" />
             <stop offset="1" stopColor="#00d5ff" />
-          </linearGradient>
-          <linearGradient id="comet-d" x1="1" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#00d5ff" />
-            <stop offset="0.5" stopColor="#8b3dff" />
-            <stop offset="1" stopColor="#e93cf5" />
           </linearGradient>
           {ribbons.map((r, i) => (
             <filter key={i} id={`blur-${i}`} filterUnits="userSpaceOnUse" x="-600" y="-600" width="2640" height="2100">
