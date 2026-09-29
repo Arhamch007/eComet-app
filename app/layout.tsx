@@ -22,7 +22,7 @@ const calSans = localFont({
    letterforms; used by the new home design. Self-hosted by next/font. */
 const figtree = Figtree({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-figtree",
   display: "swap",
 });
@@ -30,7 +30,7 @@ const figtree = Figtree({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "eComet | AI automation, web development and e-commerce support",
+    default: "eComet | Web Solutions, AI Automation, Growth Marketing & Digital Support",
     template: "%s | eComet",
   },
   description: site.description,
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     type: "website",
     siteName: site.name,
     url: site.url,
-    title: "eComet | AI automation, web development and e-commerce support",
+    title: "eComet | Web Solutions, AI Automation, Growth Marketing & Digital Support",
     description: site.description,
     locale: "en_US",
   },

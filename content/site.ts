@@ -5,9 +5,11 @@ export const site = {
   name: "eComet",
   legalName: "eComet Technologies",
   url: "https://teamecomet.com",
-  tagline: "AI automation, web development and e-commerce support for growing brands",
+  tagline: "Web Solutions, AI Automation, Growth Marketing and Digital Support for growing brands",
+  /** The agency's four core keywords, in this order, used in the hero and page titles. */
+  keywords: ["Web Solutions", "AI Automation", "Growth Marketing", "Digital Support"],
   description:
-    "eComet is a 20-plus person agency delivering AI automation, web development, Shopify pre- and post-sales support, email marketing, Meta ads, GoHighLevel, Zapier, Make and n8n automation and virtual assistants for businesses in the USA, Canada and Europe.",
+    "eComet delivers Web Solutions, AI Automation, Growth Marketing and Digital Support: web development, Shopify support, AI and Zapier, Make and n8n automation, email marketing, Meta ads, GoHighLevel and virtual assistants for businesses in the USA, Canada and Europe.",
   email: "hr@teamecomet.com", // TODO (audit F-07): replace with a sales mailbox
   phone: null as string | null, // TODO (audit F-04): the live number and its tel link disagree; confirm one number with country code
   whatsapp: null as string | null, // TODO: WhatsApp business number, if any

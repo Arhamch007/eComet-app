@@ -42,16 +42,18 @@ export function LandingHero() {
     >
       <HeroWaves />
 
-      <div className="hero-rise mx-auto max-w-[760px] text-center">
+      <div className="hero-rise mx-auto max-w-[1060px] text-center">
+        {/* The agency's four core keywords are the H1 (see site.keywords). */}
         <h1
           id="hero-heading"
-          className="text-balance text-[42px] leading-[1.08] font-normal tracking-[-0.025em] text-[#141414] sm:text-[56px] md:text-[68px]"
+          className="text-[38px] leading-[1.08] font-bold tracking-[-0.03em] text-balance text-[#141414] sm:text-[52px] lg:text-[56px] xl:text-[64px]"
         >
-          AI automation and growth support for brands that sell online.
+          Web Solutions, AI Automation,
+          <br className="hidden lg:block" /> Growth Marketing &amp; Digital Support
         </h1>
-        <p className="mx-auto mt-7 max-w-[600px] text-pretty text-[17px] leading-[1.55] text-[#555555] md:text-[19px]">
-          A 20-plus person team of automation experts, web developers, Shopify support agents and virtual
-          assistants, working with businesses across the USA, Canada and Europe.
+        <p className="mx-auto mt-7 max-w-[640px] text-pretty text-[17px] leading-[1.55] text-[#555555] md:text-[19px]">
+          One 20-plus person team that builds, automates, markets and supports brands that sell online, across the
+          USA, Canada and Europe.
         </p>
         <div className="mt-11 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <PillButton
