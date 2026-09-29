@@ -226,28 +226,26 @@ body {
    magenta #C65CF7. Like the logo, the gradient runs from cyan at the top to
    magenta at the bottom; the label sits over the blue band (white text AA). */
 .comet-btn--primary {
-  background-image: linear-gradient(170deg, #04e5fb 0%, #08a8f2 22%, #0e6cf2 42%, #2d4cf2 60%, #9f4aed 82%, #c65cf7 100%);
-  background-size: 100% 190%;
-  background-position: 50% 0%;
+  isolation: isolate;
+  background-image: linear-gradient(170deg, #04e5fb 0%, #08a8f2 26%, #0e6cf2 52%, #2d4cf2 78%, #5b47f0 100%);
+  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   text-shadow: 0 1px 2px rgba(10, 20, 90, 0.28);
-  transition: background-position 0.15s ease-out, box-shadow 0.15s ease-out;
 }
-.comet-btn--primary:hover {
-  background-position: 50% 100%;
-}
-/* light sheen that sweeps across on hover */
-.comet-btn--primary::after {
+/* hover gradient (blue -> violet -> magenta) fades in and out symmetrically */
+.comet-btn--primary::before {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 1;
-  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, 0.38) 48%, transparent 64%);
-  transform: translateX(-120%);
+  z-index: -1;
+  border-radius: inherit;
+  background-image: linear-gradient(170deg, #0e6cf2 0%, #2d4cf2 35%, #9f4aed 72%, #c65cf7 100%);
+  opacity: 0;
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
 }
-.comet-btn--primary:hover::after {
-  transform: translateX(120%);
-  transition: transform 0.5s ease-out;
+.comet-btn--primary:hover::before,
+.comet-btn--primary:focus-visible::before {
+  opacity: 1;
 }
 /* outline: gradient ring, gradient fill fades in on hover */
 .comet-btn--outline::before {
@@ -271,7 +269,7 @@ body {
   z-index: 0;
   background: linear-gradient(170deg, #04e5fb 0%, #08a8f2 22%, #0e6cf2 42%, #2d4cf2 60%, #9f4aed 82%, #c65cf7 100%);
   opacity: 0;
-  transition: opacity 0.15s ease-out;
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
 }
 .comet-btn--outline:hover::after {
@@ -279,11 +277,8 @@ body {
 }
 @media (prefers-reduced-motion: reduce) {
   .comet-btn--primary,
-  .comet-btn--primary::after,
+  .comet-btn--primary::before,
   .comet-btn--outline::after {
     transition: none;
-  }
-  .comet-btn--primary::after {
-    display: none;
   }
 }

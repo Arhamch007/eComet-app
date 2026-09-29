@@ -10,8 +10,8 @@ import { HeroWaves } from "@/components/landing/hero-waves";
 /* Hero buttons in the logo gradient.
    primary: filled with the logo gradient, cyan at the top to magenta at the
      bottom (label over the blue band, white text readable);
-     on hover the gradient slides, a light sheen sweeps across and a
-     cyan/violet glow appears. The button itself never moves or scales.
+     on hover a blue -> violet -> magenta layer fades in (0.2s, same speed
+     in and out) with a soft glow. The button itself never moves or scales.
    outline: white glass with a gradient border; on hover the gradient fills
      in and the text turns white.
    Hover changes colour only; reduced motion also drops the sheen. */
@@ -33,7 +33,7 @@ function PillButton({
     <Link
       href={href}
       className={
-        "comet-btn group relative isolate inline-flex h-12 w-full max-w-[300px] items-center gap-2.5 overflow-hidden rounded-[14px] pr-5 pl-4 text-left transition-[box-shadow,color] duration-150 ease-out focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#7b3dff] sm:w-[232px] " +
+        "comet-btn group relative isolate inline-flex h-12 w-full max-w-[300px] items-center gap-2.5 overflow-hidden rounded-[14px] pr-5 pl-4 text-left transition-[box-shadow,color] duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#7b3dff] sm:w-[232px] " +
         (primary
           ? "comet-btn--primary text-white shadow-[0_12px_28px_-12px_rgba(14,108,242,0.7)] hover:shadow-[0_18px_40px_-12px_rgba(159,74,237,0.6),0_0_30px_-4px_rgba(4,229,251,0.5)]"
           : "comet-btn--outline bg-white/70 text-[#141414] shadow-[0_10px_24px_-14px_rgba(20,20,60,0.35)] backdrop-blur-md hover:text-white hover:shadow-[0_18px_40px_-14px_rgba(39,67,239,0.6),0_0_26px_-6px_rgba(4,229,251,0.45)]")
@@ -42,14 +42,14 @@ function PillButton({
       <span
         aria-hidden
         className={
-          "relative z-10 shrink-0 transition-colors duration-150 " +
+          "relative z-10 shrink-0 transition-colors duration-200 " +
           (primary ? "text-white" : "text-[#2743ef] group-hover:text-white")
         }
       >
         {icon}
       </span>
       <span className="relative z-10 flex flex-col leading-none">
-        <span className={"text-[11px] font-medium transition-colors duration-150 " + (primary ? "text-white/80" : "text-[#5f6272] group-hover:text-white/80")}>
+        <span className={"text-[11px] font-medium transition-colors duration-200 " + (primary ? "text-white/80" : "text-[#5f6272] group-hover:text-white/80")}>
           {kicker}
         </span>
         <span className="mt-0.5 text-[15px] font-semibold tracking-[-0.01em]">{label}</span>
