@@ -1,6 +1,5 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { SignalSquare } from "@/components/ui/atoms";
 import { RevealText } from "@/components/ui/reveal-text";
 
 export function Container({
@@ -38,7 +37,8 @@ export function Section({ className, tone = "base", as = "section", children, ..
   );
 }
 
-/* Mono label with a signal square (Stackworx eyebrow), contrast-safe colours. */
+/* Mono section label in brand blue. No leading square: that marker is the
+   competitor's signature, so our labels carry the colour instead. */
 export function Eyebrow({
   className,
   children,
@@ -48,14 +48,13 @@ export function Eyebrow({
   return (
     <p
       className={cn(
-        "inline-flex items-center gap-2.5 font-mono text-[12px] font-medium uppercase tracking-[0.14em]",
-        tone === "light" ? "text-text-2" : "text-night-muted",
+        "inline-flex items-center font-mono text-[12px] font-semibold uppercase tracking-[0.14em]",
+        tone === "light" ? "text-blue-700" : "text-signal",
         className
       )}
       {...props}
     >
-      <SignalSquare className={tone === "light" ? "bg-accent" : undefined} />
-      <span>{children}</span>
+      {children}
     </p>
   );
 }

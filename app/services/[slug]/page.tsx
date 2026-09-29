@@ -92,7 +92,6 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               <ul className="mt-8 space-y-3">
                 {servicePains.map((p) => (
                   <li key={p.id} className="flex items-center gap-3 rounded-xl bg-night px-5 py-4 text-sm font-semibold tracking-wide text-white uppercase">
-                    <span aria-hidden className="size-3 rounded-[2px] bg-signal" />
                     {p.text}
                   </li>
                 ))}

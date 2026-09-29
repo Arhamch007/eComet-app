@@ -3,11 +3,7 @@ import { cn } from "@/lib/utils";
 
 /* Small atoms derived from the Stackworx study, mapped to eComet blue. */
 
-export function SignalSquare({ className }: { className?: string }) {
-  return <span aria-hidden className={cn("inline-block size-2 shrink-0 rounded-[1px] bg-signal", className)} />;
-}
-
-/** Navy tag pill with a signal square: the most reused atom. */
+/** Tag pill: navy (default) or light blue. */
 export function TagPill({
   children,
   tone = "dark",
@@ -20,12 +16,11 @@ export function TagPill({
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-2 rounded-md px-3 py-2 text-[11px] font-semibold uppercase leading-none tracking-[0.07em]",
+        "inline-flex items-center rounded-md px-3 py-2 text-[11px] font-semibold uppercase leading-none tracking-[0.07em]",
         tone === "dark" ? "bg-btn-dark text-white" : "bg-tint text-blue-700",
         className
       )}
     >
-      <SignalSquare className={tone === "light" ? "bg-accent" : undefined} />
       {children}
     </span>
   );

@@ -43,8 +43,7 @@ export function TeamGrid({ team, groups }: { team: Member[]; groups: Member["gro
                 <Image src={m.image} alt={`${m.name}, ${m.role}`} fill sizes="96px" className="object-cover object-top" />
               </div>
               <div className="min-w-0">
-                <span className="inline-flex items-center gap-1.5 rounded-md bg-tint px-2 py-1 text-[10px] font-semibold tracking-[0.08em] text-blue-700 uppercase">
-                  <span aria-hidden className="size-1.5 rounded-[1px] bg-accent" />
+                <span className="inline-flex items-center rounded-md bg-tint px-2 py-1 text-[10px] font-semibold tracking-[0.08em] text-blue-700 uppercase">
                   {m.group}
                 </span>
                 <h3 className="mt-2 text-lg font-semibold text-text-1">{m.name}</h3>
