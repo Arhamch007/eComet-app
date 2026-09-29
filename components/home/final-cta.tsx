@@ -11,7 +11,7 @@ export function FinalCta() {
     <section className="py-16 md:py-24" aria-labelledby="final-cta-heading">
       <Container>
         <Reveal>
-          <div className="gradient-comet-deep relative overflow-hidden rounded-feature p-8 text-white shadow-[0_30px_60px_-20px_rgba(79,70,229,0.45)] md:p-14">
+          <div className="gradient-comet-deep relative overflow-hidden rounded-feature p-8 text-white shadow-[0_30px_60px_-20px_rgba(37,99,235,0.4)] md:p-14">
             <div
               aria-hidden
               className="pointer-events-none absolute -top-24 -right-24 size-72 rounded-full bg-white/10 blur-3xl"

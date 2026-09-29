@@ -29,7 +29,7 @@ export function BentoCard({ name, description, href, cta, Icon, featured = false
     <div
       className={cn(
         "group relative flex min-h-[15rem] flex-col overflow-hidden rounded-card border border-border-1 bg-surface-1 shadow-[var(--shadow-card)] transition-[border-color,box-shadow,transform] duration-200 ease-out hover:border-border-2 hover:shadow-[var(--shadow-card-hover)] focus-within:border-border-2 motion-safe:hover:-translate-y-1",
-        featured && "gradient-border border-transparent bg-[linear-gradient(135deg,#ffffff_40%,#f3f1ff_100%)]",
+        featured && "gradient-border border-transparent bg-[linear-gradient(135deg,#ffffff_40%,#eef4ff_100%)]",
         className
       )}
       {...props}

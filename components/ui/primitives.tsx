@@ -88,7 +88,7 @@ export function IconTile({
     <span
       className={cn(
         "inline-flex size-12 shrink-0 items-center justify-center rounded-2xl",
-        variant === "gradient" ? "gradient-comet-deep text-white shadow-[0_8px_20px_-6px_rgba(79,70,229,0.5)]" : "bg-tint text-accent",
+        variant === "gradient" ? "gradient-comet-deep text-white shadow-[0_8px_20px_-6px_rgba(37,99,235,0.45)]" : "bg-tint text-accent",
         className
       )}
     >
