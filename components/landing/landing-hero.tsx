@@ -67,24 +67,16 @@ export function LandingHero() {
       <HeroWaves />
 
       <div className="hero-rise mx-auto max-w-[1060px] text-center">
-        {/* The agency's four core keywords are the H1 (see site.keywords). No
-            punctuation: one keyword per line on small screens, two per line with extra
-            space between them from tablet up. Screen readers get the
-            commas via sr-only text. */}
+        {/* The agency's four core keywords are the H1 (see site.keywords):
+            one per line on phones, two per line from tablet up. */}
         <h1
           id="hero-heading"
           className="text-[32px] leading-[1.12] font-bold tracking-[-0.03em] text-[#141414] sm:text-[40px] md:text-[36px] lg:text-[44px] xl:text-[52px]"
         >
-          <span className="block md:inline">Web Solutions</span>
-          <span className="sr-only">, </span>
-          <span aria-hidden className="hidden w-[0.45em] md:inline-block" />
-          <span className="block md:inline">AI Automation</span>
-          <span className="sr-only">, </span>
+          <span className="block md:inline">Web Solutions,</span> <span className="block md:inline">AI Automation,</span>
+          {" "}
           <br className="hidden md:block" />
-          <span className="block md:inline">Growth Marketing</span>
-          <span aria-hidden className="hidden w-[0.45em] md:inline-block" />
-          <span className="sr-only"> and </span>
-          <span className="block md:inline">Digital Support</span>
+          <span className="block md:inline">Growth Marketing</span> <span className="block md:inline">&amp; Digital Support</span>
         </h1>
         <p className="mx-auto mt-5 max-w-[600px] text-pretty text-[15px] leading-[1.6] text-[#555555] sm:text-[16px] md:mt-6 md:text-[17px]">
           One team that builds stronger digital operations and helps businesses across the USA, Canada and Europe
