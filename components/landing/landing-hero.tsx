@@ -37,6 +37,7 @@ function HeroButton({
 export function LandingHero() {
   return (
     <section
+      id="top"
       aria-labelledby="hero-heading"
       className="relative isolate flex min-h-svh items-center justify-center overflow-hidden bg-[#f6f6f7] px-5 pt-32 pb-20 font-[family-name:var(--font-figtree)]"
     >
@@ -59,8 +60,8 @@ export function LandingHero() {
           grow with confidence.
         </p>
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row md:mt-9">
-          <HeroButton href="/contact" label="Start a Project" primary />
-          <HeroButton href="/services" label="Explore Services" />
+          <HeroButton href="#contact" label="Start a Project" primary />
+          <HeroButton href="#services" label="Explore Services" />
         </div>
       </div>
     </section>

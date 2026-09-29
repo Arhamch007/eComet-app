@@ -1,15 +1,26 @@
 import { FloatingNav } from "@/components/landing/floating-nav";
 import { LandingHero } from "@/components/landing/landing-hero";
+import { PlatformsStrip } from "@/components/landing/platforms-strip";
+import { ServicesSection } from "@/components/landing/services-section";
+import { ProcessSection } from "@/components/landing/process-section";
+import { WhySection } from "@/components/landing/why-section";
+import { ContactSection } from "@/components/landing/contact-section";
+import { LandingFooter } from "@/components/landing/landing-footer";
 
-/* New design, step 1: navigation and hero only. Sections below the hero are
-   added once they are approved. */
+/* Single-page site: nav anchors #services, #process, #why, #contact. */
 export default function HomePage() {
   return (
-    <>
+    <div className="font-[family-name:var(--font-figtree)]">
       <FloatingNav />
       <main id="main">
         <LandingHero />
+        <PlatformsStrip />
+        <ServicesSection />
+        <ProcessSection />
+        <WhySection />
+        <ContactSection />
       </main>
-    </>
+      <LandingFooter />
+    </div>
   );
 }

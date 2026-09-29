@@ -4,18 +4,17 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
-import { site } from "@/content/site";
 import { LiquidGlassLink } from "@/components/ui/liquid-glass-button";
 import { cn } from "@/lib/utils";
 
 const links = [
-  { label: "Services", href: "/services" },
-  { label: "Work", href: "/work" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
+  { label: "Services", href: "#services" },
+  { label: "Process", href: "#process" },
+  { label: "Why eComet", href: "#why" },
+  { label: "Contact", href: "#contact" },
 ];
 
-/* Floating pill navigation: a white rounded bar that sits inside the hero,
+/* Floating pill navigation: a white rounded bar fixed to the top of the page,
    logo left, links and one dark call-to-action right. */
 export function FloatingNav() {
   const [open, setOpen] = React.useState(false);
@@ -28,10 +27,10 @@ export function FloatingNav() {
   }, [open]);
 
   return (
-    <header className="absolute inset-x-0 top-0 z-50 px-4 pt-4 sm:pt-6">
+    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:pt-6">
       <div className="mx-auto max-w-[964px] rounded-[18px] bg-white/90 shadow-[0_1px_2px_rgba(20,20,30,0.04),0_8px_24px_-12px_rgba(20,20,40,0.12)] ring-1 ring-black/[0.04] backdrop-blur-md">
         <div className="flex h-[46px] items-center justify-between pr-1.5 pl-4">
-          <Link href="/" aria-label="eComet home" className="rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#4f46e5]">
+          <Link href="#top" aria-label="eComet home" className="rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#4f46e5]">
             <Image src="/brand/ecomet-logo.png" alt="eComet" width={640} height={159} priority className="h-[30px] w-auto" />
           </Link>
 
@@ -45,7 +44,7 @@ export function FloatingNav() {
                 {l.label}
               </Link>
             ))}
-            <LiquidGlassLink href={site.cta.href} tone="tint" className="ml-3 h-[34px] px-4 text-[14px] font-semibold">
+            <LiquidGlassLink href="#contact" tone="tint" className="ml-3 h-[34px] px-4 text-[14px] font-semibold">
               Book a call
             </LiquidGlassLink>
           </nav>
@@ -75,7 +74,7 @@ export function FloatingNav() {
               </Link>
             ))}
             <LiquidGlassLink
-              href={site.cta.href}
+              href="#contact"
               tone="tint"
               onClick={() => setOpen(false)}
               className="mt-2 w-full text-base font-semibold"
