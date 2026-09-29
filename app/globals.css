@@ -221,16 +221,20 @@ body {
   .hero-waves, .hero-rise { animation: none; }
 }
 
-/* Landing hero buttons: logo gradient, hover sheen (see PillButton) */
+/* Landing hero buttons in the exact logo colours, sampled from the mark:
+   cyan #04E5FB, sky #08A8F2, blue #0E6CF2, royal #2743EF, violet #7A2FF0,
+   magenta #B70BE9. Like the logo, the gradient runs from cyan at the top to
+   magenta at the bottom; the label sits over the blue band (white text AA). */
 .comet-btn--primary {
-  background-image: linear-gradient(110deg, #2563eb 0%, #5b3dff 32%, #7c3aed 58%, #c026d3 82%, #2563eb 100%);
-  background-size: 220% 100%;
-  background-position: 0% 50%;
+  background-image: linear-gradient(170deg, #04e5fb 0%, #08a8f2 22%, #0e6cf2 42%, #2743ef 62%, #7a2ff0 82%, #b70be9 100%);
+  background-size: 100% 190%;
+  background-position: 50% 0%;
+  text-shadow: 0 1px 2px rgba(10, 20, 90, 0.28);
   transition: background-position 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.3s ease;
 }
 .comet-btn--primary:hover {
-  background-position: 100% 50%;
+  background-position: 50% 100%;
 }
 /* light sheen that sweeps across on hover */
 .comet-btn--primary::after {
@@ -253,7 +257,7 @@ body {
   inset: 0;
   border-radius: inherit;
   padding: 1.5px;
-  background: linear-gradient(110deg, #00d5ff, #2f5bff 35%, #8b3dff 70%, #e93cf5);
+  background: linear-gradient(135deg, #04e5fb, #0e6cf2 35%, #2743ef 60%, #7a2ff0 80%, #b70be9);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
@@ -266,7 +270,7 @@ body {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: linear-gradient(110deg, #2563eb 0%, #5b3dff 40%, #7c3aed 70%, #c026d3 100%);
+  background: linear-gradient(170deg, #04e5fb 0%, #08a8f2 22%, #0e6cf2 42%, #2743ef 62%, #7a2ff0 82%, #b70be9 100%);
   opacity: 0;
   transition: opacity 0.35s ease;
   pointer-events: none;

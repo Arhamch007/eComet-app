@@ -12,13 +12,14 @@ function KeywordDot() {
   return (
     <span
       aria-hidden
-      className="mx-[0.32em] hidden size-[0.22em] -translate-y-[0.14em] rounded-full bg-[linear-gradient(135deg,#00d5ff,#2f5bff_45%,#8b3dff_75%,#e93cf5)] align-middle lg:inline-block"
+      className="mx-[0.32em] hidden size-[0.22em] -translate-y-[0.14em] rounded-full bg-[linear-gradient(160deg,#04e5fb,#0e6cf2_40%,#2743ef_62%,#b70be9)] align-middle lg:inline-block"
     />
   );
 }
 
 /* Hero buttons in the logo gradient.
-   primary: filled blue -> violet -> magenta (white text stays above 4.5:1);
+   primary: filled with the logo gradient, cyan at the top to magenta at the
+     bottom (label over the blue band, white text readable);
      on hover the gradient slides, a light sheen sweeps across, the button
      lifts and a cyan/violet glow appears.
    outline: white glass with a gradient border; on hover the gradient fills
@@ -44,15 +45,15 @@ function PillButton({
       className={
         "comet-btn group relative isolate inline-flex h-[56px] w-full max-w-[320px] items-center gap-3 overflow-hidden rounded-[16px] pr-6 pl-5 text-left transition-[transform,box-shadow,color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#7b3dff] motion-safe:hover:-translate-y-[3px] motion-safe:active:translate-y-0 sm:w-auto sm:min-w-[236px] " +
         (primary
-          ? "comet-btn--primary text-white shadow-[0_12px_28px_-12px_rgba(47,91,255,0.65)] hover:shadow-[0_18px_40px_-12px_rgba(123,61,255,0.7),0_0_0_1px_rgba(255,255,255,0.08),0_0_28px_-4px_rgba(0,213,255,0.45)]"
-          : "comet-btn--outline bg-white/70 text-[#141414] shadow-[0_10px_24px_-14px_rgba(20,20,60,0.35)] backdrop-blur-md hover:text-white hover:shadow-[0_18px_40px_-14px_rgba(123,61,255,0.6)]")
+          ? "comet-btn--primary text-white shadow-[0_12px_28px_-12px_rgba(14,108,242,0.7)] hover:shadow-[0_18px_40px_-12px_rgba(122,47,240,0.65),0_0_30px_-4px_rgba(4,229,251,0.5)]"
+          : "comet-btn--outline bg-white/70 text-[#141414] shadow-[0_10px_24px_-14px_rgba(20,20,60,0.35)] backdrop-blur-md hover:text-white hover:shadow-[0_18px_40px_-14px_rgba(39,67,239,0.6),0_0_26px_-6px_rgba(4,229,251,0.45)]")
       }
     >
       <span
         aria-hidden
         className={
           "relative z-10 shrink-0 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] " +
-          (primary ? "text-white group-hover:scale-110" : "text-[#5b3dff] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white")
+          (primary ? "text-white group-hover:scale-110" : "text-[#2743ef] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white")
         }
       >
         {icon}
