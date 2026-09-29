@@ -1,7 +1,6 @@
 import { site } from "@/content/site";
 import { Button } from "@/components/ui/button";
 import { Container, Eyebrow, GradientText } from "@/components/ui/primitives";
-import { InteractiveGrid } from "@/components/ui/interactive-grid";
 import { Reveal } from "@/components/ui/reveal";
 
 const proof = [
@@ -13,13 +12,11 @@ const proof = [
 export function Hero() {
   return (
     <section className="relative overflow-hidden">
-      {/* One texture, one glow: the only decoration allowed behind the H1 */}
+      {/* One static texture, one glow: the only decoration allowed behind the H1 */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 [mask-image:radial-gradient(420px_circle_at_50%_30%,white,transparent)] md:[mask-image:radial-gradient(560px_circle_at_50%_30%,white,transparent)]"
-      >
-        <InteractiveGrid />
-      </div>
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:radial-gradient(420px_circle_at_50%_30%,white,transparent)] md:[mask-image:radial-gradient(560px_circle_at_50%_30%,white,transparent)]"
+      />
       <div
         aria-hidden
         className="glow-violet pointer-events-none absolute left-1/2 top-[-120px] h-[520px] w-[820px] -translate-x-1/2"

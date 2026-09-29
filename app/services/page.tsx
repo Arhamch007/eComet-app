@@ -36,7 +36,6 @@ export default function ServicesPage() {
                 Icon={s.icon}
                 featured={s.featured}
                 className={s.featured ? "md:col-span-2" : undefined}
-                background={s.featured ? <div className="dot-texture absolute inset-0 opacity-80" /> : undefined}
               />
             ))}
           </BentoGrid>

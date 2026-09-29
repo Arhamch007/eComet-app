@@ -23,8 +23,7 @@ export function WorkCard({ project, priority = false }: { project: Project; prio
             className="object-cover object-top transition-transform duration-500 ease-out motion-safe:group-hover:scale-[1.03]"
           />
         ) : (
-          <div aria-hidden className="absolute inset-0 flex items-center justify-center">
-            <div className="dot-texture absolute inset-0 opacity-70" />
+          <div aria-hidden className="absolute inset-0 flex items-center justify-center bg-surface-1">
             <span className="font-display relative text-5xl font-semibold text-text-3">
               {project.client.charAt(0)}
             </span>

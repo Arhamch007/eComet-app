@@ -122,13 +122,6 @@ body {
   background: radial-gradient(closest-side, rgba(139, 92, 246, 0.18), transparent 70%);
 }
 
-.dot-texture {
-  background-image: radial-gradient(rgba(139, 92, 246, 0.16) 1px, transparent 1.2px);
-  background-size: 24px 24px;
-  -webkit-mask-image: radial-gradient(640px circle at 50% 40%, #000, transparent);
-  mask-image: radial-gradient(640px circle at 50% 40%, #000, transparent);
-}
-
 .noise-edge {
   -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
   mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
