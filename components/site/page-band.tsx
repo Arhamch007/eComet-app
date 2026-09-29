@@ -22,7 +22,7 @@ export function PageBand({
   const trail = [{ label: "Home", href: "/" }, ...crumbs];
   return (
     <section className="relative overflow-hidden border-b border-border-1">
-      <div aria-hidden className="glow-violet pointer-events-none absolute -top-40 left-1/2 h-80 w-[700px] -translate-x-1/2 opacity-60" />
+      <div aria-hidden className="wash-top pointer-events-none absolute inset-0" />
       <Container className="relative pt-12 pb-12 md:pt-16 md:pb-16">
         {crumbs.length ? (
           <nav aria-label="Breadcrumb" className="mb-6">

@@ -80,7 +80,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 <p className="text-xs font-medium tracking-wide text-text-3 uppercase">Tools</p>
                 <ul className="mt-2 flex flex-wrap gap-2">
                   {s.tools.map((t) => (
-                    <li key={t} className="rounded-full border border-border-1 bg-bg-0/60 px-2.5 py-1 font-mono text-xs text-text-2">
+                    <li key={t} className="rounded-full border border-border-1 bg-white px-2.5 py-1 font-mono text-xs text-text-2">
                       {t}
                     </li>
                   ))}

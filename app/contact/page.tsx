@@ -40,7 +40,7 @@ export default function ContactPage() {
             <ol className="mt-5 space-y-5">
               {steps.map((s) => (
                 <li key={s.n} className="flex gap-4">
-                  <span className="inline-flex size-8 shrink-0 items-center justify-center rounded-full bg-text-1 font-mono text-sm font-medium text-bg-0">
+                  <span className="inline-flex size-8 shrink-0 items-center justify-center rounded-full bg-text-1 font-mono text-sm font-medium text-white">
                     {s.n}
                   </span>
                   <div>

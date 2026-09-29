@@ -16,7 +16,7 @@ export function CtaBand({
     <div className="py-6 md:py-10">
       <Container>
         <Reveal>
-          <div className="flex flex-col gap-6 rounded-feature border border-border-1 bg-surface-2 p-6 md:flex-row md:items-center md:justify-between md:p-8">
+          <div className="flex flex-col gap-6 rounded-feature border border-border-1 bg-bg-1 p-6 md:flex-row md:items-center md:justify-between md:p-8">
             <div>
               <h2 className="font-display text-2xl font-semibold text-text-1 md:text-3xl">{title}</h2>
               <p className="mt-2 max-w-xl text-[15px] text-text-2">{text}</p>

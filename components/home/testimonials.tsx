@@ -29,7 +29,7 @@ export function Testimonials() {
                     “{t.quote}”
                   </blockquote>
                   <figcaption className="mt-auto flex items-center gap-3 pt-6">
-                    <span className="inline-flex size-10 items-center justify-center rounded-full border border-border-1 bg-bg-0 font-mono text-sm text-text-2">
+                    <span className="inline-flex size-10 items-center justify-center rounded-full bg-tint font-mono text-sm font-medium text-accent">
                       {t.name.split(" ").map((n) => n[0]).join("").slice(0, 2)}
                     </span>
                     <span>

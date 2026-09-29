@@ -4,14 +4,17 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full font-medium transition-[background-color,color,border-color,transform,box-shadow] duration-200 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent/50 disabled:pointer-events-none disabled:opacity-50 motion-safe:hover:-translate-y-0.5",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full font-medium transition-[background-color,color,border-color,transform,box-shadow] duration-200 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent/60 disabled:pointer-events-none disabled:opacity-50 motion-safe:hover:-translate-y-0.5",
   {
     variants: {
       variant: {
-        primary: "bg-text-1 text-bg-0 hover:bg-white hover:shadow-[0_8px_24px_rgba(255,255,255,0.12)]",
+        primary:
+          "bg-text-1 text-white shadow-[0_1px_2px_rgba(16,24,40,0.12)] hover:bg-[#1c2335] hover:shadow-[0_10px_24px_-8px_rgba(16,24,40,0.45)]",
         secondary:
-          "border border-border-2 bg-transparent text-text-1 hover:border-white/30 hover:bg-surface-2",
-        ghost: "text-text-2 hover:bg-surface-1 hover:text-text-1",
+          "border border-border-2 bg-white text-text-1 hover:border-text-3/60 hover:bg-surface-2",
+        inverse: "bg-white text-text-1 hover:bg-white/90 hover:shadow-[0_10px_24px_-8px_rgba(0,0,0,0.35)]",
+        "outline-light": "border border-white/50 text-white hover:bg-white/10",
+        ghost: "text-text-2 hover:bg-surface-2 hover:text-text-1",
         link: "h-auto rounded-none p-0 text-accent underline-offset-4 hover:underline motion-safe:hover:translate-y-0",
       },
       size: {

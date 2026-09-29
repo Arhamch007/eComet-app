@@ -1,36 +1,42 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------------------
-   eComet design tokens (see design-audit report, Section 4)
-   Black base, white type, one flat accent (cyan), the comet gradient in five
-   roles only: logo, one H1 phrase, one featured border, the final CTA wash,
-   the process connector line.
+   eComet design tokens: light theme.
+   White and slate base, one accent (indigo) for links and labels, the comet
+   gradient (cyan -> blue -> violet -> magenta) in a few roles only: one
+   headline phrase, icon tiles, one featured border, and the final CTA card.
+   Modelled on the Mau5tech reference ("gradient as ink").
 --------------------------------------------------------------------------- */
 @theme {
-  --color-bg-0: #07070b;
-  --color-bg-1: #0d0e14;
-  --color-surface-1: rgba(255, 255, 255, 0.03);
-  --color-surface-2: rgba(255, 255, 255, 0.06);
-  --color-border-1: rgba(255, 255, 255, 0.08);
-  --color-border-2: rgba(255, 255, 255, 0.16);
-  --color-text-1: #f5f6fa;
-  --color-text-2: rgba(245, 246, 250, 0.72);
-  --color-text-3: rgba(245, 246, 250, 0.52);
-  --color-accent: #22d3ee;
-  --color-comet-cyan: #22d3ee;
-  --color-comet-blue: #3b82f6;
-  --color-comet-violet: #8b5cf6;
-  --color-comet-magenta: #ec4899;
-  --color-success: #34d399;
-  --color-warning: #fbbf24;
-  --color-error: #f87171;
+  --color-bg-0: #ffffff;
+  --color-bg-1: #f6f7fb;
+  --color-surface-1: #ffffff;
+  --color-surface-2: #f8f9fc;
+  --color-border-1: #e6e8ef;
+  --color-border-2: #cfd4df;
+  --color-text-1: #0b1020;
+  --color-text-2: #4b5567;
+  --color-text-3: #667085;
+  --color-accent: #4f46e5;
+  --color-tint: #eef0ff;
+  --color-comet-cyan: #0891b2;
+  --color-comet-blue: #2563eb;
+  --color-comet-violet: #7c3aed;
+  --color-comet-magenta: #db2777;
+  --color-success: #059669;
+  --color-warning: #d97706;
+  --color-error: #dc2626;
 
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", monospace;
   --font-display: var(--font-cal-sans), var(--font-geist-sans), ui-sans-serif, sans-serif;
 
-  --radius-card: 16px;
-  --radius-feature: 24px;
+  --radius-card: 20px;
+  --radius-feature: 28px;
+
+  --shadow-card: 0 1px 2px rgba(16, 24, 40, 0.04), 0 1px 3px rgba(16, 24, 40, 0.04);
+  --shadow-card-hover: 0 12px 32px -8px rgba(16, 24, 40, 0.12);
+  --shadow-tile: 0 10px 30px -6px rgba(16, 24, 40, 0.14), 0 2px 6px rgba(16, 24, 40, 0.05);
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
@@ -48,8 +54,11 @@
 }
 
 :root {
-  color-scheme: dark;
-  --gradient-comet: linear-gradient(90deg, #22d3ee 0%, #3b82f6 35%, #8b5cf6 70%, #ec4899 100%);
+  color-scheme: light;
+  /* Text-safe stops (600 level) for gradient headlines on white */
+  --gradient-comet: linear-gradient(90deg, #0891b2 0%, #2563eb 35%, #7c3aed 70%, #db2777 100%);
+  /* Deep stops (700 level) so white text on the CTA card passes AA */
+  --gradient-comet-deep: linear-gradient(135deg, #0e7490 0%, #1d4ed8 35%, #6d28d9 70%, #be185d 100%);
 }
 
 html {
@@ -65,16 +74,14 @@ body {
 }
 
 ::selection {
-  background: rgba(139, 92, 246, 0.35);
-  color: #fff;
+  background: rgba(79, 70, 229, 0.18);
 }
 
 :focus-visible {
-  outline: 2px solid rgba(34, 211, 238, 0.5);
+  outline: 2px solid rgba(79, 70, 229, 0.6);
   outline-offset: 2px;
 }
 
-/* Display type */
 .font-display {
   font-family: var(--font-display);
   letter-spacing: -0.02em;
@@ -83,6 +90,10 @@ body {
 /* Gradient roles ---------------------------------------------------------- */
 .gradient-comet {
   background-image: var(--gradient-comet);
+}
+
+.gradient-comet-deep {
+  background-image: var(--gradient-comet-deep);
 }
 
 .text-gradient {
@@ -101,7 +112,7 @@ body {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  padding: 1px;
+  padding: 1.5px;
   background: var(--gradient-comet);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
@@ -110,21 +121,19 @@ body {
   pointer-events: none;
 }
 
-/* The hairline connector under the process row */
+/* Hairline connector under the process row */
 .gradient-line {
   height: 1px;
   background: var(--gradient-comet);
-  opacity: 0.6;
+  opacity: 0.45;
 }
 
-/* Textures and glows ------------------------------------------------------ */
-.glow-violet {
-  background: radial-gradient(closest-side, rgba(139, 92, 246, 0.18), transparent 70%);
-}
-
-.noise-edge {
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
-  mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+/* Soft wash at the top of heroes and page headers */
+.wash-top {
+  background:
+    radial-gradient(60% 55% at 50% 0%, rgba(99, 102, 241, 0.09), transparent 70%),
+    radial-gradient(35% 40% at 85% 10%, rgba(219, 39, 119, 0.05), transparent 70%),
+    radial-gradient(35% 40% at 15% 10%, rgba(8, 145, 178, 0.06), transparent 70%);
 }
 
 /* Reduced motion: everything instant, layout identical --------------------- */

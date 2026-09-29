@@ -1,28 +1,25 @@
-import { site } from "@/content/site";
-import { Container, Eyebrow } from "@/components/ui/primitives";
-import { Ticker } from "@/components/ui/ticker";
+import { projects } from "@/content/work";
+import { Container } from "@/components/ui/primitives";
 
-/* Until client logos are cleared for use (audit Open Question 3), the ticker
-   carries the platforms the team works in every day. */
+/* Static client strip (no marquee). Names come from the work list, which only
+   includes engagements described from eComet's side; replace with logo files
+   once the team confirms permission (audit Open Question 3). */
 
 export function TrustTicker() {
   return (
-    <section className="border-y border-border-1 bg-bg-1 py-8" aria-labelledby="tools-heading">
+    <section aria-labelledby="clients-heading" className="border-y border-border-1 bg-bg-1 py-10">
       <Container>
-        <Eyebrow id="tools-heading" className="justify-center">
-          Tools we work in every day
-        </Eyebrow>
+        <h2 id="clients-heading" className="text-center text-sm font-medium text-text-3">
+          Stores and teams we support across three markets
+        </h2>
+        <ul className="mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 md:gap-x-14">
+          {projects.map((p) => (
+            <li key={p.slug} className="font-display text-xl font-semibold tracking-tight text-text-3/80 md:text-2xl">
+              {p.client}
+            </li>
+          ))}
+        </ul>
       </Container>
-      <Ticker className="mt-5" baseVelocity={4} label="Platforms and tools">
-        {site.tools.map((tool) => (
-          <span key={tool} className="inline-flex items-center">
-            <span className="px-6 font-display text-2xl font-semibold tracking-tight text-text-2 md:text-3xl">
-              {tool}
-            </span>
-            <span aria-hidden className="size-1.5 rounded-full bg-accent/70" />
-          </span>
-        ))}
-      </Ticker>
     </section>
   );
 }

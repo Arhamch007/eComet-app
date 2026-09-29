@@ -74,3 +74,6 @@ design-audit/source/
 # Next.js
 .next/
 next-env.d.ts
+
+# Competitor research workspace (scraped pages, screenshots) - local only
+design-audit/stackworx/

@@ -47,7 +47,7 @@ export default function AboutPage() {
             {commitments.map((c) => (
               <RevealItem key={c.title}>
                 <Card className="flex gap-4 p-5">
-                  <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-xl border border-border-1 bg-bg-0/60 text-accent">
+                  <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-xl border border-border-1 bg-white text-accent">
                     <c.icon className="size-5" aria-hidden />
                   </span>
                   <div>

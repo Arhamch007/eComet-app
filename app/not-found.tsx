@@ -4,7 +4,7 @@ import { Container, Eyebrow } from "@/components/ui/primitives";
 export default function NotFound() {
   return (
     <section className="relative overflow-hidden py-24 md:py-40">
-      <div aria-hidden className="glow-violet pointer-events-none absolute left-1/2 top-0 h-96 w-[700px] -translate-x-1/2" />
+      <div aria-hidden className="wash-top pointer-events-none absolute inset-0" />
       <Container className="relative text-center">
         <Eyebrow className="justify-center">404</Eyebrow>
         <h1 className="font-display mt-4 text-[40px] leading-[1.05] font-semibold text-text-1 md:text-[56px]">

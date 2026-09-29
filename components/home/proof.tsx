@@ -34,7 +34,7 @@ export function Proof() {
                 {site.tools.map((t) => (
                   <li
                     key={t}
-                    className="rounded-full border border-border-1 bg-bg-0/60 px-3 py-1.5 font-mono text-xs text-text-2"
+                    className="rounded-full border border-border-1 bg-white px-3 py-1.5 font-mono text-xs text-text-2"
                   >
                     {t}
                   </li>

@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 const FORM_ENDPOINT = "https://formspree.io/f/mbjvedvw";
 
 const fieldClass =
-  "mt-1.5 w-full rounded-lg border border-border-2 bg-bg-0/60 px-3.5 py-2.5 text-[15px] text-text-1 placeholder:text-text-3 transition-colors focus:border-accent/60 focus:outline-none focus-visible:outline-2 focus-visible:outline-accent/50";
+  "mt-1.5 w-full rounded-lg border border-border-2 bg-white px-3.5 py-2.5 text-[15px] text-text-1 placeholder:text-text-3 transition-colors focus:border-accent/60 focus:outline-none focus-visible:outline-2 focus-visible:outline-accent/50";
 
 export function ContactForm() {
   const [status, setStatus] = React.useState<"idle" | "sending" | "sent" | "error">("idle");
