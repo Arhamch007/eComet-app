@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { site } from "@/content/site";
+import { LiquidGlassLink } from "@/components/ui/liquid-glass-button";
 import { cn } from "@/lib/utils";
 
 const links = [
@@ -44,12 +45,9 @@ export function FloatingNav() {
                 {l.label}
               </Link>
             ))}
-            <Link
-              href={site.cta.href}
-              className="comet-btn--primary relative ml-3 inline-flex h-[34px] items-center overflow-hidden rounded-[11px] px-4 text-[14px] font-semibold text-white shadow-[0_8px_20px_-10px_rgba(47,91,255,0.7)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#7b3dff]"
-            >
+            <LiquidGlassLink href={site.cta.href} tone="tint" className="ml-3 h-[34px] px-4 text-[14px] font-semibold">
               Book a call
-            </Link>
+            </LiquidGlassLink>
           </nav>
 
           <button
@@ -76,13 +74,14 @@ export function FloatingNav() {
                 {l.label}
               </Link>
             ))}
-            <Link
+            <LiquidGlassLink
               href={site.cta.href}
+              tone="tint"
               onClick={() => setOpen(false)}
-              className="comet-btn--primary relative mt-2 inline-flex h-12 items-center justify-center overflow-hidden rounded-[14px] text-base font-semibold text-white"
+              className="mt-2 w-full text-base font-semibold"
             >
               Book a call
-            </Link>
+            </LiquidGlassLink>
           </nav>
         </div>
       </div>

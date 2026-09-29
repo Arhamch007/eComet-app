@@ -221,124 +221,89 @@ body {
   .hero-waves, .hero-rise { animation: none; }
 }
 
-/* Landing hero buttons in the exact logo colours, sampled from the mark:
-   cyan #04E5FB, sky #08A8F2, blue #0E6CF2, royal #2743EF, violet #9F4AED,
-   magenta #C65CF7. Like the logo, the gradient runs from cyan at the top to
-   magenta at the bottom; the label sits over the blue band (white text AA). */
-.comet-btn--primary {
-  isolation: isolate;
-  background-image: linear-gradient(170deg, #04e5fb 0%, #08a8f2 26%, #0e6cf2 52%, #2d4cf2 78%, #5b47f0 100%);
+/* Liquid glass buttons (components/ui/liquid-glass-button.tsx).
+   Logo palette without black: #01E2F8, #1590EC, #0D5DF5, #681BF5.
+   tint  = glass filled with the logo gradient, white label (primary)
+   clear = clear white glass with a thin logo-gradient rim (secondary)
+   Both: bright top highlight, no dark bevel, no movement on hover. */
+.liquid-glass {
   transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  text-shadow: 0 1px 2px rgba(10, 20, 90, 0.28);
 }
-/* hover gradient (blue -> violet -> magenta) fades in and out symmetrically */
-.comet-btn--primary::before {
+.liquid-glass__refract {
+  backdrop-filter: blur(12px) saturate(1.4);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+}
+.liquid-glass__tint {
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+/* primary */
+.liquid-glass--tint {
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(8, 30, 110, 0.35);
+  box-shadow: 0 10px 26px -12px rgba(13, 93, 245, 0.7), 0 2px 6px -2px rgba(13, 93, 245, 0.3);
+}
+.liquid-glass--tint .liquid-glass__tint {
+  background: linear-gradient(115deg, #01e2f8 0%, #1590ec 24%, #0d5df5 58%, #681bf5 100%);
+  opacity: 0.92;
+}
+.liquid-glass--tint::after {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: -1;
+  z-index: -5;
   border-radius: inherit;
-  background-image: linear-gradient(170deg, #0e6cf2 0%, #2d4cf2 35%, #9f4aed 72%, #c65cf7 100%);
+  background: linear-gradient(115deg, #1590ec 0%, #0d5df5 45%, #681bf5 100%);
   opacity: 0;
   transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
 }
-.comet-btn--primary:hover::before,
-.comet-btn--primary:focus-visible::before {
-  opacity: 1;
+.liquid-glass--tint:hover::after { opacity: 1; }
+.liquid-glass--tint:hover {
+  box-shadow: 0 14px 32px -12px rgba(104, 27, 245, 0.6), 0 0 24px -6px rgba(1, 226, 248, 0.55);
 }
-/* outline: gradient ring, gradient fill fades in on hover */
-.comet-btn--outline::before {
+/* secondary */
+.liquid-glass--clear {
+  color: #141414;
+  box-shadow: 0 10px 26px -14px rgba(20, 30, 80, 0.35);
+}
+.liquid-glass--clear .liquid-glass__tint {
+  background: linear-gradient(115deg, rgba(1, 226, 248, 0.08), rgba(104, 27, 245, 0.08)), rgba(255, 255, 255, 0.72);
+}
+.liquid-glass--clear:hover .liquid-glass__tint {
+  background: linear-gradient(115deg, rgba(1, 226, 248, 0.2), rgba(21, 144, 236, 0.16) 45%, rgba(104, 27, 245, 0.2)), rgba(255, 255, 255, 0.72);
+}
+.liquid-glass--clear:hover {
+  box-shadow: 0 14px 32px -14px rgba(13, 93, 245, 0.45), 0 0 20px -8px rgba(1, 226, 248, 0.5);
+}
+.liquid-glass--clear::after {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 1;
   border-radius: inherit;
   padding: 1.5px;
-  background: linear-gradient(135deg, #04e5fb, #0e6cf2 35%, #2d4cf2 58%, #9f4aed 80%, #c65cf7);
+  background: linear-gradient(115deg, #01e2f8, #1590ec 30%, #0d5df5 60%, #681bf5);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   mask-composite: exclude;
   pointer-events: none;
-  z-index: 2;
 }
-.comet-btn--outline::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: linear-gradient(170deg, #04e5fb 0%, #08a8f2 22%, #0e6cf2 42%, #2d4cf2 60%, #9f4aed 82%, #c65cf7 100%);
-  opacity: 0;
-  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  pointer-events: none;
-}
-.comet-btn--outline:hover::after {
-  opacity: 1;
-}
-@media (prefers-reduced-motion: reduce) {
-  .comet-btn--primary,
-  .comet-btn--primary::before,
-  .comet-btn--outline::after {
-    transition: none;
-  }
-}
-
-/* Liquid glass buttons (components/ui/liquid-glass-button.tsx).
-   Logo palette without black: #01E2F8, #1590EC, #0D5DF5, #681BF5. */
-.liquid-glass {
-  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 8px 24px -12px rgba(13, 93, 245, 0.35);
-}
-.liquid-glass:hover {
-  box-shadow: 0 12px 30px -12px rgba(104, 27, 245, 0.4), 0 0 22px -6px rgba(1, 226, 248, 0.45);
-}
-.liquid-glass__refract {
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-@supports (backdrop-filter: url("#container-glass")) {
-  .liquid-glass__refract {
-    backdrop-filter: url("#container-glass");
-  }
-}
-.liquid-glass__tint {
-  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), background 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.liquid-glass--tint .liquid-glass__tint {
-  background:
-    linear-gradient(115deg, rgba(1, 226, 248, 0.26) 0%, rgba(21, 144, 236, 0.22) 32%, rgba(13, 93, 245, 0.2) 62%, rgba(104, 27, 245, 0.24) 100%),
-    rgba(255, 255, 255, 0.55);
-}
-.liquid-glass--clear .liquid-glass__tint {
-  background:
-    linear-gradient(115deg, rgba(1, 226, 248, 0.1) 0%, rgba(21, 144, 236, 0.08) 40%, rgba(104, 27, 245, 0.1) 100%),
-    rgba(255, 255, 255, 0.62);
-}
-.liquid-glass--tint:hover .liquid-glass__tint {
-  background:
-    linear-gradient(115deg, rgba(1, 226, 248, 0.4) 0%, rgba(21, 144, 236, 0.34) 32%, rgba(13, 93, 245, 0.32) 62%, rgba(104, 27, 245, 0.38) 100%),
-    rgba(255, 255, 255, 0.5);
-}
-.liquid-glass--clear:hover .liquid-glass__tint {
-  background:
-    linear-gradient(115deg, rgba(1, 226, 248, 0.22) 0%, rgba(21, 144, 236, 0.18) 40%, rgba(104, 27, 245, 0.22) 100%),
-    rgba(255, 255, 255, 0.58);
-}
+/* glass highlight: bright top edge and soft inner glow, no dark bevel */
 .liquid-glass__bevel {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.08) 48%, rgba(255, 255, 255, 0) 52%);
   box-shadow:
-    0 0 6px rgba(0, 0, 0, 0.03),
-    0 2px 6px rgba(0, 0, 0, 0.08),
-    inset 3px 3px 0.5px -3px rgba(20, 24, 60, 0.55),
-    inset -3px -3px 0.5px -3px rgba(20, 24, 60, 0.5),
-    inset 1px 1px 1px -0.5px rgba(20, 24, 60, 0.35),
-    inset -1px -1px 1px -0.5px rgba(20, 24, 60, 0.35),
-    inset 0 0 6px 6px rgba(255, 255, 255, 0.18),
-    inset 0 0 2px 2px rgba(255, 255, 255, 0.12),
-    0 0 12px rgba(255, 255, 255, 0.15);
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+}
+.liquid-glass--clear .liquid-glass__bevel {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0) 52%);
 }
 @media (prefers-reduced-motion: reduce) {
   .liquid-glass,
-  .liquid-glass__tint {
+  .liquid-glass__tint,
+  .liquid-glass--tint::after {
     transition: none;
   }
 }
