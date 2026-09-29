@@ -282,3 +282,63 @@ body {
     transition: none;
   }
 }
+
+/* Liquid glass buttons (components/ui/liquid-glass-button.tsx).
+   Logo palette without black: #01E2F8, #1590EC, #0D5DF5, #681BF5. */
+.liquid-glass {
+  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 24px -12px rgba(13, 93, 245, 0.35);
+}
+.liquid-glass:hover {
+  box-shadow: 0 12px 30px -12px rgba(104, 27, 245, 0.4), 0 0 22px -6px rgba(1, 226, 248, 0.45);
+}
+.liquid-glass__refract {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+@supports (backdrop-filter: url("#container-glass")) {
+  .liquid-glass__refract {
+    backdrop-filter: url("#container-glass");
+  }
+}
+.liquid-glass__tint {
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), background 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.liquid-glass--tint .liquid-glass__tint {
+  background:
+    linear-gradient(115deg, rgba(1, 226, 248, 0.26) 0%, rgba(21, 144, 236, 0.22) 32%, rgba(13, 93, 245, 0.2) 62%, rgba(104, 27, 245, 0.24) 100%),
+    rgba(255, 255, 255, 0.55);
+}
+.liquid-glass--clear .liquid-glass__tint {
+  background:
+    linear-gradient(115deg, rgba(1, 226, 248, 0.1) 0%, rgba(21, 144, 236, 0.08) 40%, rgba(104, 27, 245, 0.1) 100%),
+    rgba(255, 255, 255, 0.62);
+}
+.liquid-glass--tint:hover .liquid-glass__tint {
+  background:
+    linear-gradient(115deg, rgba(1, 226, 248, 0.4) 0%, rgba(21, 144, 236, 0.34) 32%, rgba(13, 93, 245, 0.32) 62%, rgba(104, 27, 245, 0.38) 100%),
+    rgba(255, 255, 255, 0.5);
+}
+.liquid-glass--clear:hover .liquid-glass__tint {
+  background:
+    linear-gradient(115deg, rgba(1, 226, 248, 0.22) 0%, rgba(21, 144, 236, 0.18) 40%, rgba(104, 27, 245, 0.22) 100%),
+    rgba(255, 255, 255, 0.58);
+}
+.liquid-glass__bevel {
+  box-shadow:
+    0 0 6px rgba(0, 0, 0, 0.03),
+    0 2px 6px rgba(0, 0, 0, 0.08),
+    inset 3px 3px 0.5px -3px rgba(20, 24, 60, 0.55),
+    inset -3px -3px 0.5px -3px rgba(20, 24, 60, 0.5),
+    inset 1px 1px 1px -0.5px rgba(20, 24, 60, 0.35),
+    inset -1px -1px 1px -0.5px rgba(20, 24, 60, 0.35),
+    inset 0 0 6px 6px rgba(255, 255, 255, 0.18),
+    inset 0 0 2px 2px rgba(255, 255, 255, 0.12),
+    0 0 12px rgba(255, 255, 255, 0.15);
+}
+@media (prefers-reduced-motion: reduce) {
+  .liquid-glass,
+  .liquid-glass__tint {
+    transition: none;
+  }
+}

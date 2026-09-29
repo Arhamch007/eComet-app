@@ -2,59 +2,36 @@ import Link from "next/link";
 import { ArrowUpRight, CalendarDays } from "lucide-react";
 import { site } from "@/content/site";
 import { HeroWaves } from "@/components/landing/hero-waves";
+import { LiquidGlassLink, GlassFilterDefs } from "@/components/ui/liquid-glass-button";
 
 /* Minimal centred hero (approved reference: floating pill nav, a large
    regular-weight headline and dark pill buttons) over soft light ribbons in
    the logo colours (see HeroWaves). */
 
-/* Hero buttons in the logo gradient.
-   primary: filled with the logo gradient, cyan at the top to magenta at the
-     bottom (label over the blue band, white text readable);
-     on hover a blue -> violet -> magenta layer fades in (0.2s, same speed
-     in and out) with a soft glow. The button itself never moves or scales.
-   outline: white glass with a gradient border; on hover the gradient fills
-     in and the text turns white.
-   Hover changes colour only; reduced motion also drops the sheen. */
-function PillButton({
+/* Hero buttons: liquid glass pills with a light logo-palette tint. */
+function HeroButton({
   href,
   icon,
   kicker,
   label,
-  variant = "primary",
+  tone,
 }: {
   href: string;
   icon: React.ReactNode;
   kicker: string;
   label: string;
-  variant?: "primary" | "outline";
+  tone: "tint" | "clear";
 }) {
-  const primary = variant === "primary";
   return (
-    <Link
-      href={href}
-      className={
-        "comet-btn group relative isolate inline-flex h-12 w-full max-w-[300px] items-center gap-2.5 overflow-hidden rounded-[14px] pr-5 pl-4 text-left transition-[box-shadow,color] duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#7b3dff] sm:w-[232px] " +
-        (primary
-          ? "comet-btn--primary text-white shadow-[0_12px_28px_-12px_rgba(14,108,242,0.7)] hover:shadow-[0_18px_40px_-12px_rgba(159,74,237,0.6),0_0_30px_-4px_rgba(4,229,251,0.5)]"
-          : "comet-btn--outline bg-white/70 text-[#141414] shadow-[0_10px_24px_-14px_rgba(20,20,60,0.35)] backdrop-blur-md hover:text-white hover:shadow-[0_18px_40px_-14px_rgba(39,67,239,0.6),0_0_26px_-6px_rgba(4,229,251,0.45)]")
-      }
-    >
-      <span
-        aria-hidden
-        className={
-          "relative z-10 shrink-0 transition-colors duration-200 " +
-          (primary ? "text-white" : "text-[#2743ef] group-hover:text-white")
-        }
-      >
+    <LiquidGlassLink href={href} tone={tone} className="w-full max-w-[300px] justify-start pr-7 pl-5 whitespace-nowrap sm:w-[264px]">
+      <span aria-hidden className="shrink-0 text-[#0d5df5]">
         {icon}
       </span>
-      <span className="relative z-10 flex flex-col leading-none">
-        <span className={"text-[11px] font-medium transition-colors duration-200 " + (primary ? "text-white/80" : "text-[#5f6272] group-hover:text-white/80")}>
-          {kicker}
-        </span>
-        <span className="mt-0.5 text-[15px] font-semibold tracking-[-0.01em]">{label}</span>
+      <span className="flex flex-col text-left leading-none">
+        <span className="text-[11px] font-medium text-[#4a4f63]">{kicker}</span>
+        <span className="mt-0.5 text-[15px] font-semibold tracking-[-0.01em] text-[#141414]">{label}</span>
       </span>
-    </Link>
+    </LiquidGlassLink>
   );
 }
 
@@ -65,6 +42,7 @@ export function LandingHero() {
       className="relative isolate flex min-h-svh items-center justify-center overflow-hidden bg-[#f6f6f7] px-5 pt-32 pb-20 font-[family-name:var(--font-figtree)]"
     >
       <HeroWaves />
+      <GlassFilterDefs />
 
       <div className="hero-rise mx-auto max-w-[1060px] text-center">
         {/* The agency's four core keywords are the H1 (see site.keywords):
@@ -83,18 +61,19 @@ export function LandingHero() {
           grow with confidence.
         </p>
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row md:mt-9">
-          <PillButton
+          <HeroButton
             href={site.cta.href}
             icon={<CalendarDays className="size-[22px]" strokeWidth={1.8} />}
             kicker="Free, 20 minutes"
             label="Book a free consultation"
+            tone="tint"
           />
-          <PillButton
+          <HeroButton
             href={site.secondaryCta.href}
             icon={<ArrowUpRight className="size-[22px]" strokeWidth={1.8} />}
             kicker="Case studies"
             label="See our work"
-            variant="outline"
+            tone="clear"
           />
         </div>
       </div>
