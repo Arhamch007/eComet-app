@@ -1,29 +1,35 @@
 import { Hero } from "@/components/home/hero";
 import { TrustTicker } from "@/components/home/trust-ticker";
-import { ServicesBento } from "@/components/home/services-bento";
 import { SelectedWork } from "@/components/home/selected-work";
-import { Process } from "@/components/home/process";
-import { Proof } from "@/components/home/proof";
-import { CtaBand } from "@/components/home/cta-band";
+import { ProblemCheck } from "@/components/home/problem-check";
+import { ServicesReveal } from "@/components/home/services-reveal";
 import { Testimonials } from "@/components/home/testimonials";
+import { WhyChoose } from "@/components/home/why-choose";
+import { Process } from "@/components/home/process";
+import { TickerBand } from "@/components/home/ticker-band";
 import { TeamSnapshot } from "@/components/home/team-snapshot";
 import { Faq } from "@/components/home/faq";
 import { FinalCta } from "@/components/home/final-cta";
+import { ContactBand } from "@/components/home/contact-band";
 
+/* Section order follows the Stackworx home flow, upgraded (see
+   design-audit/stackworx/stackworx-home-spec.md). */
 export default function HomePage() {
   return (
     <>
       <Hero />
       <TrustTicker />
-      <ServicesBento />
       <SelectedWork />
-      <Process />
-      <Proof />
-      <CtaBand />
+      <ProblemCheck />
+      <ServicesReveal />
       <Testimonials />
+      <WhyChoose />
+      <Process />
+      <TickerBand />
       <TeamSnapshot />
       <Faq />
       <FinalCta />
+      <ContactBand />
     </>
   );
 }

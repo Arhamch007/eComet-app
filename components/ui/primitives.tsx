@@ -1,5 +1,7 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import { SignalSquare } from "@/components/ui/atoms";
+import { RevealText } from "@/components/ui/reveal-text";
 
 export function Container({
   className,
@@ -7,41 +9,53 @@ export function Container({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <div className={cn("mx-auto w-full max-w-[1200px] px-5 sm:px-6", className)} {...props}>
+    <div className={cn("mx-auto w-full max-w-[1280px] px-5 sm:px-6 lg:px-8", className)} {...props}>
       {children}
     </div>
   );
 }
 
 type SectionProps = React.HTMLAttributes<HTMLElement> & {
-  tone?: "base" | "alt";
+  tone?: "base" | "alt" | "night";
   as?: "section" | "div";
 };
 
 export function Section({ className, tone = "base", as = "section", children, ...props }: SectionProps) {
   const Tag = as;
   return (
-    <Tag className={cn("relative py-16 md:py-24", tone === "alt" && "bg-bg-1", className)} {...props}>
-      {children}
-    </Tag>
-  );
-}
-
-/* Letter-spaced label above a heading. No dot or ornament. */
-export function Eyebrow({
-  className,
-  children,
-  ...props
-}: React.HTMLAttributes<HTMLParagraphElement>) {
-  return (
-    <p
+    <Tag
+      data-theme={tone === "night" ? "dark" : undefined}
       className={cn(
-        "text-[13px] font-semibold uppercase tracking-[0.16em] text-accent",
+        "relative py-16 md:py-24",
+        tone === "alt" && "bg-bg-1",
+        tone === "night" && "overflow-hidden bg-night text-white",
         className
       )}
       {...props}
     >
       {children}
+    </Tag>
+  );
+}
+
+/* Mono label with a signal square (Stackworx eyebrow), contrast-safe colours. */
+export function Eyebrow({
+  className,
+  children,
+  tone = "light",
+  ...props
+}: React.HTMLAttributes<HTMLParagraphElement> & { tone?: "light" | "dark" }) {
+  return (
+    <p
+      className={cn(
+        "inline-flex items-center gap-2.5 font-mono text-[12px] font-medium uppercase tracking-[0.14em]",
+        tone === "light" ? "text-text-2" : "text-night-muted",
+        className
+      )}
+      {...props}
+    >
+      <SignalSquare className={tone === "light" ? "bg-accent" : undefined} />
+      <span>{children}</span>
     </p>
   );
 }
@@ -49,23 +63,41 @@ export function Eyebrow({
 export function SectionHeading({
   eyebrow,
   title,
+  titleId,
   lead,
   align = "left",
+  tone = "light",
   className,
 }: {
   eyebrow?: string;
   title: React.ReactNode;
+  titleId?: string;
   lead?: React.ReactNode;
   align?: "left" | "center";
+  tone?: "light" | "dark";
   className?: string;
 }) {
+  const h2Class = cn(
+    "font-display mt-4 text-[32px] leading-[1.1] font-semibold md:text-[46px]",
+    tone === "light" ? "text-text-1" : "text-white"
+  );
   return (
     <div className={cn("max-w-2xl", align === "center" && "mx-auto text-center", className)}>
-      {eyebrow ? <Eyebrow>{eyebrow}</Eyebrow> : null}
-      <h2 className="font-display mt-3 text-[32px] leading-[1.1] font-semibold text-text-1 md:text-[46px]">
-        {title}
-      </h2>
-      {lead ? <p className="mt-4 text-lg leading-relaxed text-text-2">{lead}</p> : null}
+      {eyebrow ? (
+        <Eyebrow tone={tone} className={align === "center" ? "justify-center" : undefined}>
+          {eyebrow}
+        </Eyebrow>
+      ) : null}
+      {typeof title === "string" ? (
+        <RevealText as="h2" id={titleId} text={title} className={h2Class} />
+      ) : (
+        <h2 id={titleId} className={h2Class}>
+          {title}
+        </h2>
+      )}
+      {lead ? (
+        <p className={cn("mt-4 text-lg leading-relaxed", tone === "light" ? "text-text-2" : "text-night-muted")}>{lead}</p>
+      ) : null}
     </div>
   );
 }
@@ -74,21 +106,22 @@ export function GradientText({ children }: { children: React.ReactNode }) {
   return <span className="text-gradient">{children}</span>;
 }
 
-/* Gradient icon tile: one of the gradient's allowed roles */
 export function IconTile({
   icon: Icon,
   variant = "tint",
   className,
 }: {
   icon: React.ElementType;
-  variant?: "tint" | "gradient";
+  variant?: "tint" | "gradient" | "night";
   className?: string;
 }) {
   return (
     <span
       className={cn(
-        "inline-flex size-12 shrink-0 items-center justify-center rounded-2xl",
-        variant === "gradient" ? "gradient-comet-deep text-white shadow-[0_8px_20px_-6px_rgba(37,99,235,0.45)]" : "bg-tint text-accent",
+        "inline-flex size-12 shrink-0 items-center justify-center rounded-xl",
+        variant === "gradient" && "gradient-comet-deep text-white shadow-[0_8px_20px_-6px_rgba(37,99,235,0.45)]",
+        variant === "tint" && "bg-tint text-blue-700",
+        variant === "night" && "bg-night-tile text-signal",
         className
       )}
     >

@@ -1,25 +1,36 @@
 import { projects } from "@/content/work";
-import { Container } from "@/components/ui/primitives";
+import { heroTools } from "@/content/tools";
+import { Marquee } from "@/components/ui/marquee";
 
-/* Static client strip (no marquee). Names come from the work list, which only
-   includes engagements described from eComet's side; replace with logo files
-   once the team confirms permission (audit Open Question 3). */
-
+/* Stackworx "trusted by" band, upgraded: accessible clone, mask fades,
+   pause on hover/focus, static under reduced motion. Client names alternate
+   with the platforms we run for them until logo permissions are confirmed. */
 export function TrustTicker() {
   return (
-    <section aria-labelledby="clients-heading" className="border-y border-border-1 bg-bg-1 py-10">
-      <Container>
-        <h2 id="clients-heading" className="text-center text-sm font-medium text-text-3">
-          Stores and teams we support across three markets
-        </h2>
-        <ul className="mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 md:gap-x-14">
-          {projects.map((p) => (
-            <li key={p.slug} className="font-display text-xl font-semibold tracking-tight text-text-3/80 md:text-2xl">
-              {p.client}
-            </li>
-          ))}
-        </ul>
-      </Container>
+    <section aria-label="Clients and platforms" className="border-y border-border-1 bg-white">
+      <div className="flex h-[104px] items-center">
+        <p className="hidden shrink-0 border-r border-border-1 pr-8 pl-8 font-mono text-[11px] font-medium uppercase leading-[1.5] tracking-[0.14em] text-text-2 md:block">
+          Brands and
+          <br />
+          platforms we run
+        </p>
+        <Marquee duration={70} className="h-full flex-1" trackClassName="h-full">
+          {projects.map((p, i) => {
+            const tool = heroTools[i % heroTools.length];
+            return (
+              <span key={p.slug} className="flex h-full items-center">
+                <span className="font-display px-8 text-[22px] font-semibold tracking-tight whitespace-nowrap text-text-1/70">
+                  {p.client}
+                </span>
+                <span className="flex items-center gap-2 px-8 text-sm font-medium whitespace-nowrap text-text-2 grayscale transition-[filter] duration-200 hover:grayscale-0">
+                  <tool.Icon className="size-6" aria-hidden />
+                  {tool.label}
+                </span>
+              </span>
+            );
+          })}
+        </Marquee>
+      </div>
     </section>
   );
 }

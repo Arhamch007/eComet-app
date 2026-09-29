@@ -1,73 +1,70 @@
-import { CalendarClock, Mail, MapPin } from "lucide-react";
+"use client";
+
+import { motion, useReducedMotion } from "motion/react";
 import { site } from "@/content/site";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/primitives";
-import { Reveal } from "@/components/ui/reveal";
+import { TagPill } from "@/components/ui/atoms";
+import { RevealText } from "@/components/ui/reveal-text";
 
-/* The one full gradient block on a page (Mau5tech-style contact card).
-   Deep 700-level stops keep white text above 4.5:1. */
+/* Stackworx staircase CTA, rebuilt: the blue steps are live blocks that rise
+   into place once on scroll (theirs is one static image), the CTA is split
+   into a booking path and an email path, and the placeholder copy is gone. */
+
+// Steps from the edge inwards: [offset %, width %, height px, colour]; mirrored.
+const steps: [number, number, number, string][] = [
+  [0, 14, 150, "bg-accent"],
+  [14, 12, 108, "bg-blue-700"],
+  [26, 10, 66, "bg-signal"],
+];
+
 export function FinalCta() {
+  const reduce = useReducedMotion();
   return (
-    <section className="py-16 md:py-24" aria-labelledby="final-cta-heading">
-      <Container>
-        <Reveal>
-          <div className="gradient-comet-deep relative overflow-hidden rounded-feature p-8 text-white shadow-[0_30px_60px_-20px_rgba(37,99,235,0.4)] md:p-14">
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -top-24 -right-24 size-72 rounded-full bg-white/10 blur-3xl"
-            />
-            <div className="relative grid gap-10 md:grid-cols-12 md:items-center">
-              <div className="md:col-span-7">
-                <h2 id="final-cta-heading" className="font-display text-[34px] leading-[1.08] font-semibold md:text-[48px]">
-                  Ready when you are
-                </h2>
-                <p className="mt-4 max-w-xl text-lg text-white/90">
-                  Book a free consultation, or write to us with what you need. You will hear back within one business day.
-                </p>
-                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                  <Button href={site.cta.href} variant="inverse" size="lg">
-                    {site.cta.label}
-                  </Button>
-                  <Button href={`mailto:${site.email}`} variant="outline-light" size="lg">
-                    <Mail className="size-4" aria-hidden /> Email us
-                  </Button>
-                </div>
-              </div>
-              <dl className="grid gap-5 rounded-card bg-white/10 p-6 text-sm ring-1 ring-white/20 md:col-span-5">
-                <div className="flex gap-3">
-                  <MapPin className="mt-0.5 size-4 shrink-0" aria-hidden />
-                  <div>
-                    <dt className="font-semibold">Office</dt>
-                    <dd className="text-white/90">
-                      {site.address.street}, {site.address.city}, {site.address.country}
-                    </dd>
-                  </div>
-                </div>
-                <div className="flex gap-3">
-                  <CalendarClock className="mt-0.5 size-4 shrink-0" aria-hidden />
-                  <div>
-                    <dt className="font-semibold">Markets and hours</dt>
-                    <dd className="text-white/90">
-                      {site.markets.join(", ")}. {site.hours}.
-                    </dd>
-                  </div>
-                </div>
-                <div className="flex gap-3">
-                  <Mail className="mt-0.5 size-4 shrink-0" aria-hidden />
-                  <div>
-                    <dt className="font-semibold">Email</dt>
-                    <dd>
-                      <a href={`mailto:${site.email}`} className="text-white/90 underline-offset-4 hover:underline">
-                        {site.email}
-                      </a>
-                    </dd>
-                  </div>
-                </div>
-              </dl>
-            </div>
-          </div>
-        </Reveal>
+    <section aria-labelledby="final-cta-heading" className="relative overflow-hidden bg-bg-1">
+      <div aria-hidden className="grid-light absolute inset-0 opacity-70" />
+      <Container className="relative pt-20 pb-44 text-center md:pt-28 md:pb-60">
+        <RevealText
+          as="h2"
+          id="final-cta-heading"
+          text="Ready to hand off the busywork?"
+          className="font-display mx-auto max-w-[820px] text-[34px] leading-[1.08] font-semibold text-text-1 uppercase md:text-[58px]"
+        />
+        <p className="mx-auto mt-5 max-w-xl text-lg text-text-2">
+          Book a 20-minute call. You will leave with a plan and a price, whether or not you work with us.
+        </p>
+        <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <Button href={site.cta.href} variant="blue" size="lg" tile>
+            {site.cta.label}
+          </Button>
+          <Button href={`mailto:${site.email}`} variant="secondary" size="lg">
+            Email us instead
+          </Button>
+        </div>
       </Container>
+
+      {/* Staircase */}
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-[150px] origin-bottom scale-y-[0.7] md:scale-y-100">
+        {steps.flatMap(([offset, width, h, colour], i) =>
+          (["left", "right"] as const).map((side) => (
+            <motion.div
+              key={side + i}
+              className={`absolute bottom-0 ${colour}`}
+              style={{ [side]: `${offset}%`, width: `${width}%`, height: h }}
+              initial={reduce ? false : { y: 70, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true, margin: "0px 0px -5% 0px" }}
+              transition={{ duration: 0.7, delay: 0.08 * i, ease: [0.22, 1, 0.36, 1] }}
+            />
+          ))
+        )}
+      </div>
+      <div className="absolute bottom-4 left-4 hidden md:block">
+        <TagPill>USA · Canada · Europe</TagPill>
+      </div>
+      <div className="absolute right-4 bottom-4 hidden md:block">
+        <TagPill>Reply within 1 business day</TagPill>
+      </div>
     </section>
   );
 }
