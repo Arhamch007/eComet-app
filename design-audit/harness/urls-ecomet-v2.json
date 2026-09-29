@@ -1,0 +1,35 @@
+[
+ {
+  "url": "https://teamecomet.com/",
+  "slug": "teamecomet-home-v2",
+  "args": []
+ },
+ {
+  "url": "https://teamecomet.com/about-1",
+  "slug": "teamecomet-about-v2",
+  "args": [
+   "--noHover"
+  ]
+ },
+ {
+  "url": "https://teamecomet.com/services-4",
+  "slug": "teamecomet-services-v2",
+  "args": [
+   "--noHover"
+  ]
+ },
+ {
+  "url": "https://teamecomet.com/service-details",
+  "slug": "teamecomet-service-details-v2",
+  "args": [
+   "--noHover"
+  ]
+ },
+ {
+  "url": "https://teamecomet.com/projects/halyard",
+  "slug": "teamecomet-project-halyard-v2",
+  "args": [
+   "--noHover"
+  ]
+ }
+]

@@ -1,0 +1,12 @@
+[
+ {"url":"https://21st.dev/community/components?preview=%2F%40yura%2Fcomponents%2Fcarousel-squeeze","slug":"b-carousel-squeeze","args":["--noHover","--sections=8"]},
+ {"url":"https://21st.dev/community/components?preview=%2F%40vaib215%2Fcomponents%2Fstagger-testimonials","slug":"b-stagger-testimonials","args":["--noHover","--sections=8"]},
+ {"url":"https://21st.dev/community/components?preview=%2F%40ravikatiyar162%2Fcomponents%2Ffloating-icons-hero-section","slug":"b-floating-icons-hero","args":["--noHover","--sections=8"]},
+ {"url":"https://magicui.design/docs/components/smooth-cursor","slug":"b-smooth-cursor","args":["--noHover","--sections=8"]},
+ {"url":"https://magicui.design/docs/components/interactive-grid-pattern","slug":"b-interactive-grid-pattern","args":["--noHover","--sections=8"]},
+ {"url":"https://magicui.design/docs/components/dot-pattern","slug":"b-dot-pattern","args":["--noHover","--sections=8"]},
+ {"url":"https://magicui.design/docs/components/scroll-based-velocity","slug":"b-scroll-based-velocity","args":["--noHover","--sections=8"]},
+ {"url":"https://magicui.design/docs/components/bento-grid","slug":"b-bento-grid","args":["--noHover","--sections=8"]},
+ {"url":"https://ui.spectrumhq.in/docs/accordion","slug":"b-spectrum-accordion","args":["--noHover","--sections=8"]},
+ {"url":"https://ui.spectrumhq.in/docs/animatedcard","slug":"b-spectrum-animatedcard","args":["--noHover","--sections=8"]}
+]

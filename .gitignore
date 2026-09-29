@@ -67,3 +67,10 @@ out
 .env
 
 build
+# Design audit evidence pack (330 MB of screenshots); reports stay tracked
+design-audit/evidence/
+design-audit/source/
+
+# Next.js
+.next/
+next-env.d.ts

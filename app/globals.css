@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   eComet design tokens (see design-audit report, Section 4)
+   Black base, white type, one flat accent (cyan), the comet gradient in five
+   roles only: logo, one H1 phrase, one featured border, the final CTA wash,
+   the process connector line.
+--------------------------------------------------------------------------- */
+@theme {
+  --color-bg-0: #07070b;
+  --color-bg-1: #0d0e14;
+  --color-surface-1: rgba(255, 255, 255, 0.03);
+  --color-surface-2: rgba(255, 255, 255, 0.06);
+  --color-border-1: rgba(255, 255, 255, 0.08);
+  --color-border-2: rgba(255, 255, 255, 0.16);
+  --color-text-1: #f5f6fa;
+  --color-text-2: rgba(245, 246, 250, 0.72);
+  --color-text-3: rgba(245, 246, 250, 0.52);
+  --color-accent: #22d3ee;
+  --color-comet-cyan: #22d3ee;
+  --color-comet-blue: #3b82f6;
+  --color-comet-violet: #8b5cf6;
+  --color-comet-magenta: #ec4899;
+  --color-success: #34d399;
+  --color-warning: #fbbf24;
+  --color-error: #f87171;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", monospace;
+  --font-display: var(--font-cal-sans), var(--font-geist-sans), ui-sans-serif, sans-serif;
+
+  --radius-card: 16px;
+  --radius-feature: 24px;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from { height: 0; }
+    to { height: var(--radix-accordion-content-height); }
+  }
+  @keyframes accordion-up {
+    from { height: var(--radix-accordion-content-height); }
+    to { height: 0; }
+  }
+}
+
+:root {
+  color-scheme: dark;
+  --gradient-comet: linear-gradient(90deg, #22d3ee 0%, #3b82f6 35%, #8b5cf6 70%, #ec4899 100%);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg-0);
+  color: var(--color-text-1);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(139, 92, 246, 0.35);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid rgba(34, 211, 238, 0.5);
+  outline-offset: 2px;
+}
+
+/* Display type */
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+/* Gradient roles ---------------------------------------------------------- */
+.gradient-comet {
+  background-image: var(--gradient-comet);
+}
+
+.text-gradient {
+  background-image: var(--gradient-comet);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* 1 px gradient border on a rounded element (one per section) */
+.gradient-border {
+  position: relative;
+}
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--gradient-comet);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* The hairline connector under the process row */
+.gradient-line {
+  height: 1px;
+  background: var(--gradient-comet);
+  opacity: 0.6;
+}
+
+/* Textures and glows ------------------------------------------------------ */
+.glow-violet {
+  background: radial-gradient(closest-side, rgba(139, 92, 246, 0.18), transparent 70%);
+}
+
+.dot-texture {
+  background-image: radial-gradient(rgba(139, 92, 246, 0.16) 1px, transparent 1.2px);
+  background-size: 24px 24px;
+  -webkit-mask-image: radial-gradient(640px circle at 50% 40%, #000, transparent);
+  mask-image: radial-gradient(640px circle at 50% 40%, #000, transparent);
+}
+
+.noise-edge {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+}
+
+/* Reduced motion: everything instant, layout identical --------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
