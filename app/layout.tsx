@@ -10,11 +10,12 @@ import { Footer } from "@/components/site/footer";
 import { OrganizationJsonLd } from "@/components/site/json-ld";
 import { cn } from "@/lib/utils";
 
-/* Cal Sans (SIL OFL 1.1, see app/fonts/CalSans-OFL.txt) for display headings. */
+/* Cal Sans (SIL OFL 1.1, see app/fonts/CalSans-OFL.txt) for display headings,
+   subset to Latin and pinned to weights 600-700. */
 const calSans = localFont({
-  src: "./fonts/CalSansVF.woff2",
+  src: "./fonts/CalSansVF-latin.woff2",
   variable: "--font-cal-sans",
-  weight: "400 700",
+  weight: "600 700",
   display: "swap",
 });
 

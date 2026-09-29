@@ -52,9 +52,18 @@ function Chip({
   );
 }
 
-export function ContactForm({ tone = "light" }: { tone?: Tone }) {
+/** bare: drop the card chrome when the form already sits inside a card. */
+export function ContactForm({
+  tone = "light",
+  defaultServices = [],
+  bare = false,
+}: {
+  tone?: Tone;
+  defaultServices?: string[];
+  bare?: boolean;
+}) {
   const [step, setStep] = React.useState(0);
-  const [picked, setPicked] = React.useState<string[]>([]);
+  const [picked, setPicked] = React.useState<string[]>(defaultServices);
   const [budget, setBudget] = React.useState("");
   const [timeline, setTimeline] = React.useState("");
   const [error, setError] = React.useState("");
@@ -104,8 +113,8 @@ export function ContactForm({ tone = "light" }: { tone?: Tone }) {
   }
 
   const shell = cn(
-    "rounded-2xl border p-6 md:p-8",
-    dark ? "border-white/10 bg-night-card text-white" : "border-border-1 bg-white shadow-[var(--shadow-card)]"
+    !bare && "rounded-2xl border p-6 md:p-8",
+    bare ? (dark ? "text-white" : "") : dark ? "border-white/10 bg-night-card text-white" : "border-border-1 bg-white shadow-[var(--shadow-card)]"
   );
 
   if (status === "sent") {
