@@ -220,3 +220,67 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .hero-waves, .hero-rise { animation: none; }
 }
+
+/* Landing hero buttons: logo gradient, hover sheen (see PillButton) */
+.comet-btn--primary {
+  background-image: linear-gradient(110deg, #2563eb 0%, #5b3dff 32%, #7c3aed 58%, #c026d3 82%, #2563eb 100%);
+  background-size: 220% 100%;
+  background-position: 0% 50%;
+  transition: background-position 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s ease;
+}
+.comet-btn--primary:hover {
+  background-position: 100% 50%;
+}
+/* light sheen that sweeps across on hover */
+.comet-btn--primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, 0.38) 48%, transparent 64%);
+  transform: translateX(-120%);
+  pointer-events: none;
+}
+.comet-btn--primary:hover::after {
+  transform: translateX(120%);
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+/* outline: gradient ring, gradient fill fades in on hover */
+.comet-btn--outline::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(110deg, #00d5ff, #2f5bff 35%, #8b3dff 70%, #e93cf5);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 2;
+}
+.comet-btn--outline::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(110deg, #2563eb 0%, #5b3dff 40%, #7c3aed 70%, #c026d3 100%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+.comet-btn--outline:hover::after {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .comet-btn--primary,
+  .comet-btn--primary::after,
+  .comet-btn--outline::after {
+    transition: none;
+  }
+  .comet-btn--primary::after {
+    display: none;
+  }
+}

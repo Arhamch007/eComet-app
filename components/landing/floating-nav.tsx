@@ -31,7 +31,7 @@ export function FloatingNav() {
       <div className="mx-auto max-w-[964px] rounded-[20px] bg-white/90 shadow-[0_1px_2px_rgba(20,20,30,0.04),0_8px_24px_-12px_rgba(20,20,40,0.12)] ring-1 ring-black/[0.04] backdrop-blur-md">
         <div className="flex h-[54px] items-center justify-between pr-2 pl-5">
           <Link href="/" aria-label="eComet home" className="rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#4f46e5]">
-            <Image src="/brand/ecomet-logo.png" alt="eComet" width={640} height={159} priority className="h-8 w-auto" />
+            <Image src="/brand/ecomet-logo.png" alt="eComet" width={640} height={159} priority className="h-9 w-auto" />
           </Link>
 
           <nav aria-label="Primary" className="hidden items-center gap-1 md:flex">
@@ -46,7 +46,7 @@ export function FloatingNav() {
             ))}
             <Link
               href={site.cta.href}
-              className="ml-3 inline-flex h-[38px] items-center rounded-[12px] bg-[#111111] px-4 text-[15px] font-semibold text-white transition-colors hover:bg-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4f46e5]"
+              className="comet-btn--primary relative ml-3 inline-flex h-[38px] items-center overflow-hidden rounded-[12px] px-4 text-[15px] font-semibold text-white shadow-[0_8px_20px_-10px_rgba(47,91,255,0.7)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#7b3dff] motion-safe:hover:-translate-y-px"
             >
               Book a call
             </Link>
@@ -79,7 +79,7 @@ export function FloatingNav() {
             <Link
               href={site.cta.href}
               onClick={() => setOpen(false)}
-              className="mt-2 inline-flex h-12 items-center justify-center rounded-[14px] bg-[#111] text-base font-semibold text-white"
+              className="comet-btn--primary relative mt-2 inline-flex h-12 items-center justify-center overflow-hidden rounded-[14px] text-base font-semibold text-white"
             >
               Book a call
             </Link>

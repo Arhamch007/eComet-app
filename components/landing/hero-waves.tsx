@@ -1,4 +1,4 @@
-/* Soft light-ribbon background: two wide, heavily blurred curves in the
+/* Soft light-ribbon background: three wide, heavily blurred curves in the
    logo's cyan -> blue -> violet -> magenta, each with a faint grey shadow
    band and a white highlight so it reads as light passing through glass.
    Pure inline SVG (no image request); a slow drift is CSS-only and switched
@@ -14,6 +14,15 @@ type Ribbon = {
 };
 
 const ribbons: Ribbon[] = [
+  // faint band across the upper left, balances the empty top on wide screens
+  {
+    d: "M-160 240 C 140 170, 420 130, 700 70 S 1000 -10, 1180 -60",
+    gradient: "comet-c",
+    width: 70,
+    blur: 38,
+    opacity: 0.26,
+    shadowOpacity: 0.1,
+  },
   // long band from the left edge rising across to the upper right
   {
     d: "M-120 560 C 260 470, 560 450, 860 380 S 1300 170, 1560 60",
