@@ -83,7 +83,7 @@ export function LandingHero() {
             commas via sr-only text. */}
         <h1
           id="hero-heading"
-          className="text-[38px] leading-[1.1] font-bold tracking-[-0.03em] text-[#141414] sm:text-[48px] md:text-[42px] lg:text-[54px] xl:text-[64px]"
+          className="text-[32px] leading-[1.12] font-bold tracking-[-0.03em] text-[#141414] sm:text-[40px] md:text-[36px] lg:text-[44px] xl:text-[52px]"
         >
           <span className="block md:inline">Web Solutions</span>
           <span className="sr-only">, </span>
@@ -96,11 +96,11 @@ export function LandingHero() {
           <span className="sr-only"> and </span>
           <span className="block md:inline">Digital Support</span>
         </h1>
-        <p className="mx-auto mt-6 max-w-[560px] text-pretty text-[16px] leading-[1.6] text-[#555555] sm:text-[17px] md:mt-7 md:text-[18px]">
+        <p className="mx-auto mt-5 max-w-[600px] text-pretty text-[15px] leading-[1.6] text-[#555555] sm:text-[16px] md:mt-6 md:text-[17px]">
           One team that builds stronger digital operations and helps businesses across the USA, Canada and Europe
           grow with confidence.
         </p>
-        <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row md:mt-10">
+        <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row md:mt-9">
           <PillButton
             href={site.cta.href}
             icon={<CalendarDays className="size-[22px]" strokeWidth={1.8} />}
