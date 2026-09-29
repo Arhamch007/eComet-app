@@ -28,7 +28,7 @@ export function FloatingNav() {
 
   return (
     <header className="absolute inset-x-0 top-0 z-50 px-4 pt-4 sm:pt-6">
-      <div className="mx-auto max-w-[964px] rounded-[20px] bg-white/90 shadow-[0_1px_2px_rgba(20,20,30,0.04),0_8px_24px_-12px_rgba(20,20,40,0.12)] ring-1 ring-black/[0.04] backdrop-blur-md">
+      <div className="mx-auto max-w-[820px] rounded-[20px] bg-white/90 shadow-[0_1px_2px_rgba(20,20,30,0.04),0_8px_24px_-12px_rgba(20,20,40,0.12)] ring-1 ring-black/[0.04] backdrop-blur-md">
         <div className="flex h-[54px] items-center justify-between pr-2 pl-5">
           <Link href="/" aria-label="eComet home" className="rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#4f46e5]">
             <Image src="/brand/ecomet-logo.png" alt="eComet" width={640} height={159} priority className="h-9 w-auto" />

@@ -7,16 +7,6 @@ import { HeroWaves } from "@/components/landing/hero-waves";
    regular-weight headline and dark pill buttons) over soft light ribbons in
    the logo colours (see HeroWaves). */
 
-/* Small dot in the logo gradient that separates two keywords on one line. */
-function KeywordDot() {
-  return (
-    <span
-      aria-hidden
-      className="mx-[0.32em] hidden size-[0.22em] -translate-y-[0.14em] rounded-full bg-[linear-gradient(160deg,#04e5fb,#0e6cf2_40%,#2d4cf2_62%,#c65cf7)] align-middle md:inline-block"
-    />
-  );
-}
-
 /* Hero buttons in the logo gradient.
    primary: filled with the logo gradient, cyan at the top to magenta at the
      bottom (label over the blue band, white text readable);
@@ -43,7 +33,7 @@ function PillButton({
     <Link
       href={href}
       className={
-        "comet-btn group relative isolate inline-flex h-12 w-full max-w-[300px] items-center gap-2.5 overflow-hidden rounded-[14px] pr-5 pl-4 text-left transition-[box-shadow,color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#7b3dff] sm:w-[232px] " +
+        "comet-btn group relative isolate inline-flex h-12 w-full max-w-[300px] items-center gap-2.5 overflow-hidden rounded-[14px] pr-5 pl-4 text-left transition-[box-shadow,color] duration-150 ease-out focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#7b3dff] sm:w-[232px] " +
         (primary
           ? "comet-btn--primary text-white shadow-[0_12px_28px_-12px_rgba(14,108,242,0.7)] hover:shadow-[0_18px_40px_-12px_rgba(159,74,237,0.6),0_0_30px_-4px_rgba(4,229,251,0.5)]"
           : "comet-btn--outline bg-white/70 text-[#141414] shadow-[0_10px_24px_-14px_rgba(20,20,60,0.35)] backdrop-blur-md hover:text-white hover:shadow-[0_18px_40px_-14px_rgba(39,67,239,0.6),0_0_26px_-6px_rgba(4,229,251,0.45)]")
@@ -52,14 +42,14 @@ function PillButton({
       <span
         aria-hidden
         className={
-          "relative z-10 shrink-0 transition-colors duration-300 " +
+          "relative z-10 shrink-0 transition-colors duration-150 " +
           (primary ? "text-white" : "text-[#2743ef] group-hover:text-white")
         }
       >
         {icon}
       </span>
       <span className="relative z-10 flex flex-col leading-none">
-        <span className={"text-[11px] font-medium transition-colors duration-300 " + (primary ? "text-white/80" : "text-[#5f6272] group-hover:text-white/80")}>
+        <span className={"text-[11px] font-medium transition-colors duration-150 " + (primary ? "text-white/80" : "text-[#5f6272] group-hover:text-white/80")}>
           {kicker}
         </span>
         <span className="mt-0.5 text-[15px] font-semibold tracking-[-0.01em]">{label}</span>
@@ -78,8 +68,8 @@ export function LandingHero() {
 
       <div className="hero-rise mx-auto max-w-[1060px] text-center">
         {/* The agency's four core keywords are the H1 (see site.keywords). No
-            punctuation: one keyword per line on small screens, two per line with a
-            logo-gradient dot between them on desktop. Screen readers get the
+            punctuation: one keyword per line on small screens, two per line with extra
+            space between them from tablet up. Screen readers get the
             commas via sr-only text. */}
         <h1
           id="hero-heading"
@@ -87,12 +77,12 @@ export function LandingHero() {
         >
           <span className="block md:inline">Web Solutions</span>
           <span className="sr-only">, </span>
-          <KeywordDot />
+          <span aria-hidden className="hidden w-[0.45em] md:inline-block" />
           <span className="block md:inline">AI Automation</span>
           <span className="sr-only">, </span>
           <br className="hidden md:block" />
           <span className="block md:inline">Growth Marketing</span>
-          <KeywordDot />
+          <span aria-hidden className="hidden w-[0.45em] md:inline-block" />
           <span className="sr-only"> and </span>
           <span className="block md:inline">Digital Support</span>
         </h1>
