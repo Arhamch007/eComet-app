@@ -1,32 +1,36 @@
 import Link from "next/link";
-import { ArrowUpRight, CalendarDays } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { site } from "@/content/site";
 import { HeroWaves } from "@/components/landing/hero-waves";
-import { LiquidGlassLink } from "@/components/ui/liquid-glass-button";
 
 /* Minimal centred hero (approved reference: floating pill nav, a large
    regular-weight headline and dark pill buttons) over soft light ribbons in
    the logo colours (see HeroWaves). */
 
-/* Hero buttons: liquid glass pills in the logo palette, one-line labels. */
+/* Hero buttons: solid, so they stand out from the coloured waves behind.
+   primary = logo gradient (#01E2F8 > #1590EC > #0D5DF5), white label, arrow
+   secondary = solid white with a soft border
+   Hover changes colour and shadow only (styles: .hero-cta in globals.css). */
 function HeroButton({
   href,
-  icon,
   label,
-  tone,
+  primary = false,
 }: {
   href: string;
-  icon: React.ReactNode;
   label: string;
-  tone: "tint" | "clear";
+  primary?: boolean;
 }) {
   return (
-    <LiquidGlassLink href={href} tone={tone} className="h-11 w-full max-w-[280px] gap-2 px-5 whitespace-nowrap sm:w-auto">
-      <span aria-hidden className={tone === "tint" ? "shrink-0 text-white" : "shrink-0 text-[#0d5df5]"}>
-        {icon}
-      </span>
-      <span className="text-[14px] font-semibold tracking-[-0.01em]">{label}</span>
-    </LiquidGlassLink>
+    <Link
+      href={href}
+      className={
+        "hero-cta relative isolate inline-flex h-11 w-full max-w-[280px] items-center justify-center gap-2 overflow-hidden rounded-full px-6 text-[15px] font-semibold tracking-[-0.01em] whitespace-nowrap outline-none focus-visible:ring-[3px] focus-visible:ring-[#0d5df5]/40 sm:w-auto " +
+        (primary ? "hero-cta--primary text-white" : "hero-cta--secondary text-[#141414]")
+      }
+    >
+      {label}
+      {primary ? <ArrowRight aria-hidden className="size-4" strokeWidth={2.2} /> : null}
+    </Link>
   );
 }
 
@@ -55,18 +59,8 @@ export function LandingHero() {
           grow with confidence.
         </p>
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row md:mt-9">
-          <HeroButton
-            href={site.cta.href}
-            icon={<CalendarDays className="size-4" strokeWidth={2} />}
-            label="Book a free consultation"
-            tone="tint"
-          />
-          <HeroButton
-            href={site.secondaryCta.href}
-            icon={<ArrowUpRight className="size-4" strokeWidth={2} />}
-            label="See our work"
-            tone="clear"
-          />
+          <HeroButton href="/contact" label="Start a Project" primary />
+          <HeroButton href="/services" label="Explore Services" />
         </div>
       </div>
     </section>

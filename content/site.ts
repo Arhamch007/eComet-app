@@ -26,7 +26,7 @@ export const site = {
     upwork: "https://www.upwork.com/agencies/1114861152675102720/",
   },
   cta: { label: "Book a free consultation", href: "/contact" },
-  secondaryCta: { label: "See our work", href: "/work" },
+  secondaryCta: { label: "Explore Services", href: "/services" },
   nav: [
     { label: "Services", href: "/services" },
     { label: "Work", href: "/work" },

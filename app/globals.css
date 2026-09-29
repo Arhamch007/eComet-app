@@ -244,7 +244,7 @@ body {
 }
 .liquid-glass--tint .liquid-glass__tint {
   background: linear-gradient(115deg, #01e2f8 0%, #1590ec 24%, #0d5df5 58%, #681bf5 100%);
-  opacity: 0.92;
+  opacity: 1;
 }
 .liquid-glass--tint::after {
   content: "";
@@ -304,6 +304,50 @@ body {
   .liquid-glass,
   .liquid-glass__tint,
   .liquid-glass--tint::after {
+    transition: none;
+  }
+}
+
+/* Landing hero call-to-action buttons: solid so they read clearly over the
+   coloured waves. Logo palette: #01E2F8, #1590EC, #0D5DF5, #681BF5. */
+.hero-cta {
+  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hero-cta--primary {
+  background: linear-gradient(100deg, #02cff6 0%, #1590ec 30%, #0d5df5 72%, #3b3ff5 100%);
+  text-shadow: 0 1px 1px rgba(6, 40, 120, 0.3);
+  box-shadow: 0 10px 24px -10px rgba(21, 144, 236, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+.hero-cta--primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(100deg, #1590ec 0%, #0d5df5 50%, #681bf5 100%);
+  opacity: 0;
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hero-cta--primary:hover::before,
+.hero-cta--primary:focus-visible::before {
+  opacity: 1;
+}
+.hero-cta--primary:hover {
+  box-shadow: 0 14px 30px -10px rgba(104, 27, 245, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+.hero-cta--secondary {
+  background-color: #ffffff;
+  border: 1px solid #e3e6ee;
+  box-shadow: 0 6px 18px -10px rgba(20, 30, 70, 0.28);
+}
+.hero-cta--secondary:hover {
+  border-color: #b9ccf7;
+  background-color: #f7f9ff;
+  box-shadow: 0 10px 24px -12px rgba(13, 93, 245, 0.35);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-cta,
+  .hero-cta--primary::before {
     transition: none;
   }
 }
