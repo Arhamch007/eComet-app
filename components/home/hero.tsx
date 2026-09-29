@@ -41,11 +41,7 @@ export function Hero() {
     >
       <Container>
         <div className="mx-auto max-w-[860px] text-center">
-          <p className="inline-flex items-center rounded-full border border-border-1 bg-white/80 px-4 py-1.5 text-[13px] font-medium text-text-2 shadow-[var(--shadow-card)] backdrop-blur-sm">
-            <span className="sm:hidden">Automation · Web · Shopify · Marketing</span>
-            <span className="hidden sm:inline">AI automation · Web · Shopify support · Marketing · Virtual assistants</span>
-          </p>
-          <h1 className="font-display mt-7 text-balance text-[42px] leading-[1.04] font-semibold text-text-1 sm:text-[56px] md:text-[76px]">
+          <h1 className="font-display text-balance text-[42px] leading-[1.04] font-semibold text-text-1 sm:text-[56px] md:text-[76px]">
             Crafted <GradientText>automation and growth</GradientText> for brands that sell online
           </h1>
           <p className="mx-auto mt-6 max-w-[620px] text-pretty text-lg leading-relaxed text-text-2 md:text-xl">
