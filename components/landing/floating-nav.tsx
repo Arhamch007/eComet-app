@@ -46,7 +46,7 @@ export function FloatingNav() {
             ))}
             <Link
               href={site.cta.href}
-              className="comet-btn--primary relative ml-3 inline-flex h-[38px] items-center overflow-hidden rounded-[12px] px-4 text-[15px] font-semibold text-white shadow-[0_8px_20px_-10px_rgba(47,91,255,0.7)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#7b3dff] motion-safe:hover:-translate-y-px"
+              className="comet-btn--primary relative ml-3 inline-flex h-[38px] items-center overflow-hidden rounded-[12px] px-4 text-[15px] font-semibold text-white shadow-[0_8px_20px_-10px_rgba(47,91,255,0.7)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#7b3dff]"
             >
               Book a call
             </Link>

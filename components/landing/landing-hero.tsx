@@ -12,7 +12,7 @@ function KeywordDot() {
   return (
     <span
       aria-hidden
-      className="mx-[0.32em] hidden size-[0.22em] -translate-y-[0.14em] rounded-full bg-[linear-gradient(160deg,#04e5fb,#0e6cf2_40%,#2743ef_62%,#b70be9)] align-middle lg:inline-block"
+      className="mx-[0.32em] hidden size-[0.22em] -translate-y-[0.14em] rounded-full bg-[linear-gradient(160deg,#04e5fb,#0e6cf2_40%,#2d4cf2_62%,#c65cf7)] align-middle lg:inline-block"
     />
   );
 }
@@ -20,11 +20,11 @@ function KeywordDot() {
 /* Hero buttons in the logo gradient.
    primary: filled with the logo gradient, cyan at the top to magenta at the
      bottom (label over the blue band, white text readable);
-     on hover the gradient slides, a light sheen sweeps across, the button
-     lifts and a cyan/violet glow appears.
+     on hover the gradient slides, a light sheen sweeps across and a
+     cyan/violet glow appears. The button itself never moves or scales.
    outline: white glass with a gradient border; on hover the gradient fills
-     in, text turns white and the arrow nudges up-right.
-   All motion is transform/opacity only and is removed under reduced motion. */
+     in and the text turns white.
+   Hover changes colour only; reduced motion also drops the sheen. */
 function PillButton({
   href,
   icon,
@@ -43,17 +43,17 @@ function PillButton({
     <Link
       href={href}
       className={
-        "comet-btn group relative isolate inline-flex h-[56px] w-full max-w-[320px] items-center gap-3 overflow-hidden rounded-[16px] pr-6 pl-5 text-left transition-[transform,box-shadow,color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#7b3dff] motion-safe:hover:-translate-y-[3px] motion-safe:active:translate-y-0 sm:w-auto sm:min-w-[236px] " +
+        "comet-btn group relative isolate inline-flex h-[56px] w-full max-w-[320px] items-center gap-3 overflow-hidden rounded-[16px] pr-6 pl-5 text-left transition-[box-shadow,color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#7b3dff] sm:w-auto sm:min-w-[236px] " +
         (primary
-          ? "comet-btn--primary text-white shadow-[0_12px_28px_-12px_rgba(14,108,242,0.7)] hover:shadow-[0_18px_40px_-12px_rgba(122,47,240,0.65),0_0_30px_-4px_rgba(4,229,251,0.5)]"
+          ? "comet-btn--primary text-white shadow-[0_12px_28px_-12px_rgba(14,108,242,0.7)] hover:shadow-[0_18px_40px_-12px_rgba(159,74,237,0.6),0_0_30px_-4px_rgba(4,229,251,0.5)]"
           : "comet-btn--outline bg-white/70 text-[#141414] shadow-[0_10px_24px_-14px_rgba(20,20,60,0.35)] backdrop-blur-md hover:text-white hover:shadow-[0_18px_40px_-14px_rgba(39,67,239,0.6),0_0_26px_-6px_rgba(4,229,251,0.45)]")
       }
     >
       <span
         aria-hidden
         className={
-          "relative z-10 shrink-0 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] " +
-          (primary ? "text-white group-hover:scale-110" : "text-[#2743ef] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white")
+          "relative z-10 shrink-0 transition-colors duration-300 " +
+          (primary ? "text-white" : "text-[#2743ef] group-hover:text-white")
         }
       >
         {icon}
@@ -96,9 +96,13 @@ export function LandingHero() {
           <span className="sr-only"> and </span>
           <span className="block lg:inline">Digital Support</span>
         </h1>
-        <p className="mx-auto mt-7 max-w-[640px] text-pretty text-[17px] leading-[1.55] text-[#555555] md:text-[19px]">
-          One 20-plus person team that builds, automates, markets and supports brands that sell online, across the
-          USA, Canada and Europe.
+        <p className="mx-auto mt-7 max-w-[660px] text-pretty text-[17px] leading-[1.6] text-[#555555] md:text-[19px]">
+          We combine{" "}
+          <strong className="font-semibold text-[#1a1a1a]">
+            technology, AI automation, growth marketing, and digital support
+          </strong>{" "}
+          to build stronger digital operations and help businesses across the USA, Canada and Europe grow with
+          confidence.
         </p>
         <div className="mt-11 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <PillButton
