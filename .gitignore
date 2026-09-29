@@ -77,3 +77,9 @@ next-env.d.ts
 
 # Competitor research workspace (scraped pages, screenshots) - local only
 design-audit/stackworx/
+
+# Design review workspace (agent screenshots and scripts) - local only
+design-audit/review/
+
+# TypeScript incremental build cache
+tsconfig.tsbuildinfo
