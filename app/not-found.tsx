@@ -1,8 +1,13 @@
 import { Button } from "@/components/ui/button";
+import { Header } from "@/components/site/header";
+import { Footer } from "@/components/site/footer";
 import { Container, Eyebrow } from "@/components/ui/primitives";
 
 export default function NotFound() {
   return (
+    <>
+    <Header />
+    <main id="main">
     <section className="relative overflow-hidden py-24 md:py-40">
       <div aria-hidden className="wash-top pointer-events-none absolute inset-0" />
       <Container className="relative text-center">
@@ -21,5 +26,8 @@ export default function NotFound() {
         </div>
       </Container>
     </section>
+    </main>
+    <Footer />
+    </>
   );
 }

@@ -1,21 +1,29 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import { Figtree } from "next/font/google";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { site } from "@/content/site";
 import { Providers } from "@/components/providers";
-import { Header } from "@/components/site/header";
-import { Footer } from "@/components/site/footer";
 import { OrganizationJsonLd } from "@/components/site/json-ld";
 import { cn } from "@/lib/utils";
 
-/* Cal Sans (SIL OFL 1.1, see app/fonts/CalSans-OFL.txt) for display headings,
-   subset to Latin and pinned to weights 600-700. */
+/* Cal Sans (SIL OFL 1.1, see app/fonts/CalSans-OFL.txt) for display headings
+   on the inner pages, subset to Latin and pinned to weights 600-700. */
 const calSans = localFont({
   src: "./fonts/CalSansVF-latin.woff2",
   variable: "--font-cal-sans",
   weight: "600 700",
+  display: "swap",
+});
+
+/* Figtree (SIL OFL 1.1): rounded geometric sans that matches the logo's
+   letterforms; used by the new home design. Self-hosted by next/font. */
+const figtree = Figtree({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-figtree",
   display: "swap",
 });
 
@@ -27,6 +35,10 @@ export const metadata: Metadata = {
   },
   description: site.description,
   applicationName: site.name,
+  icons: {
+    icon: [{ url: "/brand/ecomet-mark.png", type: "image/png" }],
+    apple: [{ url: "/brand/ecomet-mark-512.png" }],
+  },
   openGraph: {
     type: "website",
     siteName: site.name,
@@ -41,7 +53,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#ffffff",
+  themeColor: "#f6f6f7",
   colorScheme: "light",
 };
 
@@ -49,7 +61,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={cn(GeistSans.variable, GeistMono.variable, calSans.variable, "bg-bg-0")}
+      className={cn(GeistSans.variable, GeistMono.variable, calSans.variable, figtree.variable, "bg-bg-0")}
     >
       <body className="min-h-dvh antialiased">
         <a
@@ -58,11 +70,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to content
         </a>
-        <Providers>
-          <Header />
-          <main id="main">{children}</main>
-          <Footer />
-        </Providers>
+        <Providers>{children}</Providers>
         <OrganizationJsonLd />
       </body>
     </html>
