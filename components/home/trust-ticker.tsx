@@ -3,7 +3,8 @@ import { heroTools } from "@/content/tools";
 import { Marquee } from "@/components/ui/marquee";
 
 /* Stackworx "trusted by" band, upgraded: accessible clone, mask fades,
-   pause on hover/focus, static under reduced motion. Client names alternate
+   pause on hover/focus, static under reduced motion. Platform marks show in
+   their brand colours. Client names alternate
    with the platforms we run for them until logo permissions are confirmed. */
 export function TrustTicker() {
   return (
@@ -22,8 +23,8 @@ export function TrustTicker() {
                 <span className="font-display px-8 text-[22px] font-semibold tracking-tight whitespace-nowrap text-text-1/70">
                   {p.client}
                 </span>
-                <span className="flex items-center gap-2 px-8 text-sm font-medium whitespace-nowrap text-text-2 grayscale transition-[filter] duration-200 hover:grayscale-0">
-                  <tool.Icon className="size-6" aria-hidden />
+                <span className="flex items-center gap-2.5 px-8 text-[15px] font-semibold whitespace-nowrap text-text-1">
+                  <tool.Icon className="size-7" aria-hidden />
                   {tool.label}
                 </span>
               </span>
