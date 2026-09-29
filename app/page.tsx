@@ -7,7 +7,6 @@ import { Testimonials } from "@/components/home/testimonials";
 import { WhyChoose } from "@/components/home/why-choose";
 import { Process } from "@/components/home/process";
 import { TickerBand } from "@/components/home/ticker-band";
-import { TeamSnapshot } from "@/components/home/team-snapshot";
 import { Faq } from "@/components/home/faq";
 import { FinalCta } from "@/components/home/final-cta";
 import { ContactBand } from "@/components/home/contact-band";
@@ -26,7 +25,6 @@ export default function HomePage() {
       <WhyChoose />
       <Process />
       <TickerBand />
-      <TeamSnapshot />
       <Faq />
       <FinalCta />
       <ContactBand />

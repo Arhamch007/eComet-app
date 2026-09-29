@@ -8,7 +8,6 @@ import { Reveal, RevealGroup, RevealItem } from "@/components/ui/reveal";
 import { CountUp } from "@/components/ui/count-up";
 import { TimezoneBand } from "@/components/about/timezone-band";
 import { WhyChoose } from "@/components/home/why-choose";
-import { TeamSnapshot } from "@/components/home/team-snapshot";
 import { Testimonials } from "@/components/home/testimonials";
 import { FinalCta } from "@/components/home/final-cta";
 import { ContactBand } from "@/components/home/contact-band";
@@ -110,7 +109,6 @@ export default function AboutPage() {
 
       <TimezoneBand />
       <WhyChoose />
-      <TeamSnapshot />
       <Testimonials />
       <FinalCta />
       <ContactBand />
