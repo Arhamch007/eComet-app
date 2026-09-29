@@ -12,7 +12,7 @@ function KeywordDot() {
   return (
     <span
       aria-hidden
-      className="mx-[0.32em] hidden size-[0.22em] -translate-y-[0.14em] rounded-full bg-[linear-gradient(160deg,#04e5fb,#0e6cf2_40%,#2d4cf2_62%,#c65cf7)] align-middle lg:inline-block"
+      className="mx-[0.32em] hidden size-[0.22em] -translate-y-[0.14em] rounded-full bg-[linear-gradient(160deg,#04e5fb,#0e6cf2_40%,#2d4cf2_62%,#c65cf7)] align-middle md:inline-block"
     />
   );
 }
@@ -43,7 +43,7 @@ function PillButton({
     <Link
       href={href}
       className={
-        "comet-btn group relative isolate inline-flex h-[56px] w-full max-w-[320px] items-center gap-3 overflow-hidden rounded-[16px] pr-6 pl-5 text-left transition-[box-shadow,color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#7b3dff] sm:w-auto sm:min-w-[236px] " +
+        "comet-btn group relative isolate inline-flex h-12 w-full max-w-[300px] items-center gap-2.5 overflow-hidden rounded-[14px] pr-5 pl-4 text-left transition-[box-shadow,color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#7b3dff] sm:w-[232px] " +
         (primary
           ? "comet-btn--primary text-white shadow-[0_12px_28px_-12px_rgba(14,108,242,0.7)] hover:shadow-[0_18px_40px_-12px_rgba(159,74,237,0.6),0_0_30px_-4px_rgba(4,229,251,0.5)]"
           : "comet-btn--outline bg-white/70 text-[#141414] shadow-[0_10px_24px_-14px_rgba(20,20,60,0.35)] backdrop-blur-md hover:text-white hover:shadow-[0_18px_40px_-14px_rgba(39,67,239,0.6),0_0_26px_-6px_rgba(4,229,251,0.45)]")
@@ -59,10 +59,10 @@ function PillButton({
         {icon}
       </span>
       <span className="relative z-10 flex flex-col leading-none">
-        <span className={"text-[12px] font-medium transition-colors duration-300 " + (primary ? "text-white/80" : "text-[#5f6272] group-hover:text-white/80")}>
+        <span className={"text-[11px] font-medium transition-colors duration-300 " + (primary ? "text-white/80" : "text-[#5f6272] group-hover:text-white/80")}>
           {kicker}
         </span>
-        <span className="mt-1 text-[17px] font-semibold tracking-[-0.01em]">{label}</span>
+        <span className="mt-0.5 text-[15px] font-semibold tracking-[-0.01em]">{label}</span>
       </span>
     </Link>
   );
@@ -83,37 +83,33 @@ export function LandingHero() {
             commas via sr-only text. */}
         <h1
           id="hero-heading"
-          className="text-[38px] leading-[1.1] font-bold tracking-[-0.03em] text-[#141414] sm:text-[52px] lg:text-[56px] xl:text-[64px]"
+          className="text-[38px] leading-[1.1] font-bold tracking-[-0.03em] text-[#141414] sm:text-[48px] md:text-[42px] lg:text-[54px] xl:text-[64px]"
         >
-          <span className="block lg:inline">Web Solutions</span>
+          <span className="block md:inline">Web Solutions</span>
           <span className="sr-only">, </span>
           <KeywordDot />
-          <span className="block lg:inline">AI Automation</span>
+          <span className="block md:inline">AI Automation</span>
           <span className="sr-only">, </span>
-          <br className="hidden lg:block" />
-          <span className="block lg:inline">Growth Marketing</span>
+          <br className="hidden md:block" />
+          <span className="block md:inline">Growth Marketing</span>
           <KeywordDot />
           <span className="sr-only"> and </span>
-          <span className="block lg:inline">Digital Support</span>
+          <span className="block md:inline">Digital Support</span>
         </h1>
-        <p className="mx-auto mt-7 max-w-[660px] text-pretty text-[17px] leading-[1.6] text-[#555555] md:text-[19px]">
-          We combine{" "}
-          <strong className="font-semibold text-[#1a1a1a]">
-            technology, AI automation, growth marketing, and digital support
-          </strong>{" "}
-          to build stronger digital operations and help businesses across the USA, Canada and Europe grow with
-          confidence.
+        <p className="mx-auto mt-6 max-w-[560px] text-pretty text-[16px] leading-[1.6] text-[#555555] sm:text-[17px] md:mt-7 md:text-[18px]">
+          One team that builds stronger digital operations and helps businesses across the USA, Canada and Europe
+          grow with confidence.
         </p>
-        <div className="mt-11 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row md:mt-10">
           <PillButton
             href={site.cta.href}
-            icon={<CalendarDays className="size-[26px]" strokeWidth={1.8} />}
+            icon={<CalendarDays className="size-[22px]" strokeWidth={1.8} />}
             kicker="Free, 20 minutes"
             label="Book a free consultation"
           />
           <PillButton
             href={site.secondaryCta.href}
-            icon={<ArrowUpRight className="size-[26px]" strokeWidth={1.8} />}
+            icon={<ArrowUpRight className="size-[22px]" strokeWidth={1.8} />}
             kicker="Case studies"
             label="See our work"
             variant="outline"
