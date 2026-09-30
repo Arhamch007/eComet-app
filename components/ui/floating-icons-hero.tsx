@@ -84,7 +84,7 @@ function FloatingTile({
       className={cn("absolute flex", data.className)}
     >
       <motion.div
-        className="flex size-12 items-center justify-center rounded-2xl border border-border-1 bg-white p-2.5 shadow-[var(--shadow-tile)] md:size-[76px] md:rounded-3xl md:p-4"
+        className="flex size-12 transform-gpu items-center justify-center rounded-2xl border border-border-1 bg-white will-change-transform p-2.5 shadow-[var(--shadow-tile)] md:size-[76px] md:rounded-3xl md:p-4"
         animate={
           animate
             ? { y: [0, -8, 0, 8, 0], x: [0, 5, 0, -5, 0], rotate: [0, 4, 0, -4, 0] }

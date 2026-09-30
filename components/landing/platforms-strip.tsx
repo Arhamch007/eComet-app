@@ -2,10 +2,12 @@
 
 import { heroTools } from "@/content/tools";
 import { FloatingIconsHero, type FloatingIcon } from "@/components/ui/floating-icons-hero";
+import { ParticlesBg } from "@/components/ui/particles-bg";
 
 /* Platforms section: the heading sits in the centre over a soft wash of the
    logo colours, surrounded by white tiles with real platform marks that float
-   gently and move away from the cursor (desktop). Tiles keep to the edges so
+   gently and move away from the cursor (desktop). A light aqua-to-indigo
+   field with a logo-colour particle network sets it apart from the hero. Tiles keep to the edges so
    they never cover the text; phones show eight small tiles in a row above
    and below. Motion stops under prefers-reduced-motion. Tiles are
    decorative; the platform names are listed for screen readers. */
@@ -39,13 +41,17 @@ const names = order
   .map((id) => heroTools.find((t) => t.id === id)?.label)
   .filter((n): n is string => Boolean(n) && n !== "AI automation");
 
-function Wash() {
+function Backdrop() {
   return (
     <>
-      <div className="absolute inset-0 bg-white" />
-      <div className="absolute inset-0 bg-[radial-gradient(46%_58%_at_50%_50%,rgba(1,226,248,0.16),rgba(21,144,236,0.12)_32%,rgba(13,93,245,0.08)_52%,rgba(104,27,245,0.06)_66%,rgba(255,255,255,0)_80%)]" />
-      <div className="absolute inset-x-0 top-0 h-24 bg-[linear-gradient(#f6f6f7,rgba(246,246,247,0))]" />
-      <div className="absolute inset-x-0 bottom-0 h-24 bg-[linear-gradient(rgba(246,246,247,0),#f6f6f7)]" />
+      {/* distinct from the grey hero: a light aqua-to-indigo field */}
+      <div className="absolute inset-0 bg-[linear-gradient(135deg,#e9f9ff_0%,#e6f1ff_45%,#eeeaff_100%)]" />
+      <ParticlesBg />
+      {/* calm centre so the heading stays crisp */}
+      <div className="absolute inset-0 bg-[radial-gradient(34%_42%_at_50%_50%,rgba(255,255,255,0.9),rgba(255,255,255,0.55)_55%,rgba(255,255,255,0)_100%)]" />
+      {/* hairline edges in the logo gradient mark the section boundary */}
+      <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,#1590ec_30%,#681bf5_70%,transparent)] opacity-40" />
+      <div className="absolute inset-x-0 bottom-0 h-px bg-[linear-gradient(90deg,transparent,#1590ec_30%,#681bf5_70%,transparent)] opacity-40" />
     </>
   );
 }
@@ -55,7 +61,7 @@ export function PlatformsStrip() {
     <FloatingIconsHero
       icons={icons}
       labelledBy="platforms-heading"
-      backdrop={<Wash />}
+      backdrop={<Backdrop />}
       className="min-h-[520px] py-36 md:min-h-[560px] md:py-24"
     >
       <div className="mx-auto max-w-[620px] px-5 text-center">
