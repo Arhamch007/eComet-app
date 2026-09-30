@@ -377,8 +377,7 @@ body::-webkit-scrollbar {
 }
 
 /* Stats cards (components/landing/stats-section.tsx).
-   Rest: filled with the top of the logo "e" (aqua into blue; deeper blue at
-   the bottom behind the labels so white text stays readable).
+   Rest: one solid fill in the logo's light primary, Bright Ocean #1590EC.
    Hover / keyboard focus: the fill fades out to white and a beam in the logo
    colours travels round the border. Reduced motion: the beam is a still
    gradient border. */
@@ -390,7 +389,7 @@ body::-webkit-scrollbar {
 .stat-card {
   background: #ffffff;
   border: 1px solid transparent;
-  box-shadow: 0 14px 32px -16px rgba(13, 93, 245, 0.55);
+  box-shadow: 0 0 20px 1px rgba(10, 30, 70, 0.22);
   transition: box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .stat-card::before {
@@ -399,9 +398,7 @@ body::-webkit-scrollbar {
   inset: 0;
   z-index: -1;
   border-radius: inherit;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0) 45%),
-    linear-gradient(160deg, #06c9f2 0%, #1590ec 32%, #0d5df5 72%, #2448f0 100%);
+  background: #1590ec;
   transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .stat-card::after {
@@ -431,7 +428,7 @@ body::-webkit-scrollbar {
 }
 .stat-wrap:hover .stat-card,
 .stat-wrap:focus-visible .stat-card {
-  box-shadow: 0 18px 40px -20px rgba(13, 93, 245, 0.45);
+  box-shadow: 0 0 22px 2px rgba(21, 144, 236, 0.35);
 }
 .stat-wrap:hover .stat-card::before,
 .stat-wrap:focus-visible .stat-card::before {
