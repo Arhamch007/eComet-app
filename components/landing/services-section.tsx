@@ -106,7 +106,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
         {helpWith.map((item) => (
           <li
             key={item}
-            className="rounded-full border border-[#e3e7ef] bg-[#f7f8fb] px-3 py-1 text-[12.5px] leading-[1.45] font-medium text-[#3b3f4a] transition-colors duration-200 group-hover:border-[#1590ec]/25 group-hover:bg-[#eef6fe]"
+            className="rounded-full border border-[#dfe3ea] bg-transparent px-3 py-1 text-[12.5px] leading-[1.45] font-medium text-[#3b3f4a] transition-colors duration-200 group-hover:border-[#1590ec]/45 group-hover:text-[#0d5df5]"
           >
             {item}
           </li>
