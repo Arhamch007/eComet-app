@@ -2,7 +2,6 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { site } from "@/content/site";
 import { HeroWaves } from "@/components/landing/hero-waves";
-import { PlatformsStrip } from "@/components/landing/platforms-strip";
 
 /* Minimal centred hero (approved reference: floating pill nav, a large
    regular-weight headline and dark pill buttons) over soft light ribbons in
@@ -44,7 +43,7 @@ export function LandingHero() {
     >
       <HeroWaves />
 
-      {/* copy fills the space above the platforms band and stays centred */}
+      {/* copy stays centred in the first screen */}
       <div className="flex flex-1 items-center justify-center px-5 pt-28 pb-12 md:pt-32 md:pb-16">
       <div className="hero-rise mx-auto max-w-[1060px] text-center">
         {/* The agency's four core keywords are the H1 (see site.keywords):
@@ -69,7 +68,6 @@ export function LandingHero() {
       </div>
       </div>
 
-      <PlatformsStrip />
     </section>
   );
 }
