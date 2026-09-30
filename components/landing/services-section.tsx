@@ -2,8 +2,8 @@ import { ArrowRight, Bot, Headset, MonitorSmartphone, TrendingUp, type LucideIco
 import Link from "next/link";
 import { LandingContainer, LandingHeading, LandingSection } from "@/components/landing/ui";
 
-/* "Our Services": heading and a 2 x 2 grid of service cards (one column on
-   phones), laid out like the approved reference in the site's light theme.
+/* "Our Services": heading and the four service cards in one row on laptops and
+   desktops (2 x 2 on tablets, one column on phones), laid out like the approved reference in the site's light theme.
    Copy follows the client's rewrite brief. */
 
 type Service = {
@@ -79,41 +79,41 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
   return (
     <li
       aria-labelledby={headingId}
-      className="group relative flex flex-col rounded-[20px] border border-[#e6e9f0] bg-white p-6 shadow-[0_2px_4px_rgba(20,30,60,0.04),0_20px_44px_-26px_rgba(13,60,160,0.35)] transition-[border-color,box-shadow] duration-200 hover:border-[#1590ec]/60 hover:shadow-[0_0_0_1px_rgba(21,144,236,0.18),0_24px_56px_-22px_rgba(104,27,245,0.38),0_0_40px_-12px_rgba(1,226,248,0.4)] motion-reduce:transition-none sm:p-7"
+      className="group relative flex flex-col rounded-[20px] border border-[#e6e9f0] bg-white p-6 shadow-[0_2px_4px_rgba(20,30,60,0.04),0_20px_44px_-26px_rgba(13,60,160,0.35)] transition-[border-color,box-shadow] duration-200 hover:border-[#1590ec]/60 hover:shadow-[0_0_0_1px_rgba(21,144,236,0.18),0_24px_56px_-22px_rgba(104,27,245,0.38),0_0_40px_-12px_rgba(1,226,248,0.4)] motion-reduce:transition-none xl:p-6"
     >
       <div className="flex items-start justify-between">
         <span
           aria-hidden
-          className="relative grid size-12 place-items-center overflow-hidden rounded-[14px] border border-[#e3e7ef] bg-[#f5f7fa] text-[#23262f] transition-[border-color,color] duration-200 group-hover:border-transparent group-hover:text-white"
+          className="relative grid size-11 place-items-center overflow-hidden rounded-[12px] border border-[#e3e7ef] bg-[#f5f7fa] text-[#23262f] transition-[border-color,color] duration-200 group-hover:border-transparent group-hover:text-white"
         >
           <span className="absolute inset-0 bg-[linear-gradient(135deg,#01e2f8,#1590ec_35%,#0d5df5_65%,#681bf5)] opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
-          <Icon className="relative size-[22px]" strokeWidth={1.9} />
+          <Icon className="relative size-5" strokeWidth={1.9} />
         </span>
         <span
           aria-hidden
-          className="text-[26px] leading-none font-bold tracking-[-0.02em] text-[#e3e7ef] tabular-nums transition-colors duration-200 group-hover:text-[#1590ec]/35"
+          className="text-[22px] leading-none font-bold tracking-[-0.02em] text-[#e3e7ef] tabular-nums transition-colors duration-200 group-hover:text-[#1590ec]/35"
         >
           {String(index + 1).padStart(2, "0")}
         </span>
       </div>
 
-      <h3 id={headingId} className="mt-6 text-[19px] leading-[1.25] font-bold tracking-[-0.015em] text-[#141414]">
+      <h3 id={headingId} className="mt-5 text-[18px] leading-[1.25] font-bold tracking-[-0.015em] text-[#141414]">
         {title}
       </h3>
-      <p className="mt-2 text-[14.5px] leading-[1.6] text-pretty text-[#555555]">{summary}</p>
+      <p className="mt-2 text-[14px] leading-[1.55] text-pretty text-[#555555]">{summary}</p>
 
-      <ul aria-label={`${title}: what we can help with`} className="mt-5 flex flex-wrap gap-2">
+      <ul aria-label={`${title}: what we can help with`} className="mt-4 flex flex-wrap gap-1.5">
         {helpWith.map((item) => (
           <li
             key={item}
-            className="rounded-full border border-[#dfe3ea] bg-transparent px-3 py-1 text-[12.5px] leading-[1.45] font-medium text-[#3b3f4a] transition-colors duration-200 group-hover:border-[#1590ec]/45 group-hover:text-[#0d5df5]"
+            className="rounded-full border border-[#dfe3ea] bg-transparent px-2.5 py-[3px] text-[12px] leading-[1.45] font-medium text-[#3b3f4a] transition-colors duration-200 group-hover:border-[#1590ec]/45 group-hover:text-[#0d5df5]"
           >
             {item}
           </li>
         ))}
       </ul>
 
-      <div className="mt-auto pt-6">
+      <div className="mt-auto pt-5">
         <Link
           href="#contact"
           aria-label={`Get started with ${title}`}
@@ -130,14 +130,14 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
 export function ServicesSection() {
   return (
     <LandingSection id="services" tone="alt" labelledBy="services-heading" className="bg-[#e5e7eb] py-16 md:py-24">
-      <LandingContainer className="max-w-[1080px]">
+      <LandingContainer className="max-w-[1280px]">
         <LandingHeading
           id="services-heading"
           kicker="What we do"
           title="Our Services"
           lead="Practical digital solutions that help your business work better and grow faster."
         />
-        <ul className="mt-10 grid grid-cols-1 gap-5 md:mt-12 md:grid-cols-2 md:gap-6">
+        <ul className="mt-10 grid grid-cols-1 gap-5 md:mt-12 md:grid-cols-2 xl:grid-cols-4 xl:gap-5">
           {services.map((service, index) => (
             <ServiceCard key={service.title} service={service} index={index} />
           ))}
