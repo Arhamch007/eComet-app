@@ -375,17 +375,3 @@ body::-webkit-scrollbar {
   width: 0;
   height: 0;
 }
-
-/* Stats panel (components/landing/stats-section.tsx): soft pulse for the
-   "available now" dot; off under reduced motion. */
-@keyframes live-pulse {
-  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.55); }
-  70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-}
-.live-dot {
-  animation: live-pulse 2s ease-out infinite;
-}
-@media (prefers-reduced-motion: reduce) {
-  .live-dot { animation: none; }
-}
