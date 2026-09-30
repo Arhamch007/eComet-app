@@ -375,3 +375,81 @@ body::-webkit-scrollbar {
   width: 0;
   height: 0;
 }
+
+/* Stats cards (components/landing/stats-section.tsx).
+   Rest: filled with the top of the logo "e" (aqua into blue; deeper blue at
+   the bottom behind the labels so white text stays readable).
+   Hover / keyboard focus: the fill fades out to white and a beam in the logo
+   colours travels round the border. Reduced motion: the beam is a still
+   gradient border. */
+@property --beam-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+.stat-card {
+  background: #ffffff;
+  border: 1px solid transparent;
+  box-shadow: 0 14px 32px -16px rgba(13, 93, 245, 0.55);
+  transition: box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.stat-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0) 45%),
+    linear-gradient(160deg, #06c9f2 0%, #1590ec 32%, #0d5df5 72%, #2448f0 100%);
+  transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.stat-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2.5px;
+  background: conic-gradient(
+    from var(--beam-angle),
+    rgba(13, 93, 245, 0.14) 0deg,
+    rgba(13, 93, 245, 0.14) 215deg,
+    #01e2f8 275deg,
+    #0d5df5 320deg,
+    #681bf5 345deg,
+    rgba(13, 93, 245, 0.12) 360deg
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: beam-spin 2.8s linear infinite;
+  animation-play-state: paused;
+}
+.stat-card:hover,
+.stat-card:focus-visible {
+  box-shadow: 0 18px 40px -20px rgba(13, 93, 245, 0.45);
+}
+.stat-card:hover::before,
+.stat-card:focus-visible::before {
+  opacity: 0;
+}
+.stat-card:hover::after,
+.stat-card:focus-visible::after {
+  opacity: 1;
+  animation-play-state: running;
+}
+@keyframes beam-spin {
+  to {
+    --beam-angle: 360deg;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stat-card::after {
+    animation: none;
+    background: linear-gradient(135deg, #01e2f8, #0d5df5 55%, #681bf5);
+  }
+}
