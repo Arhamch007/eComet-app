@@ -18,18 +18,24 @@ const metrics = [
 
 export function StatsSection() {
   return (
-    <section aria-labelledby="stats-heading" className="bg-white py-20 md:py-28">
+    <section aria-labelledby="stats-heading" className="relative isolate overflow-hidden bg-white py-20 md:py-28">
+      {/* team photo (Unsplash, Annie Spratt) at low opacity behind the section */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 bg-[url(/images/sections/team-unsplash.jpg)] bg-cover bg-center opacity-[0.12] grayscale-[30%]"
+      />
+      <div aria-hidden className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(255,255,255,0.35),rgba(255,255,255,0.75)_55%,rgba(255,255,255,0.85))]" />
       <LandingContainer className="grid items-center gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20">
-        <div className="mx-auto max-w-[480px] text-center">
+        <div className="max-w-[460px]">
           <h2
             id="stats-heading"
             className="text-[32px] leading-[1.1] font-bold tracking-[-0.03em] text-balance text-[#141414] md:text-[44px]"
           >
             The team behind your digital work
           </h2>
-          <p className="mx-auto mt-5 max-w-[480px] text-[16px] leading-[1.65] text-pretty text-[#555555] md:text-[17px]">
-            Websites, automations, email campaigns and day-to-day digital tasks, handled by one team that works as an
-            extension of yours.
+          <p className="mt-5 text-[16px] leading-[1.65] text-[#555555] md:text-[17px]">
+            Websites, automations, email campaigns and <span className="whitespace-nowrap">day-to-day</span> digital
+            tasks, handled by one team that works as an extension of yours.
           </p>
         </div>
 
