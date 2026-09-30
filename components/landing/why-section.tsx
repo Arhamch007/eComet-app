@@ -1,72 +1,59 @@
 import Link from "next/link";
 import { ArrowRight, BadgeCheck, CalendarClock, Lightbulb, Users, type LucideIcon } from "lucide-react";
-import { LandingContainer, LandingHeading, LandingSection, palette } from "@/components/landing/ui";
+import { LandingContainer, LandingHeading, LandingSection } from "@/components/landing/ui";
 import { cn } from "@/lib/utils";
 
-/* Why eComet: pitch and one call to action on the left; on the right a card
-   of three plain facts (with a small comet dash trail as its accent) and
-   four commitments as small white cards, each with a solid logo-colour icon disc.
-   Static server component: no motion, no client JavaScript. */
+/* Why eComet: short pitch and one call to action on the left; the four
+   reasons from the client's brief as equal 2 x 2 cards on the right. Each
+   card has a solid logo-colour icon tile, a small step number and a thin
+   accent line in its colour along the top edge.
+   The figures (20+, 3 markets, 1 day) live in the stats band after the hero,
+   so they are not repeated here.
+   Static server component; hover changes border and shadow only. */
 
-const facts = [
-  { value: "20+", label: "specialists", detail: "across web, automation, marketing and support" },
-  { value: "3", label: "markets", detail: "USA · Canada · Europe" },
-  { value: "1", label: "business day", detail: "to reply to every enquiry" },
-];
-
-const commitments: { title: string; text: string; icon: LucideIcon; tint: string }[] = [
+const reasons: { title: string; text: string; icon: LucideIcon; tile: string; edge: string }[] = [
   {
     title: "One team for your digital work",
     text: "From development and automation to email marketing and daily digital tasks, handle more of your work with one reliable team.",
     icon: Users,
-    tint: "bg-[linear-gradient(135deg,#01e2f8,#1590ec)] text-white shadow-[0_8px_18px_-8px_rgba(1,226,248,0.7)]",
+    tile: "bg-[linear-gradient(135deg,#01e2f8,#1590ec)] shadow-[0_8px_18px_-8px_rgba(1,226,248,0.7)]",
+    edge: "bg-[linear-gradient(90deg,#01e2f8,#1590ec)]",
   },
   {
     title: "Practical solutions",
     text: "We focus on solutions that solve real business problems, improve efficiency and make everyday work easier.",
     icon: Lightbulb,
-    tint: "bg-[linear-gradient(135deg,#1590ec,#0d5df5)] text-white shadow-[0_8px_18px_-8px_rgba(21,144,236,0.7)]",
+    tile: "bg-[linear-gradient(135deg,#1590ec,#0d5df5)] shadow-[0_8px_18px_-8px_rgba(21,144,236,0.7)]",
+    edge: "bg-[linear-gradient(90deg,#1590ec,#0d5df5)]",
   },
   {
     title: "Flexible support",
     text: "Whether you need a one-time project or ongoing support, we work around your business needs.",
     icon: CalendarClock,
-    tint: "bg-[linear-gradient(135deg,#0d5df5,#681bf5)] text-white shadow-[0_8px_18px_-8px_rgba(13,93,245,0.65)]",
+    tile: "bg-[linear-gradient(135deg,#0d5df5,#681bf5)] shadow-[0_8px_18px_-8px_rgba(13,93,245,0.65)]",
+    edge: "bg-[linear-gradient(90deg,#0d5df5,#681bf5)]",
   },
   {
     title: "Experienced team",
     text: "Experience across websites, e-commerce, automation, email marketing and digital operations for businesses in different industries.",
     icon: BadgeCheck,
-    tint: "bg-[linear-gradient(135deg,#681bf5,#0d5df5)] text-white shadow-[0_8px_18px_-8px_rgba(104,27,245,0.6)]",
+    tile: "bg-[linear-gradient(135deg,#681bf5,#0d5df5)] shadow-[0_8px_18px_-8px_rgba(104,27,245,0.6)]",
+    edge: "bg-[linear-gradient(90deg,#681bf5,#1590ec)]",
   },
 ];
 
-/* The logo's speed trail as a row of rounded dashes, short and pale on the
-   left, long and saturated on the right. */
-const trail = [
-  { w: 6, c: palette.aqua, o: 0.45 },
-  { w: 10, c: palette.aqua, o: 0.7 },
-  { w: 16, c: palette.ocean, o: 0.8 },
-  { w: 22, c: palette.ocean, o: 1 },
-  { w: 30, c: palette.blue, o: 1 },
-  { w: 40, c: palette.indigo, o: 1 },
-];
-
-const card =
-  "rounded-[24px] border border-[#e7e9ef] bg-white shadow-[0_12px_32px_-20px_rgba(20,30,70,0.28)] transition-[border-color,box-shadow] duration-200";
-
 export function WhySection() {
   return (
-    <LandingSection id="why" tone="alt" labelledBy="why-heading" className="font-[family-name:var(--font-figtree)]">
-      <LandingContainer>
-        <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
+    <LandingSection id="why" tone="alt" labelledBy="why-heading" className="bg-[#e5e7eb] py-16 font-[family-name:var(--font-figtree)] md:py-24">
+      <LandingContainer className="max-w-[1200px]">
+        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,4fr)_minmax(0,7fr)] lg:gap-14">
           <div>
             <LandingHeading
               id="why-heading"
               align="left"
               kicker="Why eComet"
               title="Why businesses choose eComet"
-              lead="We combine technical expertise with practical digital support to help businesses get more done. From building and managing websites to automating repetitive tasks, running email campaigns and handling day-to-day digital work, we work as an extension of your team."
+              lead="We combine technical expertise with practical digital support, and work as an extension of your team so more gets done."
             />
             <Link
               href="#contact"
@@ -77,53 +64,26 @@ export function WhySection() {
             </Link>
           </div>
 
-          <div className="min-w-0">
-            <div className={cn(card, "px-6 pt-6 pb-2 sm:px-8 sm:pt-7 sm:pb-3")}>
-              <div aria-hidden className="flex items-center gap-[6px]">
-                {trail.map((d, i) => (
-                  <span
-                    key={i}
-                    className="block h-[4px] rounded-full"
-                    style={{ width: d.w, backgroundColor: d.c, opacity: d.o }}
-                  />
-                ))}
-              </div>
-              <ul className="mt-2 grid divide-y divide-[#e7e9ef] sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-                {facts.map((f) => (
-                  <li key={f.label} className="py-5 sm:px-6 sm:py-5 sm:first:pl-0 sm:last:pr-0">
-                    <p className="bg-[linear-gradient(100deg,#1590ec,#0d5df5_55%,#681bf5)] bg-clip-text text-[40px] leading-none font-bold tracking-[-0.03em] text-transparent tabular-nums">
-                      {f.value}
-                    </p>
-                    <p className="mt-3 text-[15px] leading-[1.3] font-semibold text-[#141414]">{f.label}</p>
-                    <p className="mt-1 text-[14px] leading-[1.5] text-[#555555]">{f.detail}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <ul className="mt-4 grid gap-4 sm:grid-cols-2">
-              {commitments.map(({ title, text, icon: Icon, tint }) => (
-                <li
-                  key={title}
-                  className={cn(
-                    card,
-                    "flex gap-4 p-5 hover:border-[#c9d7f7] hover:shadow-[0_16px_36px_-20px_rgba(13,93,245,0.4)] motion-reduce:transition-none"
-                  )}
-                >
-                  <span
-                    aria-hidden
-                    className={cn("grid size-10 shrink-0 place-items-center rounded-full", tint)}
-                  >
-                    <Icon className="size-[18px]" strokeWidth={2} />
+          <ul className="grid gap-4 sm:auto-rows-fr sm:grid-cols-2 sm:gap-5">
+            {reasons.map(({ title, text, icon: Icon, tile, edge }, i) => (
+              <li
+                key={title}
+                className="relative flex flex-col overflow-hidden rounded-[20px] border border-[#e1e4ea] bg-white p-6 shadow-[0_1px_2px_rgba(20,20,20,0.04),0_10px_28px_-20px_rgba(20,30,70,0.25)] transition-[border-color,box-shadow] duration-200 hover:border-[#c9d7f7] hover:shadow-[0_18px_40px_-22px_rgba(13,93,245,0.42)] motion-reduce:transition-none sm:p-7"
+              >
+                <span aria-hidden className={cn("absolute inset-x-0 top-0 h-[3px]", edge)} />
+                <div className="flex items-center justify-between">
+                  <span aria-hidden className={cn("grid size-11 place-items-center rounded-[12px] text-white", tile)}>
+                    <Icon className="size-5" strokeWidth={2} />
                   </span>
-                  <div className="min-w-0">
-                    <h3 className="text-[16px] leading-[1.3] font-bold tracking-[-0.01em] text-[#141414]">{title}</h3>
-                    <p className="mt-1 text-[14px] leading-[1.55] text-[#555555]">{text}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
+                  <span aria-hidden className="text-[13px] font-semibold tracking-[0.08em] text-[#9aa0ad] tabular-nums">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                </div>
+                <h3 className="mt-5 text-[18px] leading-[1.3] font-bold tracking-[-0.015em] text-[#141414]">{title}</h3>
+                <p className="mt-2 text-[14.5px] leading-[1.6] text-pretty text-[#555555]">{text}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </LandingContainer>
     </LandingSection>
