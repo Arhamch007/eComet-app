@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { services } from "@/content/services";
 import { CountUp } from "@/components/ui/count-up";
+import { Reveal } from "@/components/ui/reveal";
 import { LandingContainer } from "@/components/landing/ui";
 
 /* Numbers band right after the hero, on white: the pitch on the left and
@@ -10,7 +11,9 @@ import { LandingContainer } from "@/components/landing/ui";
    Cards are filled with the top of the logo's "e" (aqua into blue, deeper
    blue behind the labels so white text stays readable). On hover the card
    turns white, the text turns dark and a light beam in the logo colours
-   travels round the border (.stat-card in globals.css).
+   travels round the border (.stat-card in globals.css). Like the old site,
+   cards fade up on scroll one after another and do a rubber-band stretch
+   on hover.
    Only figures eComet can stand behind are shown. */
 
 const stats = [
@@ -45,10 +48,11 @@ export function StatsSection() {
         </div>
 
         <dl className="grid grid-cols-2 gap-3 sm:gap-4">
-          {stats.map((s) => (
-            /* static hover target; only the inner card bounces, so the pointer never slips off */
+          {stats.map((s, i) => (
+            /* fade-up on scroll, staggered like the old site (AOS fade-up 100-400ms);
+               static hover target so the stretching card never slips off the pointer */
+            <Reveal key={s.label} delay={0.1 * (i + 1)} y={40}>
             <div
-              key={s.label}
               tabIndex={0}
               className="stat-wrap group rounded-[20px] outline-none focus-visible:ring-[3px] focus-visible:ring-[#0d5df5]/40"
             >
@@ -61,6 +65,7 @@ export function StatsSection() {
                 </dd>
               </div>
             </div>
+            </Reveal>
           ))}
         </dl>
       </LandingContainer>

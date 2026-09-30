@@ -454,20 +454,22 @@ body::-webkit-scrollbar {
   }
 }
 
-/* Stats cards: one bounce each time the pointer enters (or keyboard focus
-   lands). Off under reduced motion. */
-@keyframes stat-card-bounce {
-  0% { transform: translateY(0); }
-  30% { transform: translateY(-12px); }
-  50% { transform: translateY(0); }
-  68% { transform: translateY(-5px); }
-  84% { transform: translateY(0); }
-  92% { transform: translateY(-1.5px); }
-  100% { transform: translateY(0); }
+/* Stats cards: the old site's hover animation (animate.css rubberBand, 1s
+   linear, from styles/style.scss .single-counter:hover on main). Hover lives
+   on the static .stat-wrap so the stretching card never slips out from under
+   the pointer. Off under reduced motion. */
+@keyframes stat-card-rubber {
+  from { transform: scale3d(1, 1, 1); }
+  30% { transform: scale3d(1.25, 0.75, 1); }
+  40% { transform: scale3d(0.75, 1.25, 1); }
+  50% { transform: scale3d(1.15, 0.85, 1); }
+  65% { transform: scale3d(0.95, 1.05, 1); }
+  75% { transform: scale3d(1.05, 0.95, 1); }
+  to { transform: scale3d(1, 1, 1); }
 }
 .stat-wrap:hover .stat-card,
 .stat-wrap:focus-visible .stat-card {
-  animation: stat-card-bounce 0.7s cubic-bezier(0.28, 0.84, 0.42, 1) 1;
+  animation: stat-card-rubber 1s linear 1;
 }
 @media (prefers-reduced-motion: reduce) {
   .stat-wrap:hover .stat-card,
