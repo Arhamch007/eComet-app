@@ -188,7 +188,7 @@ function PillarCard({ pillar, index }: { pillar: Pillar; index: number }) {
 
 export function ServicesSection() {
   return (
-    <LandingSection id="services" tone="alt" labelledBy="services-heading">
+    <LandingSection id="services" tone="alt" labelledBy="services-heading" className="bg-[#e5e7eb]">
       <LandingContainer>
         <LandingHeading
           id="services-heading"
