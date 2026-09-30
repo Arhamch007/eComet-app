@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Clock, FileCheck, KeyRound, UserRound, type LucideIcon } from "lucide-react";
+import { ArrowRight, BadgeCheck, CalendarClock, Lightbulb, Users, type LucideIcon } from "lucide-react";
 import { LandingContainer, LandingHeading, LandingSection, palette } from "@/components/landing/ui";
 import { cn } from "@/lib/utils";
 
@@ -16,27 +16,27 @@ const facts = [
 
 const commitments: { title: string; text: string; icon: LucideIcon; tint: string }[] = [
   {
-    title: "Written scope, fixed price",
-    text: "You approve the scope, price and timeline before any work starts.",
-    icon: FileCheck,
+    title: "One team for your digital work",
+    text: "From development and automation to email marketing and daily digital tasks, handle more of your work with one reliable team.",
+    icon: Users,
     tint: "bg-[linear-gradient(135deg,#01e2f8,#1590ec)] text-white shadow-[0_8px_18px_-8px_rgba(1,226,248,0.7)]",
   },
   {
-    title: "One named contact",
-    text: "A single person who knows your project and keeps it moving.",
-    icon: UserRound,
+    title: "Practical solutions",
+    text: "We focus on solutions that solve real business problems, improve efficiency and make everyday work easier.",
+    icon: Lightbulb,
     tint: "bg-[linear-gradient(135deg,#1590ec,#0d5df5)] text-white shadow-[0_8px_18px_-8px_rgba(21,144,236,0.7)]",
   },
   {
-    title: "Your accounts, your data",
-    text: "Everything is set up in your name and stays yours. NDA on request.",
-    icon: KeyRound,
+    title: "Flexible support",
+    text: "Whether you need a one-time project or ongoing support, we work around your business needs.",
+    icon: CalendarClock,
     tint: "bg-[linear-gradient(135deg,#0d5df5,#681bf5)] text-white shadow-[0_8px_18px_-8px_rgba(13,93,245,0.65)]",
   },
   {
-    title: "Hours that overlap yours",
-    text: "We work across North American and European business days.",
-    icon: Clock,
+    title: "Experienced team",
+    text: "Experience across websites, e-commerce, automation, email marketing and digital operations for businesses in different industries.",
+    icon: BadgeCheck,
     tint: "bg-[linear-gradient(135deg,#681bf5,#0d5df5)] text-white shadow-[0_8px_18px_-8px_rgba(104,27,245,0.6)]",
   },
 ];
@@ -65,8 +65,8 @@ export function WhySection() {
               id="why-heading"
               align="left"
               kicker="Why eComet"
-              title="One accountable team, with the terms agreed up front"
-              lead="eComet brings web, automation, marketing and support specialists together in one team. You know the scope and the price before we start, you talk to one person throughout, and everything we build stays in your name."
+              title="Why businesses choose eComet"
+              lead="We combine technical expertise with practical digital support to help businesses get more done. From building and managing websites to automating repetitive tasks, running email campaigns and handling day-to-day digital work, we work as an extension of your team."
             />
             <Link
               href="#contact"

@@ -1,186 +1,144 @@
 import { Bot, Check, Headset, MonitorSmartphone, TrendingUp, type LucideIcon } from "lucide-react";
-import { heroTools } from "@/content/tools";
 import { LandingContainer, LandingHeading, LandingSection } from "@/components/landing/ui";
 
-/* "What we do": the four core keywords as a 2 x 2 grid of cards (1 column on
-   phones). Each card carries one logo colour (aqua, ocean, blue, indigo) as a
-   thin gradient top edge, a solid gradient icon tile and a faint corner glow,
-   lists the real services behind the keyword (linked to their pages) and a
-   few tool chips with brand marks where we have them.
-   Hover: border, shadow and link colour only, 200ms; nothing moves.
+/* "Our Services": the four core keywords as one row of compact cards on
+   large screens (2 x 2 on tablets, stacked on phones). Copy follows the
+   client's rewrite brief (eComet Text Re-Write.pdf): a one-line description
+   and a short "What we can help with" checklist per service.
+   Each card carries one logo colour (aqua, ocean, blue, indigo) as a thin
+   top edge, a solid icon tile and the check marks.
+   Hover: border and shadow only, 200ms; nothing moves.
    Tailwind needs literal class names, so every accent string is spelled out. */
 
-type Accent = {
-  /** thin top edge */
-  edge: string;
-  /** solid icon tile */
-  tile: string;
-  /** faint corner glow */
-  glow: string;
-  /** card hover border + shadow */
-  hover: string;
-  /** service link hover/focus colour (>= 4.5:1 on white) */
-  check: string;
-};
+type Accent = { edge: string; tile: string; hover: string; check: string };
 
 const accents = {
   aqua: {
     edge: "bg-[linear-gradient(90deg,#01e2f8,#1590ec)]",
     tile: "bg-[linear-gradient(135deg,#01e2f8,#1590ec)] shadow-[0_8px_18px_-8px_rgba(1,226,248,0.7)]",
-    glow: "bg-[radial-gradient(closest-side,rgba(1,226,248,0.14),transparent)]",
-    hover: "hover:border-[#01e2f8]/60 hover:shadow-[0_22px_48px_-24px_rgba(1,190,220,0.45)]",
+    hover: "hover:border-[#01e2f8]/60 hover:shadow-[0_18px_40px_-22px_rgba(1,190,220,0.5)]",
     check: "text-[#0e7490]",
   },
   ocean: {
     edge: "bg-[linear-gradient(90deg,#1590ec,#0d5df5)]",
     tile: "bg-[linear-gradient(135deg,#1590ec,#0d5df5)] shadow-[0_8px_18px_-8px_rgba(21,144,236,0.7)]",
-    glow: "bg-[radial-gradient(closest-side,rgba(21,144,236,0.12),transparent)]",
-    hover: "hover:border-[#1590ec]/50 hover:shadow-[0_22px_48px_-24px_rgba(21,144,236,0.45)]",
+    hover: "hover:border-[#1590ec]/50 hover:shadow-[0_18px_40px_-22px_rgba(21,144,236,0.5)]",
     check: "text-[#0369a1]",
   },
   blue: {
     edge: "bg-[linear-gradient(90deg,#0d5df5,#681bf5)]",
     tile: "bg-[linear-gradient(135deg,#0d5df5,#681bf5)] shadow-[0_8px_18px_-8px_rgba(13,93,245,0.65)]",
-    glow: "bg-[radial-gradient(closest-side,rgba(13,93,245,0.1),transparent)]",
-    hover: "hover:border-[#0d5df5]/45 hover:shadow-[0_22px_48px_-24px_rgba(13,93,245,0.4)]",
+    hover: "hover:border-[#0d5df5]/45 hover:shadow-[0_18px_40px_-22px_rgba(13,93,245,0.45)]",
     check: "text-[#0d5df5]",
   },
   indigo: {
     edge: "bg-[linear-gradient(90deg,#681bf5,#1590ec)]",
     tile: "bg-[linear-gradient(135deg,#681bf5,#0d5df5)] shadow-[0_8px_18px_-8px_rgba(104,27,245,0.6)]",
-    glow: "bg-[radial-gradient(closest-side,rgba(104,27,245,0.09),transparent)]",
-    hover: "hover:border-[#681bf5]/40 hover:shadow-[0_22px_48px_-24px_rgba(104,27,245,0.38)]",
+    hover: "hover:border-[#681bf5]/40 hover:shadow-[0_18px_40px_-22px_rgba(104,27,245,0.42)]",
     check: "text-[#681bf5]",
   },
 } satisfies Record<string, Accent>;
 
-type Pillar = {
-  keyword: string;
+type Service = {
+  title: string;
   icon: LucideIcon;
-  promise: string;
-  /** what the area covers, drawn from content/services.ts */
-  includes: string[];
-  /** chip labels; `logo` is a heroTools id when a brand mark exists */
-  tools: { label: string; logo?: string }[];
+  summary: string;
+  helpWith: string[];
   accent: Accent;
 };
 
-const pillars: Pillar[] = [
+const services: Service[] = [
   {
-    keyword: "Web Solutions",
+    title: "Web Solutions",
     icon: MonitorSmartphone,
-    promise: "Fast, accessible websites, web apps and online stores, from custom builds to Shopify and WordPress.",
-    includes: ["Websites and web apps", "Shopify and WordPress stores", "Speed, SEO and accessibility checks"],
-    tools: [
-      { label: "Next.js" },
-      { label: "Shopify", logo: "shopify" },
-      { label: "WordPress", logo: "wordpress" },
-      { label: "WooCommerce" },
+    summary: "Modern, responsive websites and web applications built around your business needs.",
+    helpWith: [
+      "Business websites",
+      "Web applications",
+      "Shopify development",
+      "WordPress development",
+      "Custom features and integrations",
+      "Website maintenance and support",
     ],
     accent: accents.aqua,
   },
   {
-    keyword: "AI Automation",
+    title: "AI Automation",
     icon: Bot,
-    promise: "AI agents and connected workflows that take repetitive work off your team, with a person reviewing what matters.",
-    includes: ["AI agents and workflows", "Zapier, Make and n8n automation", "GoHighLevel CRM and funnels"],
-    tools: [
-      { label: "OpenAI" },
-      { label: "Zapier", logo: "zapier" },
-      { label: "Make", logo: "make" },
-      { label: "n8n", logo: "n8n" },
-      { label: "GoHighLevel" },
+    summary: "Smart workflows and integrations that reduce repetitive work and save your team time.",
+    helpWith: [
+      "Workflow automation",
+      "API integrations",
+      "CRM automation",
+      "Lead management",
+      "Data automation",
+      "Custom business processes",
     ],
     accent: accents.ocean,
   },
   {
-    keyword: "Growth Marketing",
+    title: "Growth Marketing",
     icon: TrendingUp,
-    promise: "Email flows and Meta ad campaigns measured on revenue, with tracking you can trust.",
-    includes: ["Email marketing flows and campaigns", "Meta ads on Facebook and Instagram", "Tracking and monthly reporting"],
-    tools: [
-      { label: "Klaviyo" },
-      { label: "Meta Ads", logo: "meta" },
-      { label: "Instagram", logo: "instagram" },
-      { label: "Google Analytics", logo: "analytics" },
+    summary: "Campaigns, automation and email systems designed to engage customers and drive results.",
+    helpWith: [
+      "Email campaigns",
+      "Email automation",
+      "Lead nurturing",
+      "Customer follow-ups",
+      "List management",
+      "Campaign optimization",
     ],
     accent: accents.blue,
   },
   {
-    keyword: "Digital Support",
+    title: "Digital Support",
     icon: Headset,
-    promise: "Trained support agents and assistants who keep your store, inbox and admin running smoothly.",
-    includes: ["Shopify pre- and post-sales support", "Virtual assistants", "Weekly reporting"],
-    tools: [
-      { label: "Shopify", logo: "shopify" },
-      { label: "Gorgias" },
-      { label: "Google Workspace" },
-      { label: "Notion", logo: "notion" },
+    summary: "Reliable day-to-day support for the digital tasks that keep your business moving.",
+    helpWith: [
+      "Digital operations support",
+      "E-commerce management",
+      "Customer experience support",
+      "Content management",
+      "Research and data management",
+      "Workflow management",
     ],
     accent: accents.indigo,
   },
 ];
 
-const logos = new Map(heroTools.map((tool) => [tool.id, tool.Icon]));
-
-function PillarCard({ pillar, index }: { pillar: Pillar; index: number }) {
-  const { keyword, icon: Icon, promise, accent } = pillar;
-  const headingId = `pillar-${index}-heading`;
+function ServiceCard({ service, index }: { service: Service; index: number }) {
+  const { title, icon: Icon, summary, helpWith, accent } = service;
+  const headingId = `service-${index}-heading`;
 
   return (
     <li
+      aria-labelledby={headingId}
       className={
-        "relative isolate flex flex-col overflow-hidden rounded-[24px] border border-[#e7e9ef] bg-white p-6 shadow-[0_1px_2px_rgba(20,20,20,0.04),0_12px_32px_-20px_rgba(20,20,20,0.12)] transition-[border-color,box-shadow] duration-200 motion-reduce:transition-none sm:p-8 " +
+        "relative flex flex-col overflow-hidden rounded-[20px] border border-[#e1e4ea] bg-white p-6 shadow-[0_1px_2px_rgba(20,20,20,0.04),0_10px_28px_-20px_rgba(20,20,20,0.18)] transition-[border-color,box-shadow] duration-200 motion-reduce:transition-none " +
         accent.hover
       }
     >
       <span aria-hidden className={"absolute inset-x-0 top-0 h-[3px] " + accent.edge} />
-      <span
-        aria-hidden
-        className={"pointer-events-none absolute -top-28 -right-28 -z-10 size-72 rounded-full " + accent.glow}
-      />
 
-      <div className="flex items-center gap-4">
-        <span
-          aria-hidden
-          className={"flex size-12 shrink-0 items-center justify-center rounded-[14px] text-white " + accent.tile}
-        >
-          <Icon className="size-[22px]" strokeWidth={2} />
-        </span>
-        <h3 id={headingId} className="text-[22px] leading-[1.2] font-bold tracking-[-0.02em] text-[#141414] md:text-[24px]">
-          {keyword}
-        </h3>
-      </div>
+      <span aria-hidden className={"flex size-11 items-center justify-center rounded-[12px] text-white " + accent.tile}>
+        <Icon className="size-5" strokeWidth={2} />
+      </span>
 
-      <p className="mt-4 text-[15px] leading-[1.6] text-pretty text-[#555555] md:text-[16px]">{promise}</p>
+      <h3 id={headingId} className="mt-5 text-[19px] leading-[1.25] font-bold tracking-[-0.015em] text-[#141414]">
+        {title}
+      </h3>
+      <p className="mt-2 text-[14.5px] leading-[1.55] text-pretty text-[#555555]">{summary}</p>
 
-      <p className="mt-6 text-[12px] font-semibold tracking-[0.1em] text-[#6b7080] uppercase" id={`${headingId}-includes`}>
-        Includes
+      <p className="mt-5 border-t border-[#eef0f4] pt-4 text-[11.5px] font-semibold tracking-[0.1em] text-[#6b7080] uppercase">
+        What we can help with
       </p>
-      <ul aria-labelledby={`${headingId}-includes`} className="mt-2 divide-y divide-[#eef0f4] border-y border-[#eef0f4]">
-        {pillar.includes.map((item) => (
-          <li key={item}>
-            <span className="flex items-center gap-3 py-3 text-[15px] leading-[1.35] font-semibold text-[#141414]">
-              <Check aria-hidden className={"size-4 shrink-0 " + accent.check} strokeWidth={2.6} />
-              {item}
-            </span>
+      <ul className="mt-3 space-y-2">
+        {helpWith.map((item) => (
+          <li key={item} className="flex items-start gap-2.5 text-[14px] leading-[1.4] font-medium text-[#23262f]">
+            <Check aria-hidden className={"mt-[3px] size-3.5 shrink-0 " + accent.check} strokeWidth={3} />
+            {item}
           </li>
         ))}
-      </ul>
-
-      <ul aria-label={`${keyword} tools`} className="mt-auto flex flex-wrap gap-2 pt-6">
-        {pillar.tools.map(({ label, logo }) => {
-          const Logo = logo ? logos.get(logo) : undefined;
-          return (
-            <li
-              key={label}
-              className="inline-flex items-center gap-1.5 rounded-full border border-[#e7e9ef] bg-white px-3 py-1 text-[13px] leading-[1.4] font-medium text-[#3b3f4a]"
-            >
-              {Logo ? <Logo aria-hidden focusable="false" className="size-3.5 shrink-0" /> : null}
-              {label}
-            </li>
-          );
-        })}
       </ul>
     </li>
   );
@@ -188,17 +146,17 @@ function PillarCard({ pillar, index }: { pillar: Pillar; index: number }) {
 
 export function ServicesSection() {
   return (
-    <LandingSection id="services" tone="alt" labelledBy="services-heading" className="bg-[#e5e7eb]">
-      <LandingContainer>
+    <LandingSection id="services" tone="alt" labelledBy="services-heading" className="bg-[#e5e7eb] py-16 md:py-20">
+      <LandingContainer className="max-w-[1240px]">
         <LandingHeading
           id="services-heading"
           kicker="What we do"
-          title="One team to build, automate, grow and support your business"
-          lead="Start with one area or combine them. Every engagement starts with a written scope and a fixed price."
+          title="Our Services"
+          lead="Practical digital solutions that help your business work better and grow faster."
         />
-        <ul className="mt-12 grid grid-cols-1 gap-5 md:mt-14 md:grid-cols-2 md:gap-6">
-          {pillars.map((pillar, index) => (
-            <PillarCard key={pillar.keyword} pillar={pillar} index={index} />
+        <ul className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 md:mt-12 lg:grid-cols-4 lg:gap-5">
+          {services.map((service, index) => (
+            <ServiceCard key={service.title} service={service} index={index} />
           ))}
         </ul>
       </LandingContainer>

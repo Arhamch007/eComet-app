@@ -5,7 +5,7 @@ export const site = {
   name: "eComet",
   legalName: "eComet Technologies",
   url: "https://teamecomet.com",
-  tagline: "Web Solutions, AI Automation, Growth Marketing and Digital Support for growing brands",
+  tagline: "Web development, automation, email marketing and digital support for businesses that want to work smarter and grow",
   /** The agency's four core keywords, in this order, used in the hero and page titles. */
   keywords: ["Web Solutions", "AI Automation", "Growth Marketing", "Digital Support"],
   description:

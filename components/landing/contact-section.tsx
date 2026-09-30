@@ -404,11 +404,11 @@ export function ContactSection() {
               id="contact-heading"
               className="text-[32px] leading-[1.08] font-bold tracking-[-0.03em] text-balance md:text-[40px]"
             >
-              Start a project
+              Need help with your digital work?
             </h2>
             <p className="mt-3 max-w-[380px] text-[16px] leading-[1.6] text-pretty text-white/90 md:text-[17px]">
-              Tell us what you need and a real person on the team will reply
-              with next steps.
+              Tell us what you're working on and we'll help you find the right
+              solution.
             </p>
 
             <dl className="mt-8 max-w-[400px] divide-y divide-white/20 border-y border-white/20 text-[15px] lg:mt-10">
