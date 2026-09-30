@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 /* Why eComet: pitch and one call to action on the left; on the right a card
    of three plain facts (with a small comet dash trail as its accent) and
-   four commitments as small white cards, each tinted with one logo colour.
+   four commitments as small white cards, each with a solid logo-colour icon disc.
    Static server component: no motion, no client JavaScript. */
 
 const facts = [
@@ -19,25 +19,25 @@ const commitments: { title: string; text: string; icon: LucideIcon; tint: string
     title: "Written scope, fixed price",
     text: "You approve the scope, price and timeline before any work starts.",
     icon: FileCheck,
-    tint: "bg-[#01e2f8]/12 ring-[#01e2f8]/45 text-[#0596c7]",
+    tint: "bg-[linear-gradient(135deg,#01e2f8,#1590ec)] text-white shadow-[0_8px_18px_-8px_rgba(1,226,248,0.7)]",
   },
   {
     title: "One named contact",
     text: "A single person who knows your project and keeps it moving.",
     icon: UserRound,
-    tint: "bg-[#1590ec]/10 ring-[#1590ec]/40 text-[#1480d6]",
+    tint: "bg-[linear-gradient(135deg,#1590ec,#0d5df5)] text-white shadow-[0_8px_18px_-8px_rgba(21,144,236,0.7)]",
   },
   {
     title: "Your accounts, your data",
     text: "Everything is set up in your name and stays yours. NDA on request.",
     icon: KeyRound,
-    tint: "bg-[#0d5df5]/10 ring-[#0d5df5]/35 text-[#0d5df5]",
+    tint: "bg-[linear-gradient(135deg,#0d5df5,#681bf5)] text-white shadow-[0_8px_18px_-8px_rgba(13,93,245,0.65)]",
   },
   {
     title: "Hours that overlap yours",
     text: "We work across North American and European business days.",
     icon: Clock,
-    tint: "bg-[#681bf5]/10 ring-[#681bf5]/35 text-[#681bf5]",
+    tint: "bg-[linear-gradient(135deg,#681bf5,#0d5df5)] text-white shadow-[0_8px_18px_-8px_rgba(104,27,245,0.6)]",
   },
 ];
 
@@ -112,7 +112,7 @@ export function WhySection() {
                 >
                   <span
                     aria-hidden
-                    className={cn("grid size-10 shrink-0 place-items-center rounded-full ring-1 ring-inset", tint)}
+                    className={cn("grid size-10 shrink-0 place-items-center rounded-full", tint)}
                   >
                     <Icon className="size-[18px]" strokeWidth={2} />
                   </span>

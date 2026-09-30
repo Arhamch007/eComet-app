@@ -17,12 +17,12 @@ import { cn } from "@/lib/utils";
 const stops = [palette.aqua, palette.ocean, palette.blue, palette.indigo];
 
 /* Static class strings per step (kept literal so Tailwind picks them up).
-   Icon colours are deepened where needed to reach 3:1 against the tint. */
+   Solid logo-gradient discs with white icons (same as the services tiles). */
 const markers = [
-  "bg-[#01e2f8]/12 ring-[#01e2f8]/45 text-[#0596c7]",
-  "bg-[#1590ec]/10 ring-[#1590ec]/40 text-[#1480d6]",
-  "bg-[#0d5df5]/10 ring-[#0d5df5]/35 text-[#0d5df5]",
-  "bg-[#681bf5]/10 ring-[#681bf5]/35 text-[#681bf5]",
+  "bg-[linear-gradient(135deg,#01e2f8,#1590ec)] text-white shadow-[0_8px_18px_-8px_rgba(1,226,248,0.7)]",
+  "bg-[linear-gradient(135deg,#1590ec,#0d5df5)] text-white shadow-[0_8px_18px_-8px_rgba(21,144,236,0.7)]",
+  "bg-[linear-gradient(135deg,#0d5df5,#681bf5)] text-white shadow-[0_8px_18px_-8px_rgba(13,93,245,0.65)]",
+  "bg-[linear-gradient(135deg,#681bf5,#0d5df5)] text-white shadow-[0_8px_18px_-8px_rgba(104,27,245,0.6)]",
 ];
 
 /* Dash lengths (relative) for one trail segment: short and faint at the
@@ -99,7 +99,7 @@ export function ProcessSection() {
                   <span
                     aria-hidden
                     className={cn(
-                      "relative z-10 grid size-14 shrink-0 place-items-center rounded-full ring-1 ring-inset",
+                      "relative z-10 grid size-14 shrink-0 place-items-center rounded-full",
                       markers[i]
                     )}
                   >
