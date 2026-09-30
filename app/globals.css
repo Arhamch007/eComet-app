@@ -376,101 +376,16 @@ body::-webkit-scrollbar {
   height: 0;
 }
 
-/* Stats cards (components/landing/stats-section.tsx).
-   Rest: one solid fill in the logo's light primary, Bright Ocean #1590EC.
-   Hover / keyboard focus: the fill fades out to white and a beam in the logo
-   colours travels round the border. Reduced motion: the beam is a still
-   gradient border. */
-@property --beam-angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
+/* Stats panel (components/landing/stats-section.tsx): soft pulse for the
+   "available now" dot; off under reduced motion. */
+@keyframes live-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.55); }
+  70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
 }
-.stat-card {
-  background: #ffffff;
-  border: 1px solid transparent;
-  box-shadow: 0 0 20px 1px rgba(10, 30, 70, 0.22);
-  transition: box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.stat-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  border-radius: inherit;
-  background: #1590ec;
-  transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.stat-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 2.5px;
-  background: conic-gradient(
-    from var(--beam-angle),
-    rgba(13, 93, 245, 0.14) 0deg,
-    rgba(13, 93, 245, 0.14) 215deg,
-    #01e2f8 275deg,
-    #0d5df5 320deg,
-    #681bf5 345deg,
-    rgba(13, 93, 245, 0.12) 360deg
-  );
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  mask-composite: exclude;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  animation: beam-spin 2.8s linear infinite;
-  animation-play-state: paused;
-}
-.stat-wrap:hover .stat-card,
-.stat-wrap:focus-visible .stat-card {
-  box-shadow: 0 0 22px 2px rgba(21, 144, 236, 0.35);
-}
-.stat-wrap:hover .stat-card::before,
-.stat-wrap:focus-visible .stat-card::before {
-  opacity: 0;
-}
-.stat-wrap:hover .stat-card::after,
-.stat-wrap:focus-visible .stat-card::after {
-  opacity: 1;
-  animation-play-state: running;
-}
-@keyframes beam-spin {
-  to {
-    --beam-angle: 360deg;
-  }
+.live-dot {
+  animation: live-pulse 2s ease-out infinite;
 }
 @media (prefers-reduced-motion: reduce) {
-  .stat-card::after {
-    animation: none;
-    background: linear-gradient(135deg, #01e2f8, #0d5df5 55%, #681bf5);
-  }
-}
-
-/* Stats cards: the old site's hover animation (animate.css rubberBand, 1s
-   linear, from styles/style.scss .single-counter:hover on main). Hover lives
-   on the static .stat-wrap so the stretching card never slips out from under
-   the pointer. Off under reduced motion. */
-@keyframes stat-card-rubber {
-  from { transform: scale3d(1, 1, 1); }
-  30% { transform: scale3d(1.25, 0.75, 1); }
-  40% { transform: scale3d(0.75, 1.25, 1); }
-  50% { transform: scale3d(1.15, 0.85, 1); }
-  65% { transform: scale3d(0.95, 1.05, 1); }
-  75% { transform: scale3d(1.05, 0.95, 1); }
-  to { transform: scale3d(1, 1, 1); }
-}
-.stat-wrap:hover .stat-card,
-.stat-wrap:focus-visible .stat-card {
-  animation: stat-card-rubber 1s linear 1;
-}
-@media (prefers-reduced-motion: reduce) {
-  .stat-wrap:hover .stat-card,
-  .stat-wrap:focus-visible .stat-card {
-    animation: none;
-  }
+  .live-dot { animation: none; }
 }
