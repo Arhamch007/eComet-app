@@ -68,7 +68,7 @@ function Tile({ platform }: { platform: Platform }) {
 
 function Row({ items, reverse, duration }: { items: Platform[]; reverse?: boolean; duration: number }) {
   return (
-    <Marquee duration={duration} reverse={reverse} className="py-1.5">
+    <Marquee duration={duration} reverse={reverse} fadeColor="#f6f6f7" className="py-1.5">
       <ul className="flex items-center">
         {items.map((p) => (
           <Tile key={p.name} platform={p} />
@@ -90,8 +90,8 @@ export function PlatformsStrip() {
       </p>
       <p className="sr-only">{all.map((p) => p.name).join(", ")}.</p>
       <div aria-hidden className="mx-auto mt-7 max-w-[1440px] space-y-2 md:space-y-3">
-        <Row items={buildAndSell} duration={48} />
-        <Row items={automateAndGrow} duration={56} reverse />
+        <Row items={buildAndSell} duration={36} />
+        <Row items={automateAndGrow} duration={42} reverse />
       </div>
     </section>
   );

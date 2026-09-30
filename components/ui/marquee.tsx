@@ -11,6 +11,7 @@ export function Marquee({
   label,
   className,
   trackClassName,
+  fadeColor,
 }: {
   children: React.ReactNode;
   duration?: number;
@@ -18,12 +19,15 @@ export function Marquee({
   label?: string;
   className?: string;
   trackClassName?: string;
+  /** Paint edge fades as static overlays in this colour instead of a mask
+      (cheaper: the moving track is not re-masked every frame). */
+  fadeColor?: string;
 }) {
   return (
     <div
       role={label ? "region" : undefined}
       aria-label={label}
-      className={cn("marquee mask-fade-x relative overflow-hidden", className)}
+      className={cn("marquee relative overflow-hidden", !fadeColor && "mask-fade-x", className)}
     >
       <div
         className={cn("marquee-track flex w-max", trackClassName)}
@@ -39,6 +43,12 @@ export function Marquee({
           {children}
         </div>
       </div>
+      {fadeColor ? (
+        <>
+          <span aria-hidden className="pointer-events-none absolute inset-y-0 left-0 z-10 w-[8%] min-w-10" style={{ background: `linear-gradient(90deg, ${fadeColor}, transparent)` }} />
+          <span aria-hidden className="pointer-events-none absolute inset-y-0 right-0 z-10 w-[8%] min-w-10" style={{ background: `linear-gradient(270deg, ${fadeColor}, transparent)` }} />
+        </>
+      ) : null}
     </div>
   );
 }
