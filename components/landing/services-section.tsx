@@ -81,19 +81,13 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
       aria-labelledby={headingId}
       className="group relative flex flex-col rounded-[20px] border border-[#e6e9f0] bg-white p-6 shadow-[0_2px_4px_rgba(20,30,60,0.04),0_20px_44px_-26px_rgba(13,60,160,0.35)] transition-[border-color,box-shadow] duration-200 hover:border-[#1590ec]/60 hover:shadow-[0_0_0_1px_rgba(21,144,236,0.18),0_24px_56px_-22px_rgba(104,27,245,0.38),0_0_40px_-12px_rgba(1,226,248,0.4)] motion-reduce:transition-none lg:p-4 xl:p-6"
     >
-      <div className="flex items-start justify-between">
+      <div className="flex items-start">
         <span
           aria-hidden
           className="relative grid size-11 place-items-center overflow-hidden rounded-[12px] border border-[#e3e7ef] bg-[#f5f7fa] text-[#23262f] transition-[border-color,color] duration-200 group-hover:border-transparent group-hover:text-white"
         >
           <span className="absolute inset-0 bg-[linear-gradient(135deg,#01e2f8,#1590ec_35%,#0d5df5_65%,#681bf5)] opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
           <Icon className="relative size-5" strokeWidth={1.9} />
-        </span>
-        <span
-          aria-hidden
-          className="text-[22px] leading-none font-bold tracking-[-0.02em] text-[#e3e7ef] tabular-nums transition-colors duration-200 group-hover:text-[#1590ec]/35"
-        >
-          {String(index + 1).padStart(2, "0")}
         </span>
       </div>
 
@@ -133,7 +127,6 @@ export function ServicesSection() {
       <LandingContainer className="max-w-[1280px] lg:px-4 xl:px-6">
         <LandingHeading
           id="services-heading"
-          kicker="What we do"
           title="Our Services"
           lead="Practical digital solutions that help your business work better and grow faster."
         />

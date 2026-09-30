@@ -2,19 +2,13 @@
 
 import { motion, MotionConfig, type Variants } from "motion/react";
 import { process } from "@/content/process";
-import { LandingContainer, LandingHeading, LandingSection, palette } from "@/components/landing/ui";
+import { LandingContainer, LandingHeading, LandingSection } from "@/components/landing/ui";
 import { cn } from "@/lib/utils";
 
-/* How we work: the four steps from content/process.ts as one path.
-   - lg: a row of four; between each pair of steps runs a short comet trail of
-     rounded dashes that grow and brighten towards the next step, shifting
-     through the logo palette (aqua > ocean > blue > indigo).
-   - md: 2 x 2 grid without trails.
-   - mobile: stacked, marker on the left, the trail runs vertically.
-   A one-time fade/rise as the list enters view; MotionConfig drops the
-   movement for visitors who ask for reduced motion. */
-
-const stops = [palette.aqua, palette.ocean, palette.blue, palette.indigo];
+/* How we work: the four steps from content/process.ts, joined by a plain
+   hairline (row of four on lg, 2 x 2 on md, stacked on phones). A one-time
+   fade/rise as the list enters view; MotionConfig drops the movement for
+   visitors who ask for reduced motion. */
 
 /* Static class strings per step (kept literal so Tailwind picks them up).
    Solid logo-gradient discs with white icons (same as the services tiles). */
@@ -24,16 +18,6 @@ const markers = [
   "bg-[linear-gradient(135deg,#0d5df5,#681bf5)] text-white shadow-[0_8px_18px_-8px_rgba(13,93,245,0.65)]",
   "bg-[linear-gradient(135deg,#681bf5,#0d5df5)] text-white shadow-[0_8px_18px_-8px_rgba(104,27,245,0.6)]",
 ];
-
-/* Dash lengths (relative) for one trail segment: short and faint at the
-   start, long and solid as it reaches the next step, like the logo's trail. */
-const dashes = [2, 3, 4, 6, 8, 11, 15, 20];
-
-function mix(a: string, b: string, t: number) {
-  const pa = [1, 3, 5].map((i) => parseInt(a.slice(i, i + 2), 16));
-  const pb = [1, 3, 5].map((i) => parseInt(b.slice(i, i + 2), 16));
-  return `rgb(${pa.map((v, i) => Math.round(v + (pb[i] - v) * t)).join(",")})`;
-}
 
 const list: Variants = {
   hidden: {},
@@ -45,39 +29,12 @@ const item: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
 };
 
-const trail: Variants = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { duration: 0.6, delay: 0.25 } },
-};
-
-function Trail({ from, to, vertical = false, className }: { from: string; to: string; vertical?: boolean; className?: string }) {
-  return (
-    <motion.span
-      aria-hidden
-      variants={trail}
-      className={cn("pointer-events-none absolute flex", vertical ? "flex-col gap-[5px]" : "items-center gap-[6px]", className)}
-    >
-      {dashes.map((len, i) => {
-        const t = i / (dashes.length - 1);
-        return (
-          <span
-            key={i}
-            className={cn("block rounded-full", vertical ? "w-[4px]" : "h-[4px]")}
-            style={{ flex: `${len} 1 0`, backgroundColor: mix(from, to, t), opacity: 0.35 + 0.65 * t }}
-          />
-        );
-      })}
-    </motion.span>
-  );
-}
-
 export function ProcessSection() {
   return (
     <LandingSection id="process" tone="white" labelledBy="process-heading" className="font-[family-name:var(--font-figtree)]">
       <LandingContainer>
         <LandingHeading
           id="process-heading"
-          kicker="How we work"
           title="From first call to launch, in four clear steps"
           lead="Every project follows the same path, so you always know what happens next, who is doing it and what it costs."
         />
@@ -93,7 +50,6 @@ export function ProcessSection() {
             {process.map((step, i) => {
               const Icon = step.icon;
               const last = i === process.length - 1;
-              const next = stops[Math.min(i + 1, stops.length - 1)];
               return (
                 <motion.li key={step.n} variants={item} className="relative flex gap-5 md:block">
                   <span
@@ -108,15 +64,9 @@ export function ProcessSection() {
 
                   {!last ? (
                     <>
-                      {/* mobile: vertical trail down to the next marker */}
-                      <Trail
-                        vertical
-                        from={stops[i]}
-                        to={next}
-                        className="top-[68px] bottom-[-28px] left-[26px] md:hidden"
-                      />
-                      {/* desktop: horizontal trail across to the next marker */}
-                      <Trail from={stops[i]} to={next} className="top-[26px] right-[-20px] left-[70px] hidden lg:flex" />
+                      {/* plain hairline to the next step: vertical on phones, horizontal on lg */}
+                      <span aria-hidden className="absolute top-[64px] bottom-[-36px] left-[27px] w-px bg-[#e1e4ea] md:hidden" />
+                      <span aria-hidden className="absolute top-[28px] right-[-24px] left-[72px] hidden h-px bg-[#e1e4ea] lg:block" />
                     </>
                   ) : null}
 

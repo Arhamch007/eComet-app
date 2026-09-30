@@ -5,40 +5,35 @@ import { cn } from "@/lib/utils";
 
 /* Why eComet: short pitch and one call to action on the left; the four
    reasons from the client's brief as equal 2 x 2 cards on the right. Each
-   card has a solid logo-colour icon tile, a small step number and a thin
-   accent line in its colour along the top edge.
+   card has a solid logo-colour icon tile.
    The figures (20+, 3 markets, 1 day) live in the stats band after the hero,
    so they are not repeated here.
    Static server component; hover changes border and shadow only. */
 
-const reasons: { title: string; text: string; icon: LucideIcon; tile: string; edge: string }[] = [
+const reasons: { title: string; text: string; icon: LucideIcon; tile: string }[] = [
   {
     title: "One team for your digital work",
     text: "From development and automation to email marketing and daily digital tasks, handle more of your work with one reliable team.",
     icon: Users,
     tile: "bg-[linear-gradient(135deg,#01e2f8,#1590ec)] shadow-[0_8px_18px_-8px_rgba(1,226,248,0.7)]",
-    edge: "bg-[linear-gradient(90deg,#01e2f8,#1590ec)]",
   },
   {
     title: "Practical solutions",
     text: "We focus on solutions that solve real business problems, improve efficiency and make everyday work easier.",
     icon: Lightbulb,
     tile: "bg-[linear-gradient(135deg,#1590ec,#0d5df5)] shadow-[0_8px_18px_-8px_rgba(21,144,236,0.7)]",
-    edge: "bg-[linear-gradient(90deg,#1590ec,#0d5df5)]",
   },
   {
     title: "Flexible support",
     text: "Whether you need a one-time project or ongoing support, we work around your business needs.",
     icon: CalendarClock,
     tile: "bg-[linear-gradient(135deg,#0d5df5,#681bf5)] shadow-[0_8px_18px_-8px_rgba(13,93,245,0.65)]",
-    edge: "bg-[linear-gradient(90deg,#0d5df5,#681bf5)]",
   },
   {
     title: "Experienced team",
     text: "Experience across websites, e-commerce, automation, email marketing and digital operations for businesses in different industries.",
     icon: BadgeCheck,
     tile: "bg-[linear-gradient(135deg,#681bf5,#0d5df5)] shadow-[0_8px_18px_-8px_rgba(104,27,245,0.6)]",
-    edge: "bg-[linear-gradient(90deg,#681bf5,#1590ec)]",
   },
 ];
 
@@ -51,7 +46,6 @@ export function WhySection() {
             <LandingHeading
               id="why-heading"
               align="left"
-              kicker="Why eComet"
               title="Why businesses choose eComet"
               lead="We combine technical expertise with practical digital support, and work as an extension of your team so more gets done."
             />
@@ -65,18 +59,14 @@ export function WhySection() {
           </div>
 
           <ul className="grid gap-4 sm:auto-rows-fr sm:grid-cols-2 sm:gap-5">
-            {reasons.map(({ title, text, icon: Icon, tile, edge }, i) => (
+            {reasons.map(({ title, text, icon: Icon, tile }) => (
               <li
                 key={title}
                 className="relative flex flex-col overflow-hidden rounded-[20px] border border-[#e1e4ea] bg-white p-6 shadow-[0_1px_2px_rgba(20,20,20,0.04),0_10px_28px_-20px_rgba(20,30,70,0.25)] transition-[border-color,box-shadow] duration-200 hover:border-[#c9d7f7] hover:shadow-[0_18px_40px_-22px_rgba(13,93,245,0.42)] motion-reduce:transition-none sm:p-7"
               >
-                <span aria-hidden className={cn("absolute inset-x-0 top-0 h-[3px]", edge)} />
                 <div className="flex items-center justify-between">
                   <span aria-hidden className={cn("grid size-11 place-items-center rounded-[12px] text-white", tile)}>
                     <Icon className="size-5" strokeWidth={2} />
-                  </span>
-                  <span aria-hidden className="text-[13px] font-semibold tracking-[0.08em] text-[#9aa0ad] tabular-nums">
-                    {String(i + 1).padStart(2, "0")}
                   </span>
                 </div>
                 <h3 className="mt-5 text-[18px] leading-[1.3] font-bold tracking-[-0.015em] text-[#141414]">{title}</h3>
