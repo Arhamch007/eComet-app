@@ -318,17 +318,24 @@ body {
   transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
     background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
+/* Same colour as the nav 'Book a call' glass pill (.liquid-glass--tint):
+   logo gradient with a glass highlight on the top half. */
 .hero-cta--primary {
-  background: linear-gradient(100deg, #02cff6 0%, #1590ec 30%, #0d5df5 72%, #3b3ff5 100%);
-  text-shadow: 0 1px 1px rgba(6, 40, 120, 0.3);
-  box-shadow: 0 10px 24px -10px rgba(21, 144, 236, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.08) 48%, rgba(255, 255, 255, 0) 52%),
+    linear-gradient(115deg, #01e2f8 0%, #1590ec 24%, #0d5df5 58%, #681bf5 100%);
+  text-shadow: 0 1px 2px rgba(8, 30, 110, 0.35);
+  box-shadow: 0 10px 26px -12px rgba(13, 93, 245, 0.7), 0 2px 6px -2px rgba(13, 93, 245, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85), inset 0 0 0 1px rgba(255, 255, 255, 0.25);
 }
 .hero-cta--primary::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(100deg, #1590ec 0%, #0d5df5 50%, #681bf5 100%);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.08) 48%, rgba(255, 255, 255, 0) 52%),
+    linear-gradient(115deg, #1590ec 0%, #0d5df5 45%, #681bf5 100%);
   opacity: 0;
   transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -337,7 +344,8 @@ body {
   opacity: 1;
 }
 .hero-cta--primary:hover {
-  box-shadow: 0 14px 30px -10px rgba(104, 27, 245, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  box-shadow: 0 14px 32px -12px rgba(104, 27, 245, 0.6), 0 0 24px -6px rgba(1, 226, 248, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85), inset 0 0 0 1px rgba(255, 255, 255, 0.25);
 }
 .hero-cta--secondary {
   background-color: #ffffff;

@@ -4,8 +4,8 @@ import { heroTools } from "@/content/tools";
 import { FloatingIconsHero, type FloatingIcon } from "@/components/ui/floating-icons-hero";
 import { ParticlesBg } from "@/components/ui/particles-bg";
 
-/* Platforms section: the heading sits in the centre over a soft wash of the
-   logo colours, surrounded by white tiles with real platform marks that float
+/* Platforms section: an off-white (#f5f7fa) band with a logo-colour particle
+   network and white tiles with real platform marks that float
    gently and move away from the cursor (desktop). A light aqua-to-indigo
    field with a logo-colour particle network sets it apart from the hero. Tiles keep to the edges so
    they never cover the text; phones show eight small tiles in a row above
@@ -21,10 +21,10 @@ const positions: Record<string, string> = {
   zapier: "top-[5%] right-[5%] md:top-[9%] md:right-[27%]",
   n8n: "hidden md:flex md:top-[18%] md:right-[7%]",
   airtable: "hidden md:flex md:top-[38%] md:left-[18%]",
-  make: "bottom-[5%] left-[5%] md:bottom-auto md:top-[52%] md:left-[3%]",
+  make: "bottom-[5%] left-[5%] md:bottom-auto md:top-[40%] md:left-[2%]",
   wordpress: "hidden md:flex md:top-[46%] md:right-[3%]",
   stripe: "hidden lg:flex lg:top-[40%] lg:right-[17%]",
-  instagram: "bottom-[2%] left-[29%] md:bottom-[8%] md:left-[4%]",
+  instagram: "bottom-[2%] left-[29%] md:bottom-[4%] md:left-[5%]",
   hubspot: "bottom-[2%] right-[29%] md:bottom-[14%] md:left-[19%] md:right-auto",
   analytics: "bottom-[5%] right-[5%] md:bottom-[10%] md:right-[18%]",
   notion: "hidden md:flex md:bottom-[6%] md:right-[5%]",
@@ -44,11 +44,8 @@ const names = order
 function Backdrop() {
   return (
     <>
-      {/* distinct from the grey hero: a light aqua-to-indigo field */}
-      <div className="absolute inset-0 bg-[linear-gradient(135deg,#e9f9ff_0%,#e6f1ff_45%,#eeeaff_100%)]" />
+      <div className="absolute inset-0 bg-[#f5f7fa]" />
       <ParticlesBg />
-      {/* calm centre so the heading stays crisp */}
-      <div className="absolute inset-0 bg-[radial-gradient(34%_42%_at_50%_50%,rgba(255,255,255,0.9),rgba(255,255,255,0.55)_55%,rgba(255,255,255,0)_100%)]" />
       {/* hairline edges in the logo gradient mark the section boundary */}
       <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,#1590ec_30%,#681bf5_70%,transparent)] opacity-40" />
       <div className="absolute inset-x-0 bottom-0 h-px bg-[linear-gradient(90deg,transparent,#1590ec_30%,#681bf5_70%,transparent)] opacity-40" />
@@ -62,23 +59,11 @@ export function PlatformsStrip() {
       icons={icons}
       labelledBy="platforms-heading"
       backdrop={<Backdrop />}
-      className="min-h-[520px] py-36 md:min-h-[560px] md:py-24"
+      className="min-h-[260px] md:min-h-[380px]"
     >
-      <div className="mx-auto max-w-[620px] px-5 text-center">
-        <h2
-          id="platforms-heading"
-          className="text-[30px] leading-[1.12] font-bold tracking-[-0.025em] text-balance text-[#141414] md:text-[44px]"
-        >
-          Platforms we build on and{" "}
-          <span className="bg-[linear-gradient(100deg,#01e2f8,#1590ec_35%,#0d5df5_70%,#681bf5)] bg-clip-text text-transparent">
-            run every day
-          </span>
-        </h2>
-        <p className="mx-auto mt-4 max-w-[540px] text-[16px] leading-[1.6] text-pretty text-[#555555] md:text-[17px]">
-          We work inside the tools you already use, so nothing has to be rebuilt.
-        </p>
-        <p className="sr-only">Including {names.join(", ")}.</p>
-      </div>
+      <h2 id="platforms-heading" className="sr-only">
+        Platforms we build on and run every day: {names.join(", ")}.
+      </h2>
     </FloatingIconsHero>
   );
 }
