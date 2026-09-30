@@ -39,7 +39,7 @@ export function StatsSection() {
           </p>
         </div>
 
-        <dl className="grid grid-cols-2 gap-4 sm:gap-7">
+        <dl className="mx-auto grid w-full max-w-[520px] grid-cols-2 gap-4 sm:gap-6 lg:mr-0">
           {stats.map((s, i) => (
             /* fade-up on scroll, staggered like the old site (AOS fade-up 100-400ms);
                static hover target so the stretching card never slips off the pointer */
@@ -47,17 +47,17 @@ export function StatsSection() {
               key={s.label}
               delay={0.1 * (i + 1)}
               y={40}
-              className={i === 1 ? "sm:mt-[30px]" : i === 2 ? "sm:-mt-[30px]" : undefined}
+              className={i === 1 ? "sm:mt-[24px]" : i === 2 ? "sm:-mt-[24px]" : undefined}
             >
             <div
               tabIndex={0}
               className="stat-wrap group rounded-[4px] outline-none focus-visible:ring-[3px] focus-visible:ring-[#0d5df5]/40"
             >
-              <div className="stat-card relative isolate flex h-full min-h-[150px] flex-col-reverse items-center justify-center overflow-hidden rounded-[4px] p-6 text-center sm:min-h-[190px] sm:p-10">
+              <div className="stat-card relative isolate flex h-full min-h-[130px] flex-col-reverse items-center justify-center overflow-hidden rounded-[4px] p-5 text-center sm:min-h-[160px] sm:p-8">
                 <dt className="mt-2 text-[13px] leading-[1.4] font-semibold text-white transition-colors duration-200 group-hover:text-[#555555] group-focus-visible:text-[#555555] sm:text-[14px]">
                   {s.label}
                 </dt>
-                <dd className="text-[40px] leading-none font-bold tracking-[-0.03em] text-white transition-colors duration-200 group-hover:text-[#141414] group-focus-visible:text-[#141414] sm:text-[52px]">
+                <dd className="text-[36px] leading-none font-bold tracking-[-0.03em] text-white transition-colors duration-200 group-hover:text-[#141414] group-focus-visible:text-[#141414] sm:text-[46px]">
                   <CountUp value={s.value} suffix={s.suffix} duration={1.6} />
                 </dd>
               </div>
