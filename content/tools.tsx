@@ -29,7 +29,7 @@ export type ToolIcon = {
   Icon: React.FC<React.SVGProps<SVGSVGElement>>;
 };
 
-function fromSimpleIcon(icon: SimpleIcon): React.FC<React.SVGProps<SVGSVGElement>> {
+export function fromSimpleIcon(icon: SimpleIcon): React.FC<React.SVGProps<SVGSVGElement>> {
   const Comp = (props: React.SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 24 24" role="img" aria-label={icon.title} {...props}>
       <path d={icon.path} fill={`#${icon.hex}`} />
