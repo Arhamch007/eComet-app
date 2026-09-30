@@ -19,6 +19,8 @@ export type FloatingIcon = {
   Icon: React.FC<React.SVGProps<SVGSVGElement>>;
   /** Tailwind position classes, e.g. "top-[10%] left-[8%]"; add "hidden md:flex" for desktop-only */
   className: string;
+  /** extra inline styles for the tile wrapper (e.g. CSS variables for positions) */
+  style?: React.CSSProperties;
 };
 
 type PointerRef = React.MutableRefObject<{ x: number; y: number; active: boolean }>;
@@ -77,7 +79,7 @@ function FloatingTile({
     <motion.div
       ref={ref}
       aria-hidden
-      style={{ x: springX, y: springY }}
+      style={{ ...data.style, x: springX, y: springY }}
       initial={{ opacity: 0, scale: 0.6 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: 0.15 + index * 0.06, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}

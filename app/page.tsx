@@ -1,6 +1,5 @@
 import { FloatingNav } from "@/components/landing/floating-nav";
 import { LandingHero } from "@/components/landing/landing-hero";
-import { PlatformsStrip } from "@/components/landing/platforms-strip";
 import { ServicesSection } from "@/components/landing/services-section";
 import { ProcessSection } from "@/components/landing/process-section";
 import { WhySection } from "@/components/landing/why-section";
@@ -14,7 +13,6 @@ export default function HomePage() {
       <FloatingNav />
       <main id="main">
         <LandingHero />
-        <PlatformsStrip />
         <ServicesSection />
         <ProcessSection />
         <WhySection />
