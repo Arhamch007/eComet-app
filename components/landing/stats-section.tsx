@@ -19,15 +19,15 @@ const metrics = [
 export function StatsSection() {
   return (
     <section aria-labelledby="stats-heading" className="bg-white py-20 md:py-28">
-      <LandingContainer className="grid gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20">
-        <div>
+      <LandingContainer className="grid items-center gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20">
+        <div className="mx-auto max-w-[480px] text-center">
           <h2
             id="stats-heading"
             className="text-[32px] leading-[1.1] font-bold tracking-[-0.03em] text-balance text-[#141414] md:text-[44px]"
           >
             The team behind your digital work
           </h2>
-          <p className="mt-5 max-w-[480px] text-[16px] leading-[1.65] text-pretty text-[#555555] md:text-[17px]">
+          <p className="mx-auto mt-5 max-w-[480px] text-[16px] leading-[1.65] text-pretty text-[#555555] md:text-[17px]">
             Websites, automations, email campaigns and day-to-day digital tasks, handled by one team that works as an
             extension of yours.
           </p>
