@@ -106,10 +106,16 @@ export function FloatingIconsHero({
   icons,
   children,
   className,
+  labelledBy,
+  backdrop,
 }: {
   icons: FloatingIcon[];
   children: React.ReactNode;
   className?: string;
+  /** id of the heading that names this section */
+  labelledBy?: string;
+  /** decorative layer painted behind the tiles (e.g. a gradient wash) */
+  backdrop?: React.ReactNode;
 }) {
   const sectionRef = React.useRef<HTMLElement>(null);
   const inView = useInView(sectionRef, { margin: "0px 0px -20% 0px" });
@@ -174,8 +180,14 @@ export function FloatingIconsHero({
               }
             : undefined
         }
+        aria-labelledby={labelledBy}
         className={cn("relative isolate flex w-full items-center justify-center overflow-hidden", className)}
       >
+        {backdrop ? (
+          <div aria-hidden className="pointer-events-none absolute inset-0 -z-20">
+            {backdrop}
+          </div>
+        ) : null}
         <div className="pointer-events-none absolute inset-0 -z-10">
           {icons.map((icon, i) => (
             <FloatingTile key={icon.id} data={icon} index={i} animate={inView && !reduce} />
