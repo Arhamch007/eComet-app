@@ -46,17 +46,20 @@ export function StatsSection() {
 
         <dl className="grid grid-cols-2 gap-3 sm:gap-4">
           {stats.map((s) => (
+            /* static hover target; only the inner card bounces, so the pointer never slips off */
             <div
               key={s.label}
               tabIndex={0}
-              className="stat-card group relative isolate flex flex-col-reverse justify-end overflow-hidden rounded-[20px] p-5 outline-none focus-visible:ring-[3px] focus-visible:ring-[#0d5df5]/40 sm:p-7"
+              className="stat-wrap group rounded-[20px] outline-none focus-visible:ring-[3px] focus-visible:ring-[#0d5df5]/40"
             >
-              <dt className="mt-2 text-[13px] leading-[1.4] font-medium text-white/90 transition-colors duration-200 group-hover:text-[#555555] group-focus-visible:text-[#555555] sm:text-[14px]">
-                {s.label}
-              </dt>
-              <dd className="text-[40px] leading-none font-bold tracking-[-0.03em] text-white transition-colors duration-200 group-hover:text-[#141414] group-focus-visible:text-[#141414] sm:text-[52px]">
-                <CountUp value={s.value} suffix={s.suffix} duration={1.6} />
-              </dd>
+              <div className="stat-card relative isolate flex h-full flex-col-reverse justify-end overflow-hidden rounded-[20px] p-5 sm:p-7">
+                <dt className="mt-2 text-[13px] leading-[1.4] font-medium text-white/90 transition-colors duration-200 group-hover:text-[#555555] group-focus-visible:text-[#555555] sm:text-[14px]">
+                  {s.label}
+                </dt>
+                <dd className="text-[40px] leading-none font-bold tracking-[-0.03em] text-white transition-colors duration-200 group-hover:text-[#141414] group-focus-visible:text-[#141414] sm:text-[52px]">
+                  <CountUp value={s.value} suffix={s.suffix} duration={1.6} />
+                </dd>
+              </div>
             </div>
           ))}
         </dl>

@@ -429,16 +429,16 @@ body::-webkit-scrollbar {
   animation: beam-spin 2.8s linear infinite;
   animation-play-state: paused;
 }
-.stat-card:hover,
-.stat-card:focus-visible {
+.stat-wrap:hover .stat-card,
+.stat-wrap:focus-visible .stat-card {
   box-shadow: 0 18px 40px -20px rgba(13, 93, 245, 0.45);
 }
-.stat-card:hover::before,
-.stat-card:focus-visible::before {
+.stat-wrap:hover .stat-card::before,
+.stat-wrap:focus-visible .stat-card::before {
   opacity: 0;
 }
-.stat-card:hover::after,
-.stat-card:focus-visible::after {
+.stat-wrap:hover .stat-card::after,
+.stat-wrap:focus-visible .stat-card::after {
   opacity: 1;
   animation-play-state: running;
 }
@@ -451,5 +451,27 @@ body::-webkit-scrollbar {
   .stat-card::after {
     animation: none;
     background: linear-gradient(135deg, #01e2f8, #0d5df5 55%, #681bf5);
+  }
+}
+
+/* Stats cards: one bounce each time the pointer enters (or keyboard focus
+   lands). Off under reduced motion. */
+@keyframes stat-card-bounce {
+  0% { transform: translateY(0); }
+  30% { transform: translateY(-12px); }
+  50% { transform: translateY(0); }
+  68% { transform: translateY(-5px); }
+  84% { transform: translateY(0); }
+  92% { transform: translateY(-1.5px); }
+  100% { transform: translateY(0); }
+}
+.stat-wrap:hover .stat-card,
+.stat-wrap:focus-visible .stat-card {
+  animation: stat-card-bounce 0.7s cubic-bezier(0.28, 0.84, 0.42, 1) 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .stat-wrap:hover .stat-card,
+  .stat-wrap:focus-visible .stat-card {
+    animation: none;
   }
 }
