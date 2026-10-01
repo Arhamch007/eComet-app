@@ -38,7 +38,7 @@ const rows = [
 
 export function WhySection() {
   return (
-    <LandingSection id="why" tone="white" labelledBy="why-heading" className="bg-[#eef1f6] py-16 md:py-24">
+    <LandingSection id="why" tone="white" labelledBy="why-heading" className="bg-[#eef1f6]">
       <LandingContainer className="max-w-[1100px]">
         <div>
           <div className="max-w-[560px]">

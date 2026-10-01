@@ -80,7 +80,7 @@ export function ProcessSection() {
           lead="Every project follows the same path, so you always know what happens next, who is doing it and what it costs."
         />
 
-        <div ref={ref} className="relative mt-14 md:mt-16">
+        <div ref={ref} className="relative mt-10 md:mt-12">
           {/* ---------- desktop: comet path ---------- */}
           <div className="relative hidden h-[180px] lg:block">
             <svg viewBox="0 0 1000 180" preserveAspectRatio="none" className="absolute inset-0 h-full w-full overflow-visible" aria-hidden>

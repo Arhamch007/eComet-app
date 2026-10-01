@@ -18,7 +18,7 @@ const metrics = [
 
 export function StatsSection() {
   return (
-    <section aria-labelledby="stats-heading" className="relative isolate overflow-hidden bg-white py-20 md:py-28">
+    <section aria-labelledby="stats-heading" className="relative isolate overflow-hidden bg-white py-[72px] md:py-24 lg:py-28">
       {/* team photo (Unsplash, Annie Spratt) at low opacity behind the section */}
       <div
         aria-hidden

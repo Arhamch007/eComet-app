@@ -123,7 +123,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
 
 export function ServicesSection() {
   return (
-    <LandingSection id="services" tone="alt" labelledBy="services-heading" className="relative isolate overflow-hidden bg-[#e5e7eb] py-16 md:py-24">
+    <LandingSection id="services" tone="alt" labelledBy="services-heading" className="relative isolate overflow-hidden bg-[#e5e7eb]">
       {/* faint line grid, fading out towards the edges */}
       <div
         aria-hidden

@@ -43,7 +43,7 @@ export function LandingSection({
     <section
       id={id}
       aria-labelledby={labelledBy}
-      className={cn("scroll-mt-24 py-20 md:py-28", tone === "alt" ? "bg-[#f6f6f7]" : "bg-white", className)}
+      className={cn("scroll-mt-24 py-[72px] md:py-24 lg:py-28", tone === "alt" ? "bg-[#f6f6f7]" : "bg-white", className)}
     >
       {children}
     </section>
