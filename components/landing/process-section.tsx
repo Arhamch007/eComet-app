@@ -50,7 +50,7 @@ function StepMarker({ lit, Icon }: { lit: boolean; Icon: React.ElementType }) {
 export function ProcessSection() {
   const ref = React.useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start 80%", "end 45%"] });
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start 95%", "center 78%"] });
   const smooth = useSpring(scrollYProgress, { stiffness: 120, damping: 28, mass: 0.4 });
   const length = useTransform(smooth, [0, 1], [0.02, 1]);
   const [progress, setProgress] = React.useState(0);
