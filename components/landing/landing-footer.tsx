@@ -1,119 +1,95 @@
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 import { site } from "@/content/site";
-import { LandingContainer, logoGradient } from "@/components/landing/ui";
+import { LandingContainer } from "@/components/landing/ui";
 
-/* Compact dark footer: logo-gradient hairline on top, three short columns
-   (brand, page links, contact) and a bottom row with the legal line. */
+/* Dark footer with rounded top corners, sitting on the page like a panel:
+   three short link columns (navigation, profiles, contact), a bottom row
+   (legal line, markets, back to top) and the eComet name set very large
+   across the full width, cropped at the bottom edge. Hover changes colour
+   only. */
 
-const pageLinks = [
-  { label: "Services", href: "#services" },
-  { label: "Process", href: "#process" },
-  { label: "Why eComet", href: "#why" },
-  { label: "Contact", href: "#contact" },
-];
-
-const socials = [
-  { label: "LinkedIn", href: site.social.linkedin },
-  { label: "Facebook", href: site.social.facebook },
-  { label: "Upwork", href: site.social.upwork },
+const columns: { title: string; links: { label: string; href: string; external?: boolean }[] }[] = [
+  {
+    title: "Navigation",
+    links: [
+      { label: "Services", href: "#services" },
+      { label: "Process", href: "#process" },
+      { label: "Why eComet", href: "#why" },
+      { label: "Contact", href: "#contact" },
+    ],
+  },
+  {
+    title: "Profiles",
+    links: [
+      { label: "LinkedIn", href: site.social.linkedin, external: true },
+      { label: "Facebook", href: site.social.facebook, external: true },
+      { label: "Upwork", href: site.social.upwork, external: true },
+    ],
+  },
+  {
+    title: "Contact",
+    links: [{ label: site.email, href: `mailto:${site.email}` }],
+  },
 ];
 
 const linkClass =
-  "rounded-sm text-[14px] text-[#c3c7d4] transition-colors duration-200 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#5fb4ff]";
-const headingClass =
-  "text-[12px] font-semibold tracking-[0.12em] text-[#8f95a6] uppercase";
+  "rounded-sm text-[15px] text-[#d3d7e2] transition-colors duration-200 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#5fb4ff]";
 
 export function LandingFooter() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-[#0b0d14] text-white">
-      <div
-        aria-hidden
-        className="h-px w-full"
-        style={{ backgroundImage: logoGradient }}
-      />
+    <div className="bg-white px-2 pt-2 sm:px-3 sm:pt-3">
+      <footer className="relative overflow-hidden rounded-t-[24px] bg-[#0a0f24] text-white sm:rounded-t-[32px]">
+        <LandingContainer className="pt-14 md:pt-20">
+          <div className="grid grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-3">
+            {columns.map((col) => (
+              <nav key={col.title} aria-label={col.title} className={col.title === "Contact" ? "col-span-2 md:col-span-1" : undefined}>
+                <h2 className="text-[12px] font-semibold tracking-[0.12em] text-[#7d849a] uppercase">{col.title}</h2>
+                <ul className="mt-4 space-y-2.5">
+                  {col.links.map((l) => (
+                    <li key={l.label}>
+                      {l.external ? (
+                        <a href={l.href} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                          {l.label}
+                          <span className="sr-only"> (opens in a new tab)</span>
+                        </a>
+                      ) : (
+                        <Link href={l.href} className={`${linkClass} break-all`}>
+                          {l.label}
+                        </Link>
+                      )}
+                    </li>
+                  ))}
+                  {col.title === "Contact" ? (
+                    <li className="text-[15px] text-[#9aa0b2]">
+                      {site.address.city}, {site.address.country}
+                    </li>
+                  ) : null}
+                </ul>
+              </nav>
+            ))}
+          </div>
 
-      <LandingContainer className="py-12 md:py-14">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,0.8fr)_minmax(0,1fr)] lg:gap-12">
-          <div className="sm:col-span-2 lg:col-span-1">
-            <Link
-              href="#top"
-              aria-label="eComet, back to top"
-              className="inline-block rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#5fb4ff]"
-            >
-              <Image
-                src="/brand/ecomet-logo-on-dark.png"
-                alt="eComet"
-                width={640}
-                height={159}
-                className="h-8 w-auto"
-              />
+          <div className="mt-14 flex flex-col gap-3 border-t border-white/10 pt-6 text-[13px] text-[#7d849a] sm:flex-row sm:items-center sm:justify-between">
+            <p>
+              &copy; {year} {site.legalName}. All rights reserved.
+            </p>
+            <p>Serving clients in the USA, Canada and Europe</p>
+            <Link href="#top" className={`${linkClass} text-[14px]`}>
+              Back to top ↑
             </Link>
-            <p className="mt-4 max-w-[340px] text-[14px] leading-[1.6] text-pretty text-[#a9aebd]">
-              {site.tagline}.
-            </p>
           </div>
+        </LandingContainer>
 
-          <nav aria-label="Footer">
-            <h2 className={headingClass}>On this page</h2>
-            <ul className="mt-4 space-y-2.5">
-              {pageLinks.map((l) => (
-                <li key={l.href}>
-                  <Link href={l.href} className={linkClass}>
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <div>
-            <h2 className={headingClass}>Get in touch</h2>
-            <a
-              href={`mailto:${site.email}`}
-              className={`${linkClass} mt-4 inline-block font-semibold break-all text-white`}
-            >
-              {site.email}
-            </a>
-            <p className="mt-2 text-[14px] leading-[1.6] text-[#a9aebd]">
-              {site.address.street}, {site.address.city}, {site.address.country}
-            </p>
-            <ul
-              className="mt-5 flex flex-wrap gap-2"
-              aria-label="eComet on social media"
-            >
-              {socials.map((s) => (
-                <li key={s.label}>
-                  <a
-                    href={s.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`eComet on ${s.label} (opens in a new tab)`}
-                    className="inline-flex h-9 items-center gap-1 rounded-full border border-white/15 px-3.5 text-[13px] font-medium text-[#d7dae3] transition-colors duration-200 hover:border-[#1590ec] hover:bg-white/[0.04] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5fb4ff]"
-                  >
-                    {s.label}
-                    <ArrowUpRight
-                      aria-hidden
-                      className="size-3.5"
-                      strokeWidth={2}
-                    />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        <div className="mt-10 flex flex-col gap-2 border-t border-white/10 pt-6 text-[13px] text-[#8f95a6] sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            &copy; {year} {site.legalName}. All rights reserved.
-          </p>
-          <p>Serving clients in the USA, Canada and Europe.</p>
-        </div>
-      </LandingContainer>
-    </footer>
+        {/* large wordmark, cropped by the bottom edge */}
+        <p
+          aria-hidden
+          className="mt-8 -mb-[0.13em] text-center text-[25vw] leading-[0.85] font-bold tracking-[-0.06em] whitespace-nowrap text-white select-none md:mt-10"
+        >
+          eComet
+        </p>
+      </footer>
+    </div>
   );
 }
