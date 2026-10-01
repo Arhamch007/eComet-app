@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { ArrowRight, Check, X } from "lucide-react";
+import { Check, X } from "lucide-react";
 import { LandingContainer, LandingSection } from "@/components/landing/ui";
 
 /* Why eComet as a plain before/after comparison on a soft blue-grey band (so it reads
@@ -41,7 +40,7 @@ export function WhySection() {
   return (
     <LandingSection id="why" tone="white" labelledBy="why-heading" className="bg-[#eef1f6] py-16 md:py-24">
       <LandingContainer className="max-w-[1100px]">
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div>
           <div className="max-w-[560px]">
             <h2
               id="why-heading"
@@ -54,13 +53,6 @@ export function WhySection() {
               manage.
             </p>
           </div>
-          <Link
-            href="#contact"
-            className="hero-cta hero-cta--primary relative isolate inline-flex h-11 shrink-0 items-center justify-center gap-2 self-start overflow-hidden rounded-full px-6 text-[15px] font-semibold tracking-[-0.01em] whitespace-nowrap text-white outline-none focus-visible:ring-[3px] focus-visible:ring-[#0d5df5]/40 md:self-auto"
-          >
-            Start a Project
-            <ArrowRight aria-hidden className="size-4" strokeWidth={2.2} />
-          </Link>
         </div>
 
         <div className="mt-10 grid gap-4 md:mt-12 md:grid-cols-2 md:gap-6">
