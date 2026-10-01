@@ -14,13 +14,13 @@ import { cn } from "@/lib/utils";
    Phones and tablets: the same idea runs top to bottom down the left edge.
    Reduced motion: the path is drawn in full and every step is lit. */
 
-// Wave through the four stations in a 1000 x 240 box (stretched to fit).
-const WAVE = "M0,150 C50,170 80,180 125,180 S290,60 375,60 S540,180 625,180 S790,60 875,60 S960,80 1000,70";
+// Wave through the four stations in a 1000 x 180 box (stretched to fit).
+const WAVE = "M0,125 C50,140 80,150 125,150 S290,80 375,80 S540,150 625,150 S790,80 875,80 S960,90 1000,85";
 const STATIONS = [
-  { x: 12.5, y: 180 / 240 },
-  { x: 37.5, y: 60 / 240 },
-  { x: 62.5, y: 180 / 240 },
-  { x: 87.5, y: 60 / 240 },
+  { x: 12.5, y: 150 / 180 },
+  { x: 37.5, y: 80 / 180 },
+  { x: 62.5, y: 150 / 180 },
+  { x: 87.5, y: 80 / 180 },
 ];
 // Path progress (0..1) at which the comet reaches each station.
 const AT = [0.13, 0.38, 0.62, 0.87];
@@ -59,7 +59,7 @@ export function ProcessSection() {
 
   // comet head position along the drawn wave (desktop)
   const pathRef = React.useRef<SVGPathElement>(null);
-  const [head, setHead] = React.useState({ x: 0, y: 150 });
+  const [head, setHead] = React.useState({ x: 0, y: 125 });
   const [total, setTotal] = React.useState(0);
   const f = 0.02 + 0.98 * Math.min(1, Math.max(0, p));
   React.useEffect(() => {
@@ -82,8 +82,8 @@ export function ProcessSection() {
 
         <div ref={ref} className="relative mt-14 md:mt-16">
           {/* ---------- desktop: comet path ---------- */}
-          <div className="relative hidden h-[240px] lg:block">
-            <svg viewBox="0 0 1000 240" preserveAspectRatio="none" className="absolute inset-0 h-full w-full overflow-visible" aria-hidden>
+          <div className="relative hidden h-[180px] lg:block">
+            <svg viewBox="0 0 1000 180" preserveAspectRatio="none" className="absolute inset-0 h-full w-full overflow-visible" aria-hidden>
               <defs>
                 <linearGradient id="comet-path" x1="0" y1="0" x2="1" y2="0">
                   <stop offset="0" stopColor="#01e2f8" />
@@ -92,7 +92,7 @@ export function ProcessSection() {
                   <stop offset="1" stopColor="#681bf5" />
                 </linearGradient>
               </defs>
-              <path d={WAVE} fill="none" stroke="#dfe3ea" strokeWidth="2" strokeDasharray="2 8" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
+              <path d={WAVE} fill="none" stroke="#b9c1cf" strokeWidth="2" strokeDasharray="2 7" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
               <path ref={pathRef} d={WAVE} fill="none" stroke="none" />
               {/* filled part: dash offset from the same progress as the comet head */}
               <path
@@ -109,7 +109,7 @@ export function ProcessSection() {
               <span
                 aria-hidden
                 className="pointer-events-none absolute size-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white shadow-[0_0_0_4px_rgba(13,93,245,0.25),0_0_24px_8px_rgba(1,226,248,0.55)] transition-opacity duration-300"
-                style={{ left: `${head.x / 10}%`, top: `${(head.y / 240) * 100}%`, opacity: p > 0.03 && p < 0.99 ? 1 : 0 }}
+                style={{ left: `${head.x / 10}%`, top: `${(head.y / 180) * 100}%`, opacity: p > 0.03 && p < 0.99 ? 1 : 0 }}
               />
             ) : null}
             {process.map((step, i) => (
@@ -123,9 +123,9 @@ export function ProcessSection() {
             ))}
           </div>
 
-          <ol className="hidden grid-cols-4 gap-8 lg:grid">
+          <ol className="mt-8 hidden grid-cols-4 gap-8 lg:grid">
             {process.map((step, i) => (
-              <li key={step.n} className={cn("text-center transition-opacity duration-500", p >= AT[i] ? "opacity-100" : "opacity-55")}>
+              <li key={step.n} className={cn("text-center transition-opacity duration-500", p >= AT[i] ? "opacity-100" : "opacity-75")}>
                 <p className="text-[13px] font-semibold tracking-[0.04em] text-[#6b7080] tabular-nums">{step.n}</p>
                 <h3 className="mt-1 text-[19px] leading-[1.25] font-bold tracking-[-0.015em] text-[#141414]">{step.title}</h3>
                 <p className="mx-auto mt-2 max-w-[250px] text-[15px] leading-[1.6] text-pretty text-[#555555]">{step.text}</p>
@@ -135,7 +135,7 @@ export function ProcessSection() {
 
           {/* ---------- phones and tablets: vertical path ---------- */}
           <ol className="relative lg:hidden">
-            <span aria-hidden className="absolute top-2 bottom-2 left-[27px] w-[2px] rounded-full bg-[#e1e4ea]" />
+            <span aria-hidden className="absolute top-2 bottom-2 left-[27px] w-[2px] rounded-full bg-[#cfd5df]" />
             <motion.span
               aria-hidden
               className="absolute top-2 bottom-2 left-[27px] w-[2px] origin-top rounded-full bg-[linear-gradient(180deg,#01e2f8,#1590ec_35%,#0d5df5_70%,#681bf5)]"
