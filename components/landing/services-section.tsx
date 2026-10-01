@@ -123,7 +123,12 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
 
 export function ServicesSection() {
   return (
-    <LandingSection id="services" tone="alt" labelledBy="services-heading" className="bg-[#e5e7eb] py-16 md:py-24">
+    <LandingSection id="services" tone="alt" labelledBy="services-heading" className="relative isolate overflow-hidden bg-[#e5e7eb] py-16 md:py-24">
+      {/* faint line grid, fading out towards the edges */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(rgba(20,30,70,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(20,30,70,0.07)_1px,transparent_1px)] [background-size:56px_56px] [mask-image:radial-gradient(75%_65%_at_50%_45%,#000_30%,transparent_100%)]"
+      />
       <LandingContainer className="max-w-[1280px] lg:px-4 xl:px-6">
         <LandingHeading
           id="services-heading"
