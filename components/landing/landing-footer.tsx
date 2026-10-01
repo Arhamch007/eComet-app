@@ -82,10 +82,10 @@ export function LandingFooter() {
           </div>
         </LandingContainer>
 
-        {/* large wordmark, cropped by the bottom edge */}
+        {/* large wordmark, white at the top fading into the logo colours, cropped by the bottom edge */}
         <p
           aria-hidden
-          className="mt-8 -mb-[0.13em] text-center text-[25vw] leading-[0.85] font-bold tracking-[-0.06em] whitespace-nowrap text-white select-none md:mt-10"
+          className="mt-8 -mb-[0.13em] text-center text-[25vw] leading-[0.85] font-bold tracking-[-0.06em] whitespace-nowrap text-transparent select-none bg-[linear-gradient(180deg,#ffffff_0%,#ffffff_22%,#7fe9f7_48%,#1590ec_66%,#5a3cf0_82%,rgba(104,27,245,0.35)_100%)] bg-clip-text md:mt-10"
         >
           eComet
         </p>
