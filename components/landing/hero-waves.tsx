@@ -43,7 +43,8 @@ const ribbons: Ribbon[] = [
   },
 ];
 
-export function HeroWaves() {
+export function HeroWaves({ only, calm = true }: { only?: number[]; calm?: boolean } = {}) {
+  const list = ribbons.map((r, i) => ({ r, i })).filter(({ i }) => !only || only.includes(i));
   return (
     <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
       <svg
@@ -83,7 +84,7 @@ export function HeroWaves() {
         </defs>
 
         {/* grey shadow bands give the ribbons depth on the light page */}
-        {ribbons.map((r, i) => (
+        {list.map(({ r, i }) => (
           <path
             key={`s${i}`}
             d={r.d}
@@ -96,7 +97,7 @@ export function HeroWaves() {
           />
         ))}
         {/* coloured light */}
-        {ribbons.map((r, i) => (
+        {list.map(({ r, i }) => (
           <path
             key={`c${i}`}
             d={r.d}
@@ -109,7 +110,7 @@ export function HeroWaves() {
           />
         ))}
         {/* white glint along each ribbon */}
-        {ribbons.map((r, i) => (
+        {list.map(({ r, i }) => (
           <path
             key={`g${i}`}
             d={r.d}
@@ -124,7 +125,7 @@ export function HeroWaves() {
         <rect width="1440" height="900" filter="url(#grain)" opacity="0.05" />
       </svg>
       {/* keep the copy area calm so the headline stays crisp */}
-      <div className="absolute inset-0 bg-[radial-gradient(46%_40%_at_50%_50%,rgba(246,246,247,0.7),rgba(246,246,247,0)_72%)]" />
+      {calm ? <div className="absolute inset-0 bg-[radial-gradient(46%_40%_at_50%_50%,rgba(246,246,247,0.7),rgba(246,246,247,0)_72%)]" /> : null}
     </div>
   );
 }
