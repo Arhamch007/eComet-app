@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight, Check, X } from "lucide-react";
 import { LandingContainer, LandingSection } from "@/components/landing/ui";
 
-/* Why eComet as a plain before/after comparison on white (so it reads
+/* Why eComet as a plain before/after comparison on a soft blue-grey band (so it reads
    differently from the grey Services cards): the usual way of getting
    digital work done next to working with eComet, row by row. The eComet
    column is outlined in the logo gradient. Points follow the client's
@@ -39,7 +39,7 @@ const rows = [
 
 export function WhySection() {
   return (
-    <LandingSection id="why" tone="white" labelledBy="why-heading" className="bg-white py-16 md:py-24">
+    <LandingSection id="why" tone="white" labelledBy="why-heading" className="bg-[#eef1f6] py-16 md:py-24">
       <LandingContainer className="max-w-[1100px]">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-[560px]">
@@ -65,7 +65,7 @@ export function WhySection() {
 
         <div className="mt-10 grid gap-4 md:mt-12 md:grid-cols-2 md:gap-6">
           {/* the usual way */}
-          <div className="rounded-[22px] border border-[#e6e9f0] bg-[#f7f8fa] p-6 sm:p-8">
+          <div className="rounded-[22px] border border-[#e1e5ec] bg-white/60 p-6 sm:p-8">
             <h3 className="text-[17px] font-bold tracking-[-0.01em] text-[#6b7080]">Juggling separate freelancers</h3>
             <ul className="mt-5">
               {rows.map((r) => (
