@@ -22,9 +22,9 @@ export function StatsSection() {
       {/* team photo (Unsplash, Annie Spratt) at low opacity behind the section */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 bg-[url(/images/sections/team-unsplash.jpg)] bg-cover bg-center opacity-[0.12] grayscale-[30%]"
+        className="absolute inset-0 -z-10 bg-[url(/images/sections/team-unsplash.jpg)] bg-cover bg-center opacity-[0.22] grayscale-[20%]"
       />
-      <div aria-hidden className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(255,255,255,0.35),rgba(255,255,255,0.75)_55%,rgba(255,255,255,0.85))]" />
+      <div aria-hidden className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(255,255,255,0.15),rgba(255,255,255,0.5)_55%,rgba(255,255,255,0.65))]" />
       <LandingContainer className="grid items-center gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20">
         <div className="max-w-[460px]">
           <h2
