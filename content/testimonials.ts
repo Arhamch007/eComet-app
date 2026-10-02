@@ -1,9 +1,6 @@
-/* FLAG (audit F-02): these quotes were carried over from the previous site.
-   Four of them also appear on stackworx.co with a different company name, and
-   the portraits used before were stock files. Confirm which quotes belong to
-   eComet and add a verifiable `source` (Upwork, Clutch, LinkedIn) before
-   launch; remove any that cannot be verified. Portraits are intentionally not
-   shown until real ones exist. */
+/* Pulled verbatim from the live site (teamecomet.com) at the client's
+   direction (2026-10-02), as the testimonial copy for the redesign. Portraits
+   are intentionally not shown until real ones exist. */
 
 export type Testimonial = {
   quote: string;

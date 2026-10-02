@@ -3,6 +3,7 @@ import { LandingHero } from "@/components/landing/landing-hero";
 import { StatsSection } from "@/components/landing/stats-section";
 import { ServicesSection } from "@/components/landing/services-section";
 import { ProcessSection } from "@/components/landing/process-section";
+import { TestimonialsSection } from "@/components/landing/testimonials-section";
 import { WhySection } from "@/components/landing/why-section";
 import { ContactSection } from "@/components/landing/contact-section";
 import { LandingFooter } from "@/components/landing/landing-footer";
@@ -17,6 +18,7 @@ export default function HomePage() {
         <StatsSection />
         <ServicesSection />
         <ProcessSection />
+        <TestimonialsSection />
         <WhySection />
         <ContactSection />
       </main>
