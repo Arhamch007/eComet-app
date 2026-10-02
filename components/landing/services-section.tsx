@@ -70,7 +70,7 @@ const services: Service[] = [
 ];
 
 function ServiceCard({ service, index }: { service: Service; index: number }) {
-  const { title, icon: Icon, summary, helpWith } = service;
+  const { title, icon: Icon, summary } = service;
   const headingId = `service-${index}-heading`;
 
   /* Layout from the approved reference (icon tile, faded number, title,
@@ -92,27 +92,16 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
         </span>
       </div>
 
-      <h3 id={headingId} className="mt-4 text-[17px] leading-[1.25] font-bold lg:text-[15px] xl:text-[16.5px] tracking-[-0.015em] text-[#141414]">
+      <h3 id={headingId} className="mt-4 text-[19px] leading-[1.25] font-bold lg:text-[17px] xl:text-[19px] tracking-[-0.015em] text-[#141414]">
         {title}
       </h3>
-      <p className="mt-1.5 text-[13.5px] leading-[1.5] text-pretty text-[#555555] lg:text-[12.5px] xl:text-[13px]">{summary}</p>
-
-      <ul aria-label={`${title}: what we can help with`} className="mt-3.5 flex flex-wrap gap-1">
-        {helpWith.map((item) => (
-          <li
-            key={item}
-            className="rounded-full border border-[#dfe3ea] bg-transparent px-2 py-[2px] text-[11.5px] whitespace-nowrap lg:text-[10.5px] xl:text-[11px] leading-[1.45] font-medium text-[#3b3f4a] transition-colors duration-200 group-hover:border-[#1590ec]/45 group-hover:text-[#0d5df5]"
-          >
-            {item}
-          </li>
-        ))}
-      </ul>
+      <p className="mt-2 text-[15px] leading-[1.55] text-pretty text-[#555555] lg:text-[14px] xl:text-[15px]">{summary}</p>
 
       <div className="mt-auto pt-4">
         <Link
           href="#contact"
           aria-label={`Get started with ${title}`}
-          className="inline-flex items-center gap-1.5 rounded-md text-[13.5px] font-semibold text-[#0d5df5] transition-colors duration-200 hover:text-[#681bf5] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0d5df5]"
+          className="inline-flex items-center gap-1.5 rounded-md text-[14.5px] font-semibold text-[#0d5df5] transition-colors duration-200 hover:text-[#681bf5] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0d5df5]"
         >
           Get started
           <ArrowRight aria-hidden className="size-4" strokeWidth={2.2} />
