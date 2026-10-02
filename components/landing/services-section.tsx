@@ -116,6 +116,8 @@ export function ServicesSection() {
     <LandingSection id="services" tone="alt" labelledBy="services-heading" className="relative isolate overflow-hidden bg-[#f6f6f7]">
       {/* the two main gradient ribbons from the hero */}
       <HeroWaves only={[1, 2]} calm={false} />
+      {/* soft scrim so the heading stays readable over the ribbons */}
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[260px] bg-[radial-gradient(60%_100%_at_50%_0%,rgba(246,246,247,0.85),rgba(246,246,247,0)_80%)]" />
       <LandingContainer className="max-w-[1160px] lg:px-4 xl:px-6">
         <LandingHeading
           id="services-heading"
