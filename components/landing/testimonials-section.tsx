@@ -59,9 +59,9 @@ export function TestimonialsSection() {
     <LandingSection id="testimonials" tone="alt" labelledBy="testimonials-heading" className="relative isolate overflow-hidden">
       {/* soft colour blobs right behind the side cards, so the glass reads */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute top-1/2 left-[4%] size-[280px] -translate-y-1/2 rounded-full bg-[#01e2f8] opacity-[0.45] blur-[70px]" />
-        <div className="absolute top-1/2 right-[4%] size-[300px] -translate-y-1/2 rounded-full bg-[#681bf5] opacity-[0.4] blur-[70px]" />
-        <div className="absolute top-[-8%] left-1/3 size-[260px] rounded-full bg-[#0d5df5] opacity-[0.12] blur-[90px]" />
+        <div className="absolute top-[-6%] left-[8%] size-[300px] rounded-full bg-[#681bf5] opacity-[0.4] blur-[75px]" />
+        <div className="absolute right-[6%] bottom-[-10%] size-[320px] rounded-full bg-[#01e2f8] opacity-[0.42] blur-[75px]" />
+        <div className="absolute top-[40%] right-[30%] size-[220px] rounded-full bg-[#1590ec] opacity-[0.14] blur-[90px]" />
       </div>
 
       <LandingContainer>
