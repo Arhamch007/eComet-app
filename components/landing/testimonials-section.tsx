@@ -80,22 +80,27 @@ export function TestimonialsSection() {
               <ChevronLeft className="size-5" aria-hidden />
             </button>
 
-            <div className="grid flex-1 grid-cols-1 gap-4 sm:grid-cols-[minmax(0,0.78fr)_minmax(0,1fr)_minmax(0,0.78fr)] sm:gap-4 md:gap-5">
-              {slots.map(({ i, role }) => {
-                const t = testimonials[i];
-                const active = role === "active";
-                return (
-                  <div key={role} className={cn(role !== "active" && "hidden sm:block")}>
-                    <AnimatePresence mode="wait" initial={false}>
-                      <motion.figure
-                        key={t.name}
-                        initial={reduce ? false : { opacity: 0, x: dir * 28 * (active ? 1 : 0.6) }}
-                        animate={{ opacity: active ? 1 : 0.92, x: 0 }}
-                        exit={reduce ? undefined : { opacity: 0, x: -dir * 28 * (active ? 1 : 0.6) }}
-                        transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
+            <div className="flex-1 overflow-hidden">
+              <AnimatePresence mode="popLayout" initial={false} custom={dir}>
+                <motion.div
+                  key={index}
+                  custom={dir}
+                  initial={reduce ? false : { opacity: 0, x: dir * 90 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={reduce ? undefined : { opacity: 0, x: -dir * 90 }}
+                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                  className="grid grid-cols-1 gap-4 sm:grid-cols-[minmax(0,0.78fr)_minmax(0,1fr)_minmax(0,0.78fr)] sm:gap-4 md:gap-5"
+                >
+                  {slots.map(({ i, role }) => {
+                    const t = testimonials[i];
+                    const active = role === "active";
+                    return (
+                      <figure
+                        key={role}
                         onClick={() => !active && go(i, role === "next" ? 1 : -1)}
                         className={cn(
                           "flex h-full min-h-[300px] flex-col rounded-[22px] p-6 sm:min-h-[260px] sm:p-7",
+                          role !== "active" && "hidden sm:flex",
                           active
                             ? "bg-[linear-gradient(145deg,#1590ec_0%,#0d5df5_45%,#681bf5_100%)] text-white shadow-[0_28px_60px_-24px_rgba(13,93,245,0.55)]"
                             : "cursor-pointer border border-white/70 bg-white/35 text-[#2b2e38] opacity-90 shadow-[0_18px_44px_-28px_rgba(20,30,70,0.3)] backdrop-blur-xl backdrop-saturate-150 transition-opacity duration-200 hover:opacity-100"
@@ -123,11 +128,11 @@ export function TestimonialsSection() {
                             <span className={cn("block truncate text-[13px]", active ? "text-white/80" : "text-[#6b7080]")}>{t.role}</span>
                           </span>
                         </figcaption>
-                      </motion.figure>
-                    </AnimatePresence>
-                  </div>
-                );
-              })}
+                      </figure>
+                    );
+                  })}
+                </motion.div>
+              </AnimatePresence>
             </div>
 
             <button type="button" className={cn(arrow, "mt-[108px] hidden self-start sm:inline-flex")} onClick={() => go(index + 1, 1)} aria-label="Next testimonial">
