@@ -27,6 +27,16 @@ function at(i: number, n: number) {
   return ((i % n) + n) % n;
 }
 
+/* Variants read `custom` (the travel direction) at the moment each card
+   enters or leaves, not at render time, so the exiting card always leaves
+   the way the new one is arriving from. Using a fixed exit value from
+   component state got the direction wrong on fast clicks and looked janky. */
+const slideVariants = {
+  enter: (dir: number) => ({ opacity: 0, x: dir * 90 }),
+  center: { opacity: 1, x: 0 },
+  exit: (dir: number) => ({ opacity: 0, x: -dir * 90 }),
+};
+
 export function TestimonialsSection() {
   const n = testimonials.length;
   const [[index, dir], setState] = React.useState<[number, number]>([0, 0]);
@@ -85,10 +95,12 @@ export function TestimonialsSection() {
                 <motion.div
                   key={index}
                   custom={dir}
-                  initial={reduce ? false : { opacity: 0, x: dir * 90 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={reduce ? undefined : { opacity: 0, x: -dir * 90 }}
+                  variants={slideVariants}
+                  initial={reduce ? false : "enter"}
+                  animate="center"
+                  exit={reduce ? undefined : "exit"}
                   transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                  style={{ willChange: "transform, opacity" }}
                   className="grid grid-cols-1 gap-4 sm:grid-cols-[minmax(0,0.78fr)_minmax(0,1fr)_minmax(0,0.78fr)] sm:gap-4 md:gap-5"
                 >
                   {slots.map(({ i, role }) => {
@@ -103,7 +115,7 @@ export function TestimonialsSection() {
                           role !== "active" && "hidden sm:flex",
                           active
                             ? "bg-[linear-gradient(145deg,#1590ec_0%,#0d5df5_45%,#681bf5_100%)] text-white shadow-[0_28px_60px_-24px_rgba(13,93,245,0.55)]"
-                            : "cursor-pointer border border-white/70 bg-white/35 text-[#2b2e38] opacity-90 shadow-[0_18px_44px_-28px_rgba(20,30,70,0.3)] backdrop-blur-xl backdrop-saturate-150 transition-opacity duration-200 hover:opacity-100"
+                            : "cursor-pointer border border-white/70 bg-white/35 text-[#2b2e38] opacity-90 shadow-[0_18px_44px_-28px_rgba(20,30,70,0.3)] backdrop-blur-lg backdrop-saturate-150 will-change-transform transition-opacity duration-200 hover:opacity-100"
                         )}
                       >
                         <Quote
