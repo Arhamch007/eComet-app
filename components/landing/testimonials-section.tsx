@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { testimonials } from "@/content/testimonials";
 import { LandingContainer, LandingHeading, LandingSection } from "@/components/landing/ui";
 import { cn } from "@/lib/utils";
@@ -118,12 +118,7 @@ export function TestimonialsSection() {
                             : "cursor-pointer border border-white/70 bg-white/35 text-[#2b2e38] opacity-90 shadow-[0_18px_44px_-28px_rgba(20,30,70,0.3)] backdrop-blur-lg backdrop-saturate-150 will-change-transform transition-opacity duration-200 hover:opacity-100"
                         )}
                       >
-                        <Quote
-                          aria-hidden
-                          className={cn("size-8", active ? "text-white/70" : "text-[#0d5df5]/40")}
-                          strokeWidth={1.75}
-                        />
-                        <blockquote className={cn("mt-5 line-clamp-5 text-[15px] leading-[1.6] text-pretty", active ? "text-white" : "text-[#3b3f4a]")}>
+                        <blockquote className={cn("line-clamp-5 text-[15px] leading-[1.6] text-pretty", active ? "text-white" : "text-[#3b3f4a]")}>
                           {t.quote}
                         </blockquote>
                         <figcaption className={cn("mt-auto flex items-center gap-3 border-t pt-5", active ? "border-white/25" : "border-white/50")}>
