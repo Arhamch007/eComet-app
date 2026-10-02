@@ -115,7 +115,7 @@ export function TestimonialsSection() {
                           role !== "active" && "hidden sm:flex",
                           active
                             ? "bg-[linear-gradient(145deg,#1590ec_0%,#0d5df5_45%,#681bf5_100%)] text-white shadow-[0_28px_60px_-24px_rgba(13,93,245,0.55)]"
-                            : "cursor-pointer border border-white/70 bg-white/35 text-[#2b2e38] opacity-90 shadow-[0_18px_44px_-28px_rgba(20,30,70,0.3)] backdrop-blur-lg backdrop-saturate-150 will-change-transform transition-opacity duration-200 hover:opacity-100"
+                            : "cursor-pointer border border-white/70 bg-white/35 text-[#2b2e38] opacity-90 shadow-[0_18px_44px_-28px_rgba(20,30,70,0.3)] backdrop-blur-lg backdrop-saturate-150 blur-[1.5px] will-change-transform transition-[opacity,filter] duration-200 hover:opacity-100 hover:blur-0"
                         )}
                       >
                         <blockquote className={cn("line-clamp-5 text-[15px] leading-[1.6] text-pretty", active ? "text-white" : "text-[#3b3f4a]")}>
