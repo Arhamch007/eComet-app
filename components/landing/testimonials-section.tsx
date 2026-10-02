@@ -1,17 +1,19 @@
 "use client";
 
 import * as React from "react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
-import { useReducedMotion } from "motion/react";
 import { testimonials } from "@/content/testimonials";
 import { LandingContainer, LandingHeading, LandingSection } from "@/components/landing/ui";
 import { cn } from "@/lib/utils";
 
-/* Testimonials, right after "How we work": a 3-up carousel (one card on
-   phones). The centre card is active, filled with the logo gradient; the
-   two side cards are glassy (translucent, blurred) over soft colour blobs
-   so the glass effect actually reads. Arrow keys, buttons and dots all move
-   the same index; reduced motion drops the slide transition. */
+/* Testimonials, right after "How we work": three cards side by side (one on
+   phones), laid out in normal flow so they never overlap. The centre card is
+   active: the logo gradient, full size. The two side cards are real glass
+   (blurred, translucent, saturated) over soft colour blobs placed right
+   behind them so the effect actually reads, and are slightly smaller and
+   dimmed. Arrow keys, buttons and dots all move the same index; a slide
+   crossfades in from the direction of travel; reduced motion skips that. */
 
 function initials(name: string) {
   return name
@@ -21,43 +23,45 @@ function initials(name: string) {
     .slice(0, 2);
 }
 
+function at(i: number, n: number) {
+  return ((i % n) + n) % n;
+}
+
 export function TestimonialsSection() {
   const n = testimonials.length;
-  const [index, setIndex] = React.useState(0);
+  const [[index, dir], setState] = React.useState<[number, number]>([0, 0]);
   const [announce, setAnnounce] = React.useState("");
   const reduce = useReducedMotion();
 
   const go = React.useCallback(
-    (next: number) => {
-      const i = ((next % n) + n) % n;
-      setIndex(i);
-      setAnnounce(`Testimonial ${i + 1} of ${n}`);
+    (next: number, direction: number) => {
+      setState(([i]) => [at(next, n), direction]);
+      setAnnounce(`Testimonial ${at(next, n) + 1} of ${n}`);
     },
     [n]
   );
 
   const onKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "ArrowRight") { e.preventDefault(); go(index + 1); }
-    else if (e.key === "ArrowLeft") { e.preventDefault(); go(index - 1); }
+    if (e.key === "ArrowRight") { e.preventDefault(); go(index + 1, 1); }
+    else if (e.key === "ArrowLeft") { e.preventDefault(); go(index - 1, -1); }
   };
 
-  const offsetOf = (i: number) => {
-    let d = i - index;
-    if (d > n / 2) d -= n;
-    if (d < -n / 2) d += n;
-    return d;
-  };
+  const slots = [
+    { i: at(index - 1, n), role: "prev" as const },
+    { i: index, role: "active" as const },
+    { i: at(index + 1, n), role: "next" as const },
+  ];
 
   const arrow =
     "inline-flex size-11 shrink-0 items-center justify-center rounded-full border border-[#e1e5ec] bg-white text-[#555555] transition-colors duration-200 hover:border-[#1590ec]/60 hover:text-[#0d5df5] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0d5df5]";
 
   return (
     <LandingSection id="testimonials" tone="alt" labelledBy="testimonials-heading" className="relative isolate overflow-hidden">
-      {/* soft colour blobs so the glass side cards have something to show through */}
+      {/* soft colour blobs right behind the side cards, so the glass reads */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute top-[-10%] left-[6%] size-[320px] rounded-full bg-[#01e2f8] opacity-[0.16] blur-[90px]" />
-        <div className="absolute right-[8%] bottom-[-14%] size-[360px] rounded-full bg-[#681bf5] opacity-[0.14] blur-[100px]" />
-        <div className="absolute top-[30%] right-[22%] size-[220px] rounded-full bg-[#0d5df5] opacity-[0.12] blur-[90px]" />
+        <div className="absolute top-1/2 left-[4%] size-[280px] -translate-y-1/2 rounded-full bg-[#01e2f8] opacity-[0.45] blur-[70px]" />
+        <div className="absolute top-1/2 right-[4%] size-[300px] -translate-y-1/2 rounded-full bg-[#681bf5] opacity-[0.4] blur-[70px]" />
+        <div className="absolute top-[-8%] left-1/3 size-[260px] rounded-full bg-[#0d5df5] opacity-[0.12] blur-[90px]" />
       </div>
 
       <LandingContainer>
@@ -71,79 +75,68 @@ export function TestimonialsSection() {
           onKeyDown={onKeyDown}
           className="mt-12 rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0d5df5] md:mt-14"
         >
-          <div className="flex items-center gap-3 sm:gap-5">
-            <button type="button" className={cn(arrow, "hidden sm:inline-flex")} onClick={() => go(index - 1)} aria-label="Previous testimonial">
+          <div className="flex items-stretch justify-center gap-3 sm:gap-5">
+            <button type="button" className={cn(arrow, "mt-[108px] hidden self-start sm:inline-flex")} onClick={() => go(index - 1, -1)} aria-label="Previous testimonial">
               <ChevronLeft className="size-5" aria-hidden />
             </button>
 
-            <div className="relative h-[340px] flex-1 overflow-hidden sm:h-[300px]">
-              {testimonials.map((t, i) => {
-                const off = offsetOf(i);
-                const active = off === 0;
-                const show = Math.abs(off) <= 1;
-                const style: React.CSSProperties = reduce
-                  ? { opacity: active ? 1 : 0, zIndex: active ? 2 : 0, transform: "translateX(-50%)" }
-                  : {
-                      transform: `translateX(calc(-50% + ${off * 56}%)) scale(${active ? 1 : 0.86})`,
-                      opacity: show ? (active ? 1 : 0.9) : 0,
-                      zIndex: active ? 2 : 1,
-                      transition: "transform 480ms cubic-bezier(0.22,1,0.36,1), opacity 480ms ease",
-                    };
+            <div className="grid flex-1 grid-cols-1 gap-4 sm:grid-cols-[minmax(0,0.78fr)_minmax(0,1fr)_minmax(0,0.78fr)] sm:gap-4 md:gap-5">
+              {slots.map(({ i, role }) => {
+                const t = testimonials[i];
+                const active = role === "active";
                 return (
-                  <div
-                    key={t.name}
-                    role="group"
-                    aria-roledescription="slide"
-                    aria-label={`${i + 1} of ${n}`}
-                    aria-hidden={!active}
-                    inert={!active}
-                    onClick={() => !active && Math.abs(off) <= 1 && go(i)}
-                    className={cn("absolute top-0 left-1/2 h-full w-[88%] sm:w-[420px]", !active && "cursor-pointer")}
-                    style={style}
-                  >
-                    <figure
-                      className={cn(
-                        "flex h-full flex-col rounded-[22px] p-6 sm:p-7",
-                        active
-                          ? "bg-[linear-gradient(145deg,#1590ec_0%,#0d5df5_45%,#681bf5_100%)] text-white shadow-[0_28px_60px_-24px_rgba(13,93,245,0.55)]"
-                          : "border border-white/60 bg-white/55 text-[#2b2e38] shadow-[0_18px_44px_-28px_rgba(20,30,70,0.3)] backdrop-blur-xl"
-                      )}
-                    >
-                      <Quote
-                        aria-hidden
-                        className={cn("size-8", active ? "text-white/70" : "text-[#0d5df5]/35")}
-                        strokeWidth={1.75}
-                      />
-                      <blockquote className={cn("mt-5 line-clamp-5 text-[15px] leading-[1.6] text-pretty", active ? "text-white" : "text-[#3b3f4a]")}>
-                        {t.quote}
-                      </blockquote>
-                      <figcaption className={cn("mt-auto flex items-center gap-3 border-t pt-5", active ? "border-white/25" : "border-[#e1e5ec]")}>
-                        <span
-                          className={cn(
-                            "inline-flex size-10 shrink-0 items-center justify-center rounded-full text-[13px] font-semibold",
-                            active ? "bg-white/20 text-white" : "bg-[#eef1f6] text-[#0d5df5]"
-                          )}
-                        >
-                          {initials(t.name)}
-                        </span>
-                        <span className="min-w-0">
-                          <span className="block truncate text-[14px] font-semibold">{t.name}</span>
-                          <span className={cn("block truncate text-[13px]", active ? "text-white/80" : "text-[#6b7080]")}>{t.role}</span>
-                        </span>
-                      </figcaption>
-                    </figure>
+                  <div key={role} className={cn(role !== "active" && "hidden sm:block")}>
+                    <AnimatePresence mode="wait" initial={false}>
+                      <motion.figure
+                        key={t.name}
+                        initial={reduce ? false : { opacity: 0, x: dir * 28 * (active ? 1 : 0.6) }}
+                        animate={{ opacity: active ? 1 : 0.92, x: 0 }}
+                        exit={reduce ? undefined : { opacity: 0, x: -dir * 28 * (active ? 1 : 0.6) }}
+                        transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
+                        onClick={() => !active && go(i, role === "next" ? 1 : -1)}
+                        className={cn(
+                          "flex h-full min-h-[300px] flex-col rounded-[22px] p-6 sm:min-h-[260px] sm:p-7",
+                          active
+                            ? "bg-[linear-gradient(145deg,#1590ec_0%,#0d5df5_45%,#681bf5_100%)] text-white shadow-[0_28px_60px_-24px_rgba(13,93,245,0.55)]"
+                            : "cursor-pointer border border-white/70 bg-white/35 text-[#2b2e38] opacity-90 shadow-[0_18px_44px_-28px_rgba(20,30,70,0.3)] backdrop-blur-xl backdrop-saturate-150 transition-opacity duration-200 hover:opacity-100"
+                        )}
+                      >
+                        <Quote
+                          aria-hidden
+                          className={cn("size-8", active ? "text-white/70" : "text-[#0d5df5]/40")}
+                          strokeWidth={1.75}
+                        />
+                        <blockquote className={cn("mt-5 line-clamp-5 text-[15px] leading-[1.6] text-pretty", active ? "text-white" : "text-[#3b3f4a]")}>
+                          {t.quote}
+                        </blockquote>
+                        <figcaption className={cn("mt-auto flex items-center gap-3 border-t pt-5", active ? "border-white/25" : "border-white/50")}>
+                          <span
+                            className={cn(
+                              "inline-flex size-10 shrink-0 items-center justify-center rounded-full text-[13px] font-semibold",
+                              active ? "bg-white/20 text-white" : "bg-white/70 text-[#0d5df5]"
+                            )}
+                          >
+                            {initials(t.name)}
+                          </span>
+                          <span className="min-w-0">
+                            <span className="block truncate text-[14px] font-semibold">{t.name}</span>
+                            <span className={cn("block truncate text-[13px]", active ? "text-white/80" : "text-[#6b7080]")}>{t.role}</span>
+                          </span>
+                        </figcaption>
+                      </motion.figure>
+                    </AnimatePresence>
                   </div>
                 );
               })}
             </div>
 
-            <button type="button" className={cn(arrow, "hidden sm:inline-flex")} onClick={() => go(index + 1)} aria-label="Next testimonial">
+            <button type="button" className={cn(arrow, "mt-[108px] hidden self-start sm:inline-flex")} onClick={() => go(index + 1, 1)} aria-label="Next testimonial">
               <ChevronRight className="size-5" aria-hidden />
             </button>
           </div>
 
           <div className="mt-8 flex items-center justify-center gap-4">
-            <button type="button" className={cn(arrow, "size-10 sm:hidden")} onClick={() => go(index - 1)} aria-label="Previous testimonial">
+            <button type="button" className={cn(arrow, "size-10 sm:hidden")} onClick={() => go(index - 1, -1)} aria-label="Previous testimonial">
               <ChevronLeft className="size-5" aria-hidden />
             </button>
             <div className="flex items-center gap-1.5">
@@ -151,7 +144,7 @@ export function TestimonialsSection() {
                 <button
                   key={t.name}
                   type="button"
-                  onClick={() => go(i)}
+                  onClick={() => go(i, i > index ? 1 : -1)}
                   aria-label={`Go to testimonial ${i + 1}`}
                   aria-current={i === index ? "true" : undefined}
                   className="group inline-flex h-6 items-center px-1 focus-visible:outline-2 focus-visible:outline-[#0d5df5]"
@@ -165,7 +158,7 @@ export function TestimonialsSection() {
                 </button>
               ))}
             </div>
-            <button type="button" className={cn(arrow, "size-10 sm:hidden")} onClick={() => go(index + 1)} aria-label="Next testimonial">
+            <button type="button" className={cn(arrow, "size-10 sm:hidden")} onClick={() => go(index + 1, 1)} aria-label="Next testimonial">
               <ChevronRight className="size-5" aria-hidden />
             </button>
           </div>
