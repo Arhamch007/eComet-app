@@ -1,7 +1,6 @@
 import { ArrowRight, Bot, Headset, MonitorSmartphone, TrendingUp, type LucideIcon } from "lucide-react";
 import Link from "next/link";
 import { LandingContainer, LandingHeading, LandingSection } from "@/components/landing/ui";
-import { HeroWaves } from "@/components/landing/hero-waves";
 
 /* "Our Services": heading and the four service cards in one row from 1024px
    (2 x 2 on tablets, one column on phones); sizing tightens on small laptops, laid out like the approved reference in the site's light theme.
@@ -114,10 +113,11 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
 export function ServicesSection() {
   return (
     <LandingSection id="services" tone="alt" labelledBy="services-heading" className="relative isolate overflow-hidden bg-[#f6f6f7]">
-      {/* the two main gradient ribbons from the hero */}
-      <HeroWaves only={[1, 2]} calm={false} />
-      {/* soft scrim so the heading stays readable over the ribbons */}
-      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[260px] bg-[radial-gradient(60%_100%_at_50%_0%,rgba(246,246,247,0.85),rgba(246,246,247,0)_80%)]" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute top-1/2 left-[4%] size-[280px] -translate-y-1/2 rounded-full bg-[#01e2f8] opacity-[0.45] blur-[70px]" />
+        <div className="absolute top-1/2 right-[4%] size-[300px] -translate-y-1/2 rounded-full bg-[#681bf5] opacity-[0.4] blur-[70px]" />
+        <div className="absolute top-[-8%] left-1/3 size-[260px] rounded-full bg-[#0d5df5] opacity-[0.12] blur-[90px]" />
+      </div>
       <LandingContainer className="max-w-[1160px] lg:px-4 xl:px-6">
         <LandingHeading
           id="services-heading"
