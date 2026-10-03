@@ -363,16 +363,16 @@ export function ContactSection() {
       <LandingContainer>
         <div className="overflow-hidden rounded-[28px] border border-[#e7e9ef] bg-white shadow-[0_1px_2px_rgba(20,20,40,0.04),0_24px_60px_-28px_rgba(13,40,120,0.28)] lg:grid lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:rounded-[32px]">
           {/* Gradient panel */}
-          <div className="relative isolate overflow-hidden bg-[linear-gradient(135deg,#1590ec_0%,#0d5df5_32%,#4a2af2_64%,#681bf5_100%)] px-6 py-9 text-white sm:px-9 sm:py-11 lg:px-11 lg:py-12">
-            {/* Aqua glow, mostly outside the card. */}
+          <div className="relative isolate overflow-hidden bg-[linear-gradient(160deg,#681bf5_0%,#4a2af2_28%,#0d5df5_56%,#1590ec_82%,#01e2f8_100%)] px-6 py-9 text-white sm:px-9 sm:py-11 lg:px-11 lg:py-12">
+            {/* Aqua glow, mostly outside the card, echoes the gradient's own aqua corner. */}
             <div
               aria-hidden
-              className="absolute -right-24 -bottom-28 -z-10 size-[300px] rounded-full bg-[#01e2f8] opacity-40 blur-[80px]"
+              className="absolute -right-24 -bottom-28 -z-10 size-[320px] rounded-full bg-[#01e2f8] opacity-50 blur-[85px]"
             />
-            {/* Light veil, just enough to keep white text comfortably readable over the lighter ocean stop. */}
+            {/* Faint veil, only to keep the small print legible over the lighter aqua corner. */}
             <div
               aria-hidden
-              className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(8,16,64,0.12)_0%,rgba(8,16,64,0.04)_55%,rgba(20,8,70,0.1)_100%)]"
+              className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(8,16,64,0)_0%,rgba(8,16,64,0)_60%,rgba(8,16,64,0.16)_100%)]"
             />
             {/* Orbit lines: the comet's path. */}
             <svg
