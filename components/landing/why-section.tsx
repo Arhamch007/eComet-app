@@ -53,7 +53,7 @@ export function WhySection() {
         <div className="mx-auto max-w-[560px] text-center">
           <h2
             id="why-heading"
-            className="text-[30px] leading-[1.12] font-bold tracking-[-0.025em] text-balance text-[#141414] md:text-[40px]"
+            className="text-[22px] leading-[1.12] font-bold tracking-[-0.02em] whitespace-nowrap text-[#141414] sm:text-[32px] md:text-[40px]"
           >
             Why businesses choose eComet
           </h2>
