@@ -13,6 +13,32 @@ import { cn } from "@/lib/utils";
 const FORM_ENDPOINT = "https://formspree.io/f/mbjvedvw";
 const SERVICE_OPTIONS = [...site.keywords, "Not sure yet"];
 
+type Intent = "project" | "question" | "partnership";
+
+const INTENTS: { id: Intent; label: string; subject: string; serviceLabel: string; placeholder: string }[] = [
+  {
+    id: "project",
+    label: "Start a project",
+    subject: "New project enquiry from the eComet website",
+    serviceLabel: "What do you need help with?",
+    placeholder: "The goal, the tools you use today and any deadline.",
+  },
+  {
+    id: "question",
+    label: "Quick question",
+    subject: "New question from the eComet website",
+    serviceLabel: "What's this about?",
+    placeholder: "What would you like to know?",
+  },
+  {
+    id: "partnership",
+    label: "Partnership",
+    subject: "New partnership enquiry from the eComet website",
+    serviceLabel: "What kind of partnership?",
+    placeholder: "Tell us about your company and how you'd like to work together.",
+  },
+];
+
 type FieldName = "name" | "email" | "service" | "message";
 type Errors = Partial<Record<FieldName, string>>;
 type Status = "idle" | "sending" | "sent" | "error";
@@ -63,9 +89,11 @@ function FieldError({ id, message }: { id: string; message?: string }) {
 }
 
 function ContactForm() {
+  const [intent, setIntent] = React.useState<Intent>("project");
   const [status, setStatus] = React.useState<Status>("idle");
   const [errors, setErrors] = React.useState<Errors>({});
   const [touched, setTouched] = React.useState(false);
+  const active = INTENTS.find((i) => i.id === intent) ?? INTENTS[0];
   const formRef = React.useRef<HTMLFormElement>(null);
   const successRef = React.useRef<HTMLHeadingElement>(null);
 
@@ -165,17 +193,38 @@ function ContactForm() {
       .join(" ") || undefined;
 
   return (
-    <form
-      ref={formRef}
-      onSubmit={onSubmit}
-      noValidate
-      aria-describedby="contact-form-note"
-      className="space-y-5"
-    >
+    <>
+      <div role="radiogroup" aria-label="What are you getting in touch about?" className="flex flex-wrap gap-2">
+        {INTENTS.map((i) => (
+          <button
+            key={i.id}
+            type="button"
+            role="radio"
+            aria-checked={intent === i.id}
+            onClick={() => setIntent(i.id)}
+            className={cn(
+              "rounded-full border px-4 py-2 text-[13.5px] font-semibold transition-colors duration-200",
+              intent === i.id
+                ? "border-transparent bg-[#eef1f6] text-[#141414]"
+                : "border-[#d9dde6] text-[#6b7080] hover:border-[#b9ccf7] hover:text-[#141414]"
+            )}
+          >
+            {i.label}
+          </button>
+        ))}
+      </div>
+
+      <form
+        ref={formRef}
+        onSubmit={onSubmit}
+        noValidate
+        aria-describedby="contact-form-note"
+        className="mt-5 space-y-5"
+      >
       <input
         type="hidden"
         name="_subject"
-        value="New enquiry from the eComet website"
+        value={active.subject}
       />
 
       <div className="grid gap-5 sm:grid-cols-2">
@@ -220,7 +269,7 @@ function ContactForm() {
 
       <div>
         <label htmlFor="contact-service" className={labelClass}>
-          What do you need help with?
+          {active.serviceLabel}
         </label>
         <div className="relative">
           <select
@@ -263,7 +312,7 @@ function ContactForm() {
           name="message"
           required
           rows={4}
-          placeholder="The goal, the tools you use today and any deadline."
+          placeholder={active.placeholder}
           aria-invalid={errors.message ? true : undefined}
           aria-describedby={describe("message")}
           onChange={recheck}
@@ -332,7 +381,8 @@ function ContactForm() {
           )}
         </button>
       </div>
-    </form>
+      </form>
+    </>
   );
 }
 
