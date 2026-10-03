@@ -15,8 +15,12 @@ import { cn } from "@/lib/utils";
    card, so the card itself never reflows). The two side cards just swap
    instantly, in place; they are glass (blurred, translucent) over soft
    colour blobs placed right behind them, and slightly out of focus.
-   Bounded, not a loop: the arrows disable at the first/last testimonial
-   instead of wrapping. */
+   Loops: prev/next wrap around (mod n), so three cards always show, even
+   at the first/last testimonial. */
+
+function at(i: number, n: number) {
+  return ((i % n) + n) % n;
+}
 
 function CardBody({ t, active }: { t: (typeof testimonials)[number]; active: boolean }) {
   return (
@@ -45,7 +49,7 @@ export function TestimonialsSection() {
 
   const go = React.useCallback(
     (next: number) => {
-      const i = Math.max(0, Math.min(n - 1, next));
+      const i = at(next, n);
       setIndex(i);
       setAnnounce(`Testimonial ${i + 1} of ${n}`);
     },
@@ -58,9 +62,9 @@ export function TestimonialsSection() {
   };
 
   const slots = [
-    { i: index - 1, role: "prev" as const },
+    { i: at(index - 1, n), role: "prev" as const },
     { i: index, role: "active" as const },
-    { i: index + 1, role: "next" as const },
+    { i: at(index + 1, n), role: "next" as const },
   ];
 
   const arrow =
@@ -87,13 +91,12 @@ export function TestimonialsSection() {
           className="mt-12 rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0d5df5] md:mt-14"
         >
           <div className="flex items-stretch justify-center gap-3 sm:gap-5">
-            <button type="button" className={cn(arrow, "mt-[108px] hidden self-start sm:inline-flex")} onClick={() => go(index - 1)} disabled={index === 0} aria-label="Previous testimonial">
+            <button type="button" className={cn(arrow, "mt-[108px] hidden self-start sm:inline-flex")} onClick={() => go(index - 1)} aria-label="Previous testimonial">
               <ChevronLeft className="size-5" aria-hidden />
             </button>
 
             <div className="grid flex-1 grid-cols-1 gap-4 sm:grid-cols-[minmax(0,0.78fr)_minmax(0,1fr)_minmax(0,0.78fr)] sm:gap-4 md:gap-5">
               {slots.map(({ i, role }) => {
-                if (i < 0 || i > n - 1) return <div key={role} className="hidden sm:block" aria-hidden />;
                 const t = testimonials[i];
                 const active = role === "active";
                 return (
@@ -131,13 +134,13 @@ export function TestimonialsSection() {
               })}
             </div>
 
-            <button type="button" className={cn(arrow, "mt-[108px] hidden self-start sm:inline-flex")} onClick={() => go(index + 1)} disabled={index === n - 1} aria-label="Next testimonial">
+            <button type="button" className={cn(arrow, "mt-[108px] hidden self-start sm:inline-flex")} onClick={() => go(index + 1)} aria-label="Next testimonial">
               <ChevronRight className="size-5" aria-hidden />
             </button>
           </div>
 
           <div className="mt-8 flex items-center justify-center gap-4">
-            <button type="button" className={cn(arrow, "size-10 sm:hidden")} onClick={() => go(index - 1)} disabled={index === 0} aria-label="Previous testimonial">
+            <button type="button" className={cn(arrow, "size-10 sm:hidden")} onClick={() => go(index - 1)} aria-label="Previous testimonial">
               <ChevronLeft className="size-5" aria-hidden />
             </button>
             <div className="flex items-center gap-1.5">
@@ -159,7 +162,7 @@ export function TestimonialsSection() {
                 </button>
               ))}
             </div>
-            <button type="button" className={cn(arrow, "size-10 sm:hidden")} onClick={() => go(index + 1)} disabled={index === n - 1} aria-label="Next testimonial">
+            <button type="button" className={cn(arrow, "size-10 sm:hidden")} onClick={() => go(index + 1)} aria-label="Next testimonial">
               <ChevronRight className="size-5" aria-hidden />
             </button>
           </div>
