@@ -109,13 +109,13 @@ export function TestimonialsSection() {
                     )}
                   >
                     {active ? (
-                      <AnimatePresence initial={false}>
+                      <AnimatePresence initial={false} mode="wait">
                         <motion.div
                           key={t.name}
-                          initial={reduce ? false : { opacity: 0, y: 14 }}
+                          initial={reduce ? false : { opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
-                          exit={reduce ? undefined : { opacity: 0, y: -14 }}
-                          transition={{ duration: 0.55, ease: [0.4, 0, 0.2, 1] }}
+                          exit={reduce ? undefined : { opacity: 0, y: -10 }}
+                          transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
                           className="absolute inset-0 flex flex-col"
                         >
                           <CardBody t={t} active />
