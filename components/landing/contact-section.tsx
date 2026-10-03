@@ -13,32 +13,6 @@ import { cn } from "@/lib/utils";
 const FORM_ENDPOINT = "https://formspree.io/f/mbjvedvw";
 const SERVICE_OPTIONS = [...site.keywords, "Not sure yet"];
 
-type Intent = "project" | "question" | "partnership";
-
-const INTENTS: { id: Intent; label: string; subject: string; serviceLabel: string; placeholder: string }[] = [
-  {
-    id: "project",
-    label: "Start a project",
-    subject: "New project enquiry from the eComet website",
-    serviceLabel: "What do you need help with?",
-    placeholder: "The goal, the tools you use today and any deadline.",
-  },
-  {
-    id: "question",
-    label: "Quick question",
-    subject: "New question from the eComet website",
-    serviceLabel: "What's this about?",
-    placeholder: "What would you like to know?",
-  },
-  {
-    id: "partnership",
-    label: "Partnership",
-    subject: "New partnership enquiry from the eComet website",
-    serviceLabel: "What kind of partnership?",
-    placeholder: "Tell us about your company and how you'd like to work together.",
-  },
-];
-
 type FieldName = "name" | "email" | "service" | "message";
 type Errors = Partial<Record<FieldName, string>>;
 type Status = "idle" | "sending" | "sent" | "error";
@@ -89,11 +63,9 @@ function FieldError({ id, message }: { id: string; message?: string }) {
 }
 
 function ContactForm() {
-  const [intent, setIntent] = React.useState<Intent>("project");
   const [status, setStatus] = React.useState<Status>("idle");
   const [errors, setErrors] = React.useState<Errors>({});
   const [touched, setTouched] = React.useState(false);
-  const active = INTENTS.find((i) => i.id === intent) ?? INTENTS[0];
   const formRef = React.useRef<HTMLFormElement>(null);
   const successRef = React.useRef<HTMLHeadingElement>(null);
 
@@ -193,38 +165,17 @@ function ContactForm() {
       .join(" ") || undefined;
 
   return (
-    <>
-      <div role="radiogroup" aria-label="What are you getting in touch about?" className="flex flex-wrap gap-2">
-        {INTENTS.map((i) => (
-          <button
-            key={i.id}
-            type="button"
-            role="radio"
-            aria-checked={intent === i.id}
-            onClick={() => setIntent(i.id)}
-            className={cn(
-              "rounded-full border px-4 py-2 text-[13.5px] font-semibold transition-colors duration-200",
-              intent === i.id
-                ? "border-transparent bg-[#eef1f6] text-[#141414]"
-                : "border-[#d9dde6] text-[#6b7080] hover:border-[#b9ccf7] hover:text-[#141414]"
-            )}
-          >
-            {i.label}
-          </button>
-        ))}
-      </div>
-
-      <form
-        ref={formRef}
-        onSubmit={onSubmit}
-        noValidate
-        aria-describedby="contact-form-note"
-        className="mt-5 space-y-5"
-      >
+    <form
+      ref={formRef}
+      onSubmit={onSubmit}
+      noValidate
+      aria-describedby="contact-form-note"
+      className="space-y-5"
+    >
       <input
         type="hidden"
         name="_subject"
-        value={active.subject}
+        value="New enquiry from the eComet website"
       />
 
       <div className="grid gap-5 sm:grid-cols-2">
@@ -269,7 +220,7 @@ function ContactForm() {
 
       <div>
         <label htmlFor="contact-service" className={labelClass}>
-          {active.serviceLabel}
+          What do you need help with?
         </label>
         <div className="relative">
           <select
@@ -313,7 +264,7 @@ function ContactForm() {
           name="message"
           required
           rows={4}
-          placeholder={active.placeholder}
+          placeholder="The goal, the tools you use today and any deadline."
           aria-invalid={errors.message ? true : undefined}
           aria-describedby={describe("message")}
           onChange={recheck}
@@ -382,8 +333,7 @@ function ContactForm() {
           )}
         </button>
       </div>
-      </form>
-    </>
+    </form>
   );
 }
 
@@ -413,16 +363,16 @@ export function ContactSection() {
       <LandingContainer>
         <div className="overflow-hidden rounded-[28px] border border-[#e7e9ef] bg-white shadow-[0_1px_2px_rgba(20,20,40,0.04),0_24px_60px_-28px_rgba(13,40,120,0.28)] lg:grid lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:rounded-[32px]">
           {/* Gradient panel */}
-          <div className="relative isolate overflow-hidden bg-[linear-gradient(150deg,#1590ec_0%,#0d5df5_42%,#4a2af2_74%,#681bf5_100%)] px-6 py-9 text-white sm:px-9 sm:py-11 lg:px-11 lg:py-12">
+          <div className="relative isolate overflow-hidden bg-[linear-gradient(135deg,#1590ec_0%,#0d5df5_32%,#4a2af2_64%,#681bf5_100%)] px-6 py-9 text-white sm:px-9 sm:py-11 lg:px-11 lg:py-12">
             {/* Aqua glow, mostly outside the card. */}
             <div
               aria-hidden
               className="absolute -right-24 -bottom-28 -z-10 size-[300px] rounded-full bg-[#01e2f8] opacity-40 blur-[80px]"
             />
-            {/* Deepening veil keeps white text readable over the lighter ocean stop and the aqua glow. */}
+            {/* Light veil, just enough to keep white text comfortably readable over the lighter ocean stop. */}
             <div
               aria-hidden
-              className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(8,16,64,0.3)_0%,rgba(8,16,64,0.16)_55%,rgba(20,8,70,0.24)_100%)]"
+              className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(8,16,64,0.12)_0%,rgba(8,16,64,0.04)_55%,rgba(20,8,70,0.1)_100%)]"
             />
             {/* Orbit lines: the comet's path. */}
             <svg
