@@ -1,19 +1,20 @@
 "use client";
 
 import * as React from "react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { testimonials } from "@/content/testimonials";
 import { LandingContainer, LandingHeading, LandingSection } from "@/components/landing/ui";
 import { cn } from "@/lib/utils";
 
-/* Testimonials, right after "How we work": three cards side by side (one on
-   phones), laid out in normal flow so they never overlap. The centre card is
-   active: the logo gradient, full size. The two side cards are real glass
-   (blurred, translucent, saturated) over soft colour blobs placed right
-   behind them so the effect actually reads, and are slightly smaller and
-   dimmed. Arrow keys, buttons and dots all move the same index; a slide
-   crossfades in from the direction of travel; reduced motion skips that. */
+/* Testimonials, right after "How we work". All cards sit side by side in one
+   continuous row (so nothing ever mounts, unmounts or re-flows); a click
+   just moves that row with a plain CSS transform, which is what makes the
+   slide read as smooth. One card is centred and active (the logo gradient);
+   its two neighbours are glass (blurred, translucent) over soft colour
+   blobs placed right behind them, and slightly out of focus. Phones show
+   one card at a time, 640px+ shows three. Bounded, not a loop: the arrows
+   disable at the first/last card instead of wrapping, so the row only ever
+   travels the short way. */
 
 function initials(name: string) {
   return name
@@ -23,47 +24,50 @@ function initials(name: string) {
     .slice(0, 2);
 }
 
-function at(i: number, n: number) {
-  return ((i % n) + n) % n;
-}
-
-/* Variants read `custom` (the travel direction) at the moment each card
-   enters or leaves, not at render time, so the exiting card always leaves
-   the way the new one is arriving from. Using a fixed exit value from
-   component state got the direction wrong on fast clicks and looked janky. */
-const slideVariants = {
-  enter: (dir: number) => ({ opacity: 0, x: dir * 90 }),
-  center: { opacity: 1, x: 0 },
-  exit: (dir: number) => ({ opacity: 0, x: -dir * 90 }),
-};
-
 export function TestimonialsSection() {
   const n = testimonials.length;
-  const [[index, dir], setState] = React.useState<[number, number]>([0, 0]);
+  const [index, setIndex] = React.useState(0);
   const [announce, setAnnounce] = React.useState("");
-  const reduce = useReducedMotion();
+  const [wide, setWide] = React.useState(false);
+  const [reduce, setReduce] = React.useState(false);
+
+  React.useEffect(() => {
+    const widthQuery = window.matchMedia("(min-width: 640px)");
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const syncWidth = () => setWide(widthQuery.matches);
+    const syncMotion = () => setReduce(motionQuery.matches);
+    syncWidth();
+    syncMotion();
+    widthQuery.addEventListener("change", syncWidth);
+    motionQuery.addEventListener("change", syncMotion);
+    return () => {
+      widthQuery.removeEventListener("change", syncWidth);
+      motionQuery.removeEventListener("change", syncMotion);
+    };
+  }, []);
 
   const go = React.useCallback(
-    (next: number, direction: number) => {
-      setState(([i]) => [at(next, n), direction]);
-      setAnnounce(`Testimonial ${at(next, n) + 1} of ${n}`);
+    (next: number) => {
+      const i = Math.max(0, Math.min(n - 1, next));
+      setIndex(i);
+      setAnnounce(`Testimonial ${i + 1} of ${n}`);
     },
     [n]
   );
 
   const onKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "ArrowRight") { e.preventDefault(); go(index + 1, 1); }
-    else if (e.key === "ArrowLeft") { e.preventDefault(); go(index - 1, -1); }
+    if (e.key === "ArrowRight") { e.preventDefault(); go(index + 1); }
+    else if (e.key === "ArrowLeft") { e.preventDefault(); go(index - 1); }
   };
 
-  const slots = [
-    { i: at(index - 1, n), role: "prev" as const },
-    { i: index, role: "active" as const },
-    { i: at(index + 1, n), role: "next" as const },
-  ];
+  const visibleCount = wide ? 3 : 1;
+  const centerOffset = wide ? 1 : 0;
+  const slideWidthPct = 100 / n;
+  const trackWidthPct = (n / visibleCount) * 100;
+  const translateXPct = -(index - centerOffset) * slideWidthPct;
 
   const arrow =
-    "inline-flex size-11 shrink-0 items-center justify-center rounded-full border border-[#e1e5ec] bg-white text-[#555555] transition-colors duration-200 hover:border-[#1590ec]/60 hover:text-[#0d5df5] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0d5df5]";
+    "inline-flex size-11 shrink-0 items-center justify-center rounded-full border border-[#e1e5ec] bg-white text-[#555555] transition-colors duration-200 hover:border-[#1590ec]/60 hover:text-[#0d5df5] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0d5df5] disabled:pointer-events-none disabled:opacity-40";
 
   return (
     <LandingSection id="testimonials" tone="alt" labelledBy="testimonials-heading" className="relative isolate overflow-hidden">
@@ -86,36 +90,31 @@ export function TestimonialsSection() {
           className="mt-12 rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0d5df5] md:mt-14"
         >
           <div className="flex items-stretch justify-center gap-3 sm:gap-5">
-            <button type="button" className={cn(arrow, "mt-[108px] hidden self-start sm:inline-flex")} onClick={() => go(index - 1, -1)} aria-label="Previous testimonial">
+            <button type="button" className={cn(arrow, "mt-[108px] hidden self-start sm:inline-flex")} onClick={() => go(index - 1)} disabled={index === 0} aria-label="Previous testimonial">
               <ChevronLeft className="size-5" aria-hidden />
             </button>
 
             <div className="flex-1 overflow-hidden">
-              <AnimatePresence mode="popLayout" initial={false} custom={dir}>
-                <motion.div
-                  key={index}
-                  custom={dir}
-                  variants={slideVariants}
-                  initial={reduce ? false : "enter"}
-                  animate="center"
-                  exit={reduce ? undefined : "exit"}
-                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                  style={{ willChange: "transform, opacity" }}
-                  className="grid grid-cols-1 gap-4 sm:grid-cols-[minmax(0,0.78fr)_minmax(0,1fr)_minmax(0,0.78fr)] sm:gap-4 md:gap-5"
-                >
-                  {slots.map(({ i, role }) => {
-                    const t = testimonials[i];
-                    const active = role === "active";
-                    return (
+              <div
+                className="flex"
+                style={{
+                  width: `${trackWidthPct}%`,
+                  transform: `translateX(${translateXPct}%)`,
+                  transition: reduce ? undefined : "transform 450ms cubic-bezier(0.22,1,0.36,1)",
+                  willChange: "transform",
+                }}
+              >
+                {testimonials.map((t, i) => {
+                  const active = i === index;
+                  return (
+                    <div key={t.name} style={{ flex: `0 0 ${slideWidthPct}%` }} className="box-border px-1.5 sm:px-2">
                       <figure
-                        key={role}
-                        onClick={() => !active && go(i, role === "next" ? 1 : -1)}
+                        onClick={() => !active && go(i)}
                         className={cn(
                           "flex h-full min-h-[300px] flex-col rounded-[22px] p-6 sm:min-h-[260px] sm:p-7",
-                          role !== "active" && "hidden sm:flex",
                           active
                             ? "bg-[linear-gradient(145deg,#1590ec_0%,#0d5df5_45%,#681bf5_100%)] text-white shadow-[0_28px_60px_-24px_rgba(13,93,245,0.55)]"
-                            : "cursor-pointer border border-white/70 bg-white/35 text-[#2b2e38] opacity-90 shadow-[0_18px_44px_-28px_rgba(20,30,70,0.3)] backdrop-blur-lg backdrop-saturate-150 blur-[1.5px] will-change-transform transition-[opacity,filter] duration-200 hover:opacity-100 hover:blur-0"
+                            : "cursor-pointer border border-white/70 bg-white/35 text-[#2b2e38] opacity-90 shadow-[0_18px_44px_-28px_rgba(20,30,70,0.3)] backdrop-blur-lg backdrop-saturate-150 blur-[1.5px] transition-[opacity,filter] duration-200 hover:opacity-100 hover:blur-0"
                         )}
                       >
                         <blockquote className={cn("line-clamp-5 text-[15px] leading-[1.6] text-pretty", active ? "text-white" : "text-[#3b3f4a]")}>
@@ -136,19 +135,19 @@ export function TestimonialsSection() {
                           </span>
                         </figcaption>
                       </figure>
-                    );
-                  })}
-                </motion.div>
-              </AnimatePresence>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
 
-            <button type="button" className={cn(arrow, "mt-[108px] hidden self-start sm:inline-flex")} onClick={() => go(index + 1, 1)} aria-label="Next testimonial">
+            <button type="button" className={cn(arrow, "mt-[108px] hidden self-start sm:inline-flex")} onClick={() => go(index + 1)} disabled={index === n - 1} aria-label="Next testimonial">
               <ChevronRight className="size-5" aria-hidden />
             </button>
           </div>
 
           <div className="mt-8 flex items-center justify-center gap-4">
-            <button type="button" className={cn(arrow, "size-10 sm:hidden")} onClick={() => go(index - 1, -1)} aria-label="Previous testimonial">
+            <button type="button" className={cn(arrow, "size-10 sm:hidden")} onClick={() => go(index - 1)} disabled={index === 0} aria-label="Previous testimonial">
               <ChevronLeft className="size-5" aria-hidden />
             </button>
             <div className="flex items-center gap-1.5">
@@ -156,7 +155,7 @@ export function TestimonialsSection() {
                 <button
                   key={t.name}
                   type="button"
-                  onClick={() => go(i, i > index ? 1 : -1)}
+                  onClick={() => go(i)}
                   aria-label={`Go to testimonial ${i + 1}`}
                   aria-current={i === index ? "true" : undefined}
                   className="group inline-flex h-6 items-center px-1 focus-visible:outline-2 focus-visible:outline-[#0d5df5]"
@@ -170,7 +169,7 @@ export function TestimonialsSection() {
                 </button>
               ))}
             </div>
-            <button type="button" className={cn(arrow, "size-10 sm:hidden")} onClick={() => go(index + 1, 1)} aria-label="Next testimonial">
+            <button type="button" className={cn(arrow, "size-10 sm:hidden")} onClick={() => go(index + 1)} disabled={index === n - 1} aria-label="Next testimonial">
               <ChevronRight className="size-5" aria-hidden />
             </button>
           </div>
