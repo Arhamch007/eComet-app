@@ -40,7 +40,9 @@ export function LandingFooter() {
 
   return (
     <div className="bg-white px-2 pt-2 sm:px-3 sm:pt-3">
-      <footer className="relative overflow-hidden rounded-t-[24px] bg-[linear-gradient(180deg,#0a0f24_0%,#0a0f24_55%,#160f3d_85%,#1f1050_100%)] text-white sm:rounded-t-[32px]">
+      <footer className="relative overflow-hidden rounded-t-[24px] bg-[linear-gradient(160deg,#0a0f24_0%,#111a4a_30%,#1d1868_58%,#391780_80%,#5a1de0_100%)] text-white sm:rounded-t-[32px]">
+        <div aria-hidden className="pointer-events-none absolute -right-20 -bottom-32 size-[380px] rounded-full bg-[#01e2f8] opacity-[0.12] blur-[110px]" />
+        <div aria-hidden className="pointer-events-none absolute -top-24 -left-16 size-[300px] rounded-full bg-[#1590ec] opacity-[0.1] blur-[100px]" />
         <LandingContainer className="py-12 md:py-16">
           <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between md:gap-12">
             <Link
