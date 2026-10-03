@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { testimonials } from "@/content/testimonials";
 import { LandingContainer, LandingHeading, LandingSection } from "@/components/landing/ui";
@@ -15,14 +16,6 @@ import { cn } from "@/lib/utils";
    one card at a time, 640px+ shows three. Bounded, not a loop: the arrows
    disable at the first/last card instead of wrapping, so the row only ever
    travels the short way. */
-
-function initials(name: string) {
-  return name
-    .split(" ")
-    .map((w) => w[0])
-    .join("")
-    .slice(0, 2);
-}
 
 export function TestimonialsSection() {
   const n = testimonials.length;
@@ -123,11 +116,11 @@ export function TestimonialsSection() {
                         <figcaption className={cn("mt-auto flex items-center gap-3 border-t pt-5", active ? "border-white/25" : "border-white/50")}>
                           <span
                             className={cn(
-                              "inline-flex size-10 shrink-0 items-center justify-center rounded-full text-[13px] font-semibold",
-                              active ? "bg-white/20 text-white" : "bg-white/70 text-[#0d5df5]"
+                              "relative size-10 shrink-0 overflow-hidden rounded-full ring-2",
+                              active ? "ring-white/35" : "ring-white/70"
                             )}
                           >
-                            {initials(t.name)}
+                            <Image src={t.image} alt="" fill sizes="40px" className="object-cover" />
                           </span>
                           <span className="min-w-0">
                             <span className="block truncate text-[14px] font-semibold">{t.name}</span>
