@@ -276,6 +276,7 @@ function ContactForm() {
             id="contact-service"
             name="service"
             required
+            autoComplete="off"
             defaultValue=""
             aria-invalid={errors.service ? true : undefined}
             aria-describedby={describe("service")}
