@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Image from "next/image";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { testimonials } from "@/content/testimonials";
 import { LandingContainer, LandingHeading, LandingSection } from "@/components/landing/ui";
@@ -9,12 +10,13 @@ import { cn } from "@/lib/utils";
 
 /* Testimonials, right after "How we work". Three fixed slots (one on
    phones): prev / active / next. The slots themselves never move or
-   resize — only the active slot's content changes, with a slight
-   fade-and-rise (`.testimonial-in` in globals.css) each time it changes.
-   The two side cards just swap instantly, in place; they are glass
-   (blurred, translucent) over soft colour blobs placed right behind them,
-   and slightly out of focus. Bounded, not a loop: the arrows disable at
-   the first/last testimonial instead of wrapping. */
+   resize — only the active slot's content changes, and the outgoing and
+   incoming quote cross-fade (absolutely positioned inside the fixed-size
+   card, so the card itself never reflows). The two side cards just swap
+   instantly, in place; they are glass (blurred, translucent) over soft
+   colour blobs placed right behind them, and slightly out of focus.
+   Bounded, not a loop: the arrows disable at the first/last testimonial
+   instead of wrapping. */
 
 function CardBody({ t, active }: { t: (typeof testimonials)[number]; active: boolean }) {
   return (
@@ -39,6 +41,7 @@ export function TestimonialsSection() {
   const n = testimonials.length;
   const [index, setIndex] = React.useState(0);
   const [announce, setAnnounce] = React.useState("");
+  const reduce = useReducedMotion();
 
   const go = React.useCallback(
     (next: number) => {
@@ -98,7 +101,7 @@ export function TestimonialsSection() {
                     key={role}
                     onClick={() => !active && go(i)}
                     className={cn(
-                      "flex h-full min-h-[300px] flex-col rounded-[22px] p-6 sm:min-h-[260px] sm:p-7",
+                      "relative flex h-full min-h-[300px] flex-col overflow-hidden rounded-[22px] p-6 sm:min-h-[260px] sm:p-7",
                       role !== "active" && "hidden sm:flex",
                       active
                         ? "bg-[linear-gradient(145deg,#1590ec_0%,#0d5df5_45%,#681bf5_100%)] text-white shadow-[0_28px_60px_-24px_rgba(13,93,245,0.55)]"
@@ -106,9 +109,18 @@ export function TestimonialsSection() {
                     )}
                   >
                     {active ? (
-                      <div key={t.name} className="testimonial-in flex h-full flex-col">
-                        <CardBody t={t} active />
-                      </div>
+                      <AnimatePresence initial={false}>
+                        <motion.div
+                          key={t.name}
+                          initial={reduce ? false : { opacity: 0, y: 14 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={reduce ? undefined : { opacity: 0, y: -14 }}
+                          transition={{ duration: 0.55, ease: [0.4, 0, 0.2, 1] }}
+                          className="absolute inset-0 flex flex-col"
+                        >
+                          <CardBody t={t} active />
+                        </motion.div>
+                      </AnimatePresence>
                     ) : (
                       <CardBody t={t} active={false} />
                     )}
