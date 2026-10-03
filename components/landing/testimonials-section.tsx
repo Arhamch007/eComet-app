@@ -101,8 +101,8 @@ export function TestimonialsSection() {
                     key={role}
                     onClick={() => !active && go(i)}
                     className={cn(
-                      "relative flex h-full min-h-[300px] flex-col overflow-hidden rounded-[22px] p-6 sm:min-h-[260px] sm:p-7",
-                      role !== "active" && "hidden sm:flex",
+                      "relative h-full min-h-[300px] overflow-hidden rounded-[22px] sm:min-h-[260px]",
+                      role !== "active" && "hidden sm:block",
                       active
                         ? "bg-[linear-gradient(145deg,#1590ec_0%,#0d5df5_45%,#681bf5_100%)] text-white shadow-[0_28px_60px_-24px_rgba(13,93,245,0.55)]"
                         : "cursor-pointer border border-white/70 bg-white/35 text-[#2b2e38] opacity-90 shadow-[0_18px_44px_-28px_rgba(20,30,70,0.3)] backdrop-blur-lg backdrop-saturate-150 blur-[1.5px] transition-[opacity,filter] duration-200 hover:opacity-100 hover:blur-0"
@@ -116,13 +116,15 @@ export function TestimonialsSection() {
                           animate={{ opacity: 1, y: 0 }}
                           exit={reduce ? undefined : { opacity: 0, y: -10 }}
                           transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-                          className="absolute inset-0 flex flex-col"
+                          className="absolute inset-0 flex flex-col p-6 sm:p-7"
                         >
                           <CardBody t={t} active />
                         </motion.div>
                       </AnimatePresence>
                     ) : (
-                      <CardBody t={t} active={false} />
+                      <div className="flex h-full flex-col p-6 sm:p-7">
+                        <CardBody t={t} active={false} />
+                      </div>
                     )}
                   </figure>
                 );
