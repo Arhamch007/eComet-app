@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/content/site";
 import { LandingContainer } from "@/components/landing/ui";
@@ -48,9 +49,9 @@ export function LandingFooter() {
             <Link
               href="#top"
               aria-label="eComet, back to top"
-              className="inline-block shrink-0 rounded-md text-[32px] leading-none font-bold tracking-[-0.03em] text-transparent select-none bg-[linear-gradient(135deg,#ffffff_0%,#9fe9fb_30%,#1590ec_62%,#681bf5_100%)] bg-clip-text focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#5fb4ff] sm:text-[38px]"
+              className="inline-block shrink-0 rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#5fb4ff]"
             >
-              eComet
+              <Image src="/brand/ecomet-logo-on-dark.png" alt="eComet" width={640} height={159} className="h-7 w-auto sm:h-8" />
             </Link>
 
             <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 md:gap-x-14">
