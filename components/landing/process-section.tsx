@@ -12,7 +12,17 @@ import { cn } from "@/lib/utils";
    wave fills with the logo gradient behind a glowing comet head, and each
    step lights up (grey ring -> gradient disc) when the comet reaches it.
    Phones and tablets: the same idea runs top to bottom down the left edge.
-   Reduced motion: the path is drawn in full and every step is lit. */
+   Reduced motion: the path is drawn in full and every step is lit.
+
+   Performance note: the comet head and the fill's dash-offset update on
+   every scroll frame, but write straight to the DOM via refs instead of
+   React state -- on a throttled/low-end phone, calling setState on every
+   scroll-linked frame (the previous approach) produced 150ms+ long tasks
+   that blocked painting, which is what made sections and even the hero
+   appear to "not show up" until the next scroll nudged a repaint. Only
+   the four discrete step-lit transitions go through React state, and only
+   when the step actually changes (at most 4 renders per scroll pass, not
+   one per frame). */
 
 // Wave through the four stations in a 1000 x 180 box (stretched to fit).
 const WAVE = "M0,125 C50,140 80,150 125,150 S290,80 375,80 S540,150 625,150 S790,80 875,80 S960,90 1000,85";
@@ -53,23 +63,64 @@ export function ProcessSection() {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start 95%", "center 78%"] });
   const smooth = useSpring(scrollYProgress, { stiffness: 120, damping: 28, mass: 0.4 });
   const length = useTransform(smooth, [0, 1], [0.02, 1]);
-  const [progress, setProgress] = React.useState(0);
-  useMotionValueEvent(smooth, "change", (v) => setProgress(v));
-  const p = reduce ? 1 : progress;
 
-  // comet head position along the drawn wave (desktop)
+  // How many stations the comet has reached (0-4). Only this crosses into
+  // React state, and only when it actually changes. Mobile lights up each
+  // step slightly early (matches the previous `AT[i] - 0.05` behaviour).
+  const [activeStep, setActiveStep] = React.useState(0);
+  const [activeStepMobile, setActiveStepMobile] = React.useState(0);
+  const activeStepRef = React.useRef(0);
+  const activeStepMobileRef = React.useRef(0);
+
+  // Comet head + fill: written straight to the DOM every frame, no re-render.
   const pathRef = React.useRef<SVGPathElement>(null);
-  const [head, setHead] = React.useState({ x: 0, y: 125 });
-  const [total, setTotal] = React.useState(0);
-  const f = 0.02 + 0.98 * Math.min(1, Math.max(0, p));
+  const fillRef = React.useRef<SVGPathElement>(null);
+  const headRef = React.useRef<HTMLSpanElement>(null);
+  const totalLengthRef = React.useRef(0);
+
   React.useEffect(() => {
     const el = pathRef.current;
-    if (!el) return;
-    const t = el.getTotalLength();
+    if (el) totalLengthRef.current = el.getTotalLength();
+  }, []);
+
+  useMotionValueEvent(smooth, "change", (raw) => {
+    const p = reduce ? 1 : raw;
+
+    const step = AT.filter((t) => p >= t).length;
+    if (step !== activeStepRef.current) {
+      activeStepRef.current = step;
+      setActiveStep(step);
+    }
+    const stepMobile = AT.filter((t) => p >= t - 0.05).length;
+    if (stepMobile !== activeStepMobileRef.current) {
+      activeStepMobileRef.current = stepMobile;
+      setActiveStepMobile(stepMobile);
+    }
+
+    const el = pathRef.current;
+    const t = totalLengthRef.current || (el ? (totalLengthRef.current = el.getTotalLength()) : 0);
+    if (!el || !t) return;
+    const f = 0.02 + 0.98 * Math.min(1, Math.max(0, p));
     const pt = el.getPointAtLength(f * t);
-    setTotal(t);
-    setHead({ x: pt.x, y: pt.y });
-  }, [f]);
+
+    if (fillRef.current) {
+      fillRef.current.style.strokeDasharray = String(t);
+      fillRef.current.style.strokeDashoffset = String(t * (1 - f));
+    }
+    if (headRef.current) {
+      headRef.current.style.left = `${pt.x / 10}%`;
+      headRef.current.style.top = `${(pt.y / 180) * 100}%`;
+      headRef.current.style.opacity = p > 0.03 && p < 0.99 ? "1" : "0";
+    }
+  });
+
+  // Reduced motion: everything lit, no per-frame work.
+  React.useEffect(() => {
+    if (reduce) {
+      setActiveStep(4);
+      setActiveStepMobile(4);
+    }
+  }, [reduce]);
 
   return (
     <LandingSection id="process" tone="white" labelledBy="process-heading" className="overflow-hidden">
@@ -94,22 +145,22 @@ export function ProcessSection() {
               </defs>
               <path d={WAVE} fill="none" stroke="#b9c1cf" strokeWidth="2" strokeDasharray="2 7" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
               <path ref={pathRef} d={WAVE} fill="none" stroke="none" />
-              {/* filled part: dash offset from the same progress as the comet head */}
+              {/* filled part: dash offset written directly via ref, see useMotionValueEvent above */}
               <path
+                ref={fillRef}
                 d={WAVE}
                 fill="none"
                 stroke="url(#comet-path)"
                 strokeWidth="3"
                 strokeLinecap="round"
-                strokeDasharray={total || undefined}
-                strokeDashoffset={total ? total * (1 - f) : undefined}
+                style={reduce ? { strokeDasharray: totalLengthRef.current || undefined, strokeDashoffset: 0 } : undefined}
               />
             </svg>
             {!reduce ? (
               <span
+                ref={headRef}
                 aria-hidden
-                className="pointer-events-none absolute size-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white shadow-[0_0_0_4px_rgba(13,93,245,0.25),0_0_24px_8px_rgba(1,226,248,0.55)] transition-opacity duration-300"
-                style={{ left: `${head.x / 10}%`, top: `${(head.y / 180) * 100}%`, opacity: p > 0.03 && p < 0.99 ? 1 : 0 }}
+                className="pointer-events-none absolute size-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white opacity-0 shadow-[0_0_0_4px_rgba(13,93,245,0.25),0_0_24px_8px_rgba(1,226,248,0.55)] transition-opacity duration-300"
               />
             ) : null}
             {process.map((step, i) => (
@@ -118,14 +169,14 @@ export function ProcessSection() {
                 className="absolute -translate-x-1/2 -translate-y-1/2"
                 style={{ left: `${STATIONS[i].x}%`, top: `${STATIONS[i].y * 100}%` }}
               >
-                <StepMarker lit={p >= AT[i]} Icon={step.icon} />
+                <StepMarker lit={activeStep > i} Icon={step.icon} />
               </div>
             ))}
           </div>
 
           <ol className="mt-8 hidden grid-cols-4 gap-8 lg:grid">
             {process.map((step, i) => (
-              <li key={step.n} className={cn("text-center transition-opacity duration-500", p >= AT[i] ? "opacity-100" : "opacity-75")}>
+              <li key={step.n} className={cn("text-center transition-opacity duration-500", activeStep > i ? "opacity-100" : "opacity-75")}>
                 <p className="text-[13px] font-semibold tracking-[0.04em] text-[#6b7080] tabular-nums">{step.n}</p>
                 <h3 className="mt-1 text-[19px] leading-[1.25] font-bold tracking-[-0.015em] text-[#141414]">{step.title}</h3>
                 <p className="mx-auto mt-2 max-w-[250px] text-[15px] leading-[1.6] text-pretty text-[#555555]">{step.text}</p>
@@ -143,7 +194,7 @@ export function ProcessSection() {
             />
             {process.map((step, i) => (
               <li key={step.n} className="relative flex gap-5 pb-10 last:pb-0">
-                <StepMarker lit={p >= AT[i] - 0.05} Icon={step.icon} />
+                <StepMarker lit={activeStepMobile > i} Icon={step.icon} />
                 <div className="min-w-0 pt-1">
                   <p className="text-[13px] font-semibold tracking-[0.04em] text-[#6b7080] tabular-nums">{step.n}</p>
                   <p className="mt-1 text-[18px] leading-[1.25] font-bold tracking-[-0.015em] text-[#141414]">{step.title}</p>
