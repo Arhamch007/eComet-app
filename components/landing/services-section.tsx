@@ -95,17 +95,6 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
         {title}
       </h3>
       <p className="mt-2 text-[15px] leading-[1.55] text-pretty text-[#555555] lg:text-[14px] xl:text-[15px]">{summary}</p>
-
-      <div className="mt-auto pt-4">
-        <Link
-          href="#contact"
-          aria-label={`Get started with ${title}`}
-          className="inline-flex items-center gap-1.5 rounded-md text-[14.5px] font-semibold text-[#0d5df5] transition-colors duration-200 hover:text-[#681bf5] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0d5df5]"
-        >
-          Get started
-          <ArrowRight aria-hidden className="size-4" strokeWidth={2.2} />
-        </Link>
-      </div>
     </li>
   );
 }
@@ -129,7 +118,27 @@ export function ServicesSection() {
             <ServiceCard key={service.title} service={service} index={index} />
           ))}
         </ul>
+
+        {/* one call to action for the whole section, not one per card */}
+        <div className="mt-10 flex justify-center md:hidden">
+          <Link
+            href="#contact"
+            className="hero-cta hero-cta--primary relative isolate inline-flex h-11 items-center justify-center gap-2 overflow-hidden rounded-full px-6 text-[15px] font-semibold tracking-[-0.01em] text-white outline-none focus-visible:ring-[3px] focus-visible:ring-[#0d5df5]/40"
+          >
+            Get started
+            <ArrowRight aria-hidden className="size-4" strokeWidth={2.2} />
+          </Link>
+        </div>
       </LandingContainer>
+
+      <Link
+        href="#contact"
+        aria-label="Get started"
+        title="Get started"
+        className="group/fab absolute top-1/2 right-5 z-10 hidden size-14 -translate-y-1/2 items-center justify-center rounded-full bg-[linear-gradient(135deg,#01e2f8,#1590ec_35%,#0d5df5_65%,#681bf5)] text-white shadow-[0_18px_40px_-14px_rgba(13,93,245,0.65)] transition-shadow duration-200 hover:shadow-[0_22px_48px_-12px_rgba(104,27,245,0.6)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0d5df5] md:flex xl:right-10"
+      >
+        <ArrowRight aria-hidden className="size-6 transition-transform duration-200 group-hover/fab:translate-x-0.5" strokeWidth={2.2} />
+      </Link>
     </LandingSection>
   );
 }
