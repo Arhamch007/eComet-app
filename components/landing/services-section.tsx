@@ -79,7 +79,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
   return (
     <li
       aria-labelledby={headingId}
-      className="group relative flex flex-col rounded-[20px] border border-[#e6e9f0] bg-white p-5 shadow-[0_2px_4px_rgba(20,30,60,0.04),0_20px_44px_-26px_rgba(13,60,160,0.35)] transition-[border-color,box-shadow] duration-200 hover:border-[#1590ec]/60 hover:shadow-[0_0_0_1px_rgba(21,144,236,0.18),0_24px_56px_-22px_rgba(104,27,245,0.38),0_0_40px_-12px_rgba(1,226,248,0.4)] motion-reduce:transition-none lg:p-4 xl:p-5"
+      className="group relative flex min-h-[230px] flex-col rounded-[20px] border border-[#e6e9f0] bg-white p-5 shadow-[0_2px_4px_rgba(20,30,60,0.04),0_20px_44px_-26px_rgba(13,60,160,0.35)] transition-[border-color,box-shadow] duration-200 hover:border-[#1590ec]/60 hover:shadow-[0_0_0_1px_rgba(21,144,236,0.18),0_24px_56px_-22px_rgba(104,27,245,0.38),0_0_40px_-12px_rgba(1,226,248,0.4)] motion-reduce:transition-none lg:min-h-[210px] lg:p-4 xl:min-h-[230px] xl:p-5"
     >
       <div className="flex items-start">
         <span
@@ -91,10 +91,10 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
         </span>
       </div>
 
-      <h3 id={headingId} className="mt-4 text-[19px] leading-[1.25] font-bold lg:text-[17px] xl:text-[19px] tracking-[-0.015em] text-[#141414]">
+      <h3 id={headingId} className="mt-4 text-[20px] leading-[1.3] font-bold lg:text-[18px] xl:text-[20px] tracking-[-0.015em] text-[#141414]">
         {title}
       </h3>
-      <p className="mt-2 text-[15px] leading-[1.55] text-pretty text-[#555555] lg:text-[14px] xl:text-[15px]">{summary}</p>
+      <p className="mt-2.5 text-[16px] leading-[1.65] text-pretty text-[#555555] lg:text-[15px] xl:text-[16px]">{summary}</p>
     </li>
   );
 }
