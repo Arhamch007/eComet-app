@@ -1,10 +1,14 @@
 /* Site-wide facts. Values marked TODO are open questions from the design audit
    (design-audit/README.md) and must be confirmed by the eComet team before launch. */
 
+/** Preview deploys set NEXT_PUBLIC_NOINDEX=1 so search engines keep them out of the index. */
+export const noindex = process.env.NEXT_PUBLIC_NOINDEX === "1";
+
 export const site = {
   name: "eComet",
   legalName: "eComet Technologies",
-  url: "https://teamecomet.com",
+  /** Set NEXT_PUBLIC_SITE_URL for a preview deploy (e.g. a netlify.app address) so canonical, sitemap and the share image point at that host. */
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://teamecomet.com",
   tagline: "Web development, automation, email marketing and digital support for businesses that want to work smarter and grow",
   /** The agency's four core keywords, in this order, used in the hero and page titles. */
   keywords: ["Web Solutions", "AI Automation", "Growth Marketing", "Digital Support"],

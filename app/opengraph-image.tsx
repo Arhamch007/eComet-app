@@ -12,6 +12,7 @@ import { site } from "@/content/site";
 export const alt = "eComet: Web Solutions, AI Automation, Growth Marketing and Digital Support";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+export const dynamic = "force-static";
 
 export default async function OpengraphImage() {
   const root = process.cwd();

@@ -4,7 +4,7 @@ import { Figtree } from "next/font/google";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
-import { site } from "@/content/site";
+import { noindex, site } from "@/content/site";
 import { Providers } from "@/components/providers";
 import { OrganizationJsonLd } from "@/components/site/json-ld";
 import { cn } from "@/lib/utils";
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     locale: "en_US",
   },
   twitter: { card: "summary_large_image" },
-  robots: { index: true, follow: true },
+  robots: noindex ? { index: false, follow: false } : { index: true, follow: true },
   alternates: { canonical: "/" },
 };
 

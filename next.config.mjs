@@ -40,17 +40,28 @@ const securityHeaders = [
   { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
 ];
 
+// STATIC_EXPORT=1 builds a plain static folder (out/) for Netlify drag-and-drop.
+// Redirects and headers then come from out/_redirects and out/_headers, written
+// by scripts/build-netlify-drop.mjs, because a static host never runs Next.
+const isExport = process.env.STATIC_EXPORT === "1";
+
 const nextConfig = {
+  ...(isExport ? { output: "export" } : {}),
   reactStrictMode: true,
   trailingSlash: false,
   poweredByHeader: false,
   eslint: { ignoreDuringBuilds: true },
-  images: { formats: ["image/avif", "image/webp"] },
-  async redirects() {
-    return oldRoutes.map(([source, destination]) => ({ source, destination, permanent: true }));
-  },
-  async headers() {
-    return [{ source: "/:path*", headers: securityHeaders }];
-  },
+  images: isExport ? { unoptimized: true } : { formats: ["image/avif", "image/webp"] },
+  ...(isExport ? {} : { redirects, headers }),
 };
+
+async function redirects() {
+  return oldRoutes.map(([source, destination]) => ({ source, destination, permanent: true }));
+}
+
+async function headers() {
+  return [{ source: "/:path*", headers: securityHeaders }];
+}
+
+export { oldRoutes, securityHeaders };
 export default nextConfig;
