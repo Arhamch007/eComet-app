@@ -83,3 +83,4 @@ design-audit/review/
 
 # TypeScript incremental build cache
 tsconfig.tsbuildinfo
+out/
