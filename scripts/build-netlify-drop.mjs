@@ -10,8 +10,9 @@
 // Netlify reads.
 
 import { execSync } from "node:child_process";
-import { existsSync, rmSync, writeFileSync } from "node:fs";
+import { createWriteStream, existsSync, rmSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
+import { ZipArchive } from "archiver";
 
 const args = process.argv.slice(2);
 const production = args.includes("--production");
@@ -50,6 +51,19 @@ if (!production) headerLines.push("  X-Robots-Tag: noindex, nofollow");
 writeFileSync(join(out, "_headers"), `/*\n${headerLines.join("\n")}\n`);
 
 if (existsSync(zip)) rmSync(zip);
-execSync(`powershell -NoProfile -Command "Compress-Archive -Path '${out}\\*' -DestinationPath '${zip}'"`, { stdio: "inherit" });
+// Not PowerShell's Compress-Archive or .NET's ZipFile: both write entry names
+// with backslashes on Windows (e.g. "_next\static\css\x.css") instead of the
+// forward slashes the ZIP spec requires. Netlify's Linux unzip then takes
+// that whole string as one literal filename, so every nested asset 404s.
+// archiver always writes forward slashes.
+await new Promise((done, fail) => {
+  const stream = createWriteStream(zip);
+  const archive = new ZipArchive({ zlib: { level: 9 } });
+  archive.on("error", fail);
+  stream.on("close", done);
+  archive.pipe(stream);
+  archive.directory(out, false);
+  archive.finalize();
+});
 
 console.log(`\nDone.\n  Folder: ${out}\n  Zip:    ${zip}`);
