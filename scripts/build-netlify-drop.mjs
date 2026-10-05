@@ -61,7 +61,14 @@ writeFileSync(join(out, "_redirects"), redirects + "\n");
 
 const headerLines = securityHeaders.map(({ key, value }) => `  ${key}: ${value}`);
 if (!production) headerLines.push("  X-Robots-Tag: noindex, nofollow");
-writeFileSync(join(out, "_headers"), `/*\n${headerLines.join("\n")}\n`);
+// next/og's share-image routes export a file with no extension
+// (out/opengraph-image, out/twitter-image); a static host guesses the type
+// from the extension, finds none, and serves text/plain — so the preview
+// image is just a wall of binary text to WhatsApp/LinkedIn/etc. Pin the type.
+const imageTypeLines = ["/opengraph-image", "/twitter-image"]
+  .map((p) => `${p}\n  Content-Type: image/png\n`)
+  .join("\n");
+writeFileSync(join(out, "_headers"), `/*\n${headerLines.join("\n")}\n\n${imageTypeLines}`);
 
 if (onNetlify) {
   // Netlify deploys the out/ folder itself; no zip, no local-drag step.
