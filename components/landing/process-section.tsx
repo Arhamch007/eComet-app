@@ -146,7 +146,7 @@ export function ProcessSection() {
                 <StepMarker lit={p >= AT[i] - 0.05} Icon={step.icon} />
                 <div className="min-w-0 pt-1">
                   <p className="text-[13px] font-semibold tracking-[0.04em] text-[#6b7080] tabular-nums">{step.n}</p>
-                  <h3 className="mt-1 text-[18px] leading-[1.25] font-bold tracking-[-0.015em] text-[#141414]">{step.title}</h3>
+                  <p className="mt-1 text-[18px] leading-[1.25] font-bold tracking-[-0.015em] text-[#141414]">{step.title}</p>
                   <p className="mt-2 max-w-[460px] text-[15px] leading-[1.6] text-pretty text-[#555555]">{step.text}</p>
                 </div>
               </li>

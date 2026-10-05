@@ -57,7 +57,7 @@ export function LandingFooter() {
             <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 md:gap-x-14">
               {columns.map((col) => (
                 <nav key={col.title} aria-label={col.title} className={col.title === "Contact" ? "col-span-2 sm:col-span-1" : undefined}>
-                  <h2 className="text-[12px] font-semibold tracking-[0.12em] text-[#7d849a] uppercase">{col.title}</h2>
+                  <p className="text-[12px] font-semibold tracking-[0.12em] text-[#7d849a] uppercase">{col.title}</p>
                   <ul className="mt-4 space-y-2.5">
                     {col.links.map((l) => (
                       <li key={l.label}>

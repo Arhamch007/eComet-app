@@ -1,0 +1,22 @@
+# eComet
+
+> eComet (eComet Technologies) is a digital services team for businesses in the USA, Canada and Europe, covering web solutions, AI automation, growth marketing and digital support. The office is in Vehari, Pakistan.
+
+The whole site is one page: https://teamecomet.com
+
+## Services
+
+- [Web Solutions](https://teamecomet.com/#services): modern, responsive websites and web applications built around the business's needs.
+- [AI Automation](https://teamecomet.com/#services): workflows and integrations (for example Zapier, Make and n8n) that reduce repetitive work.
+- [Growth Marketing](https://teamecomet.com/#services): campaigns, automation and email systems, including Meta ads.
+- [Digital Support](https://teamecomet.com/#services): day-to-day support for digital tasks, including virtual assistance.
+
+## How a project works
+
+- [Process](https://teamecomet.com/#process): a short discovery call; the current process is documented, the scope agreed, and a fixed quote and timeline given; weekly check-ins during the build; hand-over, documentation and an optional care plan.
+- [FAQ](https://teamecomet.com/#faq): short answers about services, pricing, updates and support.
+
+## Contact
+
+- [Contact form](https://teamecomet.com/#contact): replies within one business day; an NDA can be signed before details are shared.
+- Email: hr@teamecomet.com

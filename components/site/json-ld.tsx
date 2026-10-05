@@ -21,6 +21,21 @@ export function OrganizationJsonLd() {
           addressCountry: "PK",
         },
         areaServed: ["US", "CA", "EU"],
+        knowsAbout: [...site.keywords, ...site.tools],
+        // The four services as shown in the Services section.
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "eComet services",
+          itemListElement: [
+            ["Web Solutions", "Modern, responsive websites and web applications built around your business needs."],
+            ["AI Automation", "Smart workflows and integrations that reduce repetitive work and save your team time."],
+            ["Growth Marketing", "Campaigns, automation and email systems designed to engage customers and drive results."],
+            ["Digital Support", "Reliable day-to-day support for the digital tasks that keep your business moving."],
+          ].map(([name, description]) => ({
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name, description, provider: { "@id": `${site.url}/#organization` } },
+          })),
+        },
         contactPoint: [
           {
             "@type": "ContactPoint",
