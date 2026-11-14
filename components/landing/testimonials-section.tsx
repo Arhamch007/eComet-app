@@ -29,12 +29,24 @@ function CardBody({ t, active }: { t: (typeof testimonials)[number]; active: boo
         {t.quote}
       </blockquote>
       <figcaption className={cn("mt-auto flex items-center gap-3 border-t pt-5", active ? "border-white/25" : "border-white/50")}>
-        <span className={cn("relative size-10 shrink-0 overflow-hidden rounded-full ring-2", active ? "ring-white/35" : "ring-white/70")}>
-          <Image src={t.image} alt="" fill sizes="40px" className="object-cover" />
+        <span
+          className={cn(
+            "relative grid size-10 shrink-0 place-items-center overflow-hidden rounded-full ring-2",
+            active ? "bg-white/20 ring-white/35" : "bg-[#0d5df5]/10 ring-white/70"
+          )}
+        >
+          {t.image ? (
+            <Image src={t.image} alt="" fill sizes="40px" className="object-cover" />
+          ) : (
+            /* no portrait yet: initials */
+            <span aria-hidden className={cn("text-[13px] font-semibold tracking-[0.02em]", active ? "text-white" : "text-[#0d5df5]")}>
+              {t.name.split(" ").map((w) => w[0]).join("").slice(0, 2)}
+            </span>
+          )}
         </span>
         <span className="min-w-0">
           <span className="block truncate text-[14px] font-semibold">{t.name}</span>
-          <span className={cn("block truncate text-[13px]", active ? "text-white/80" : "text-[#6b7080]")}>{t.role}</span>
+          <span className={cn("line-clamp-2 text-[13px] leading-[1.4]", active ? "text-white/80" : "text-[#6b7080]")}>{t.role}</span>
         </span>
       </figcaption>
     </>
