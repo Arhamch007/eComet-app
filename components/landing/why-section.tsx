@@ -12,7 +12,7 @@ import { LandingContainer, LandingSection } from "@/components/landing/ui";
 const rows = [
   {
     topic: "Who does the work",
-    without: "Separate freelancers for web, automation, email and admin",
+    without: "Different people managing web, automation, email and admin",
     with: "One team covering web, automation, email marketing and digital support",
   },
   {
@@ -57,7 +57,7 @@ export function WhySection() {
         <div className="mt-10 grid gap-4 md:mt-12 md:grid-cols-2 md:gap-6">
           {/* the usual way */}
           <div className="rounded-[22px] border border-[#e1e5ec] bg-white/60 p-6 sm:p-8">
-            <h3 className="text-[17px] font-bold tracking-[-0.01em] text-[#6b7080]">Juggling separate freelancers</h3>
+            <h3 className="text-[17px] font-bold tracking-[-0.01em] text-[#6b7080]">Juggling multiple technology partners</h3>
             <ul className="mt-5">
               {rows.map((r) => (
                 <li key={r.topic} className="flex gap-3 border-t border-[#e6e9f0] py-4 last:pb-0">
