@@ -57,9 +57,12 @@ export function LandingHero() {
           <br className="hidden md:block" />
           <span className="block md:inline">Growth Marketing</span> <span className="block md:inline">&amp; Digital Support</span>
         </h1>
-        <p className="mx-auto mt-5 max-w-[600px] text-pretty text-[15px] leading-[1.6] text-[#555555] sm:text-[16px] md:mt-6 md:text-[17px]">
-          Turn processes into progress, so you can spend less time untangling work and more time moving your
-          business forward.
+        {/* From md up the line breaks at the comma (and the block is wide
+            enough for the second half to stay on one line); on smaller
+            screens it wraps naturally. */}
+        <p className="mx-auto mt-5 max-w-[600px] text-pretty text-[15px] leading-[1.6] text-[#555555] sm:text-[16px] md:mt-6 md:max-w-[760px] md:text-[17px]">
+          Turn processes into progress, <br className="hidden md:block" />
+          so you can spend less time untangling work and more time moving your business forward.
         </p>
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row md:mt-9">
           <HeroButton href="#contact" label="Start a Project" primary />
