@@ -34,7 +34,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "Support is responsive and practical; whenever we run into an issue, they help us find a clear solution.",
+      "Support is responsive and practical. Whenever we run into an issue, they help us find a clear solution.",
     name: "Sharif Ceasar",
     role: "Founder | Content Cartel",
   },
