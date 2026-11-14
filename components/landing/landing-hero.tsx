@@ -58,8 +58,8 @@ export function LandingHero() {
           <span className="block md:inline">Growth Marketing</span> <span className="block md:inline">&amp; Digital Support</span>
         </h1>
         <p className="mx-auto mt-5 max-w-[600px] text-pretty text-[15px] leading-[1.6] text-[#555555] sm:text-[16px] md:mt-6 md:text-[17px]">
-          One team that builds stronger digital operations and helps businesses across the USA, Canada and Europe
-          grow with confidence.
+          Turn processes into progress, so you can spend less time untangling work and more time moving your
+          business forward.
         </p>
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row md:mt-9">
           <HeroButton href="#contact" label="Start a Project" primary />
